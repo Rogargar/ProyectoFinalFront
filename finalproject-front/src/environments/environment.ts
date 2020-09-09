@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   hmr:false,
-  urlBack:'http://localhost:8080'
+  urlBack:'/api'
 };
 
 /*

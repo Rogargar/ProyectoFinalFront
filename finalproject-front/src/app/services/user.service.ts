@@ -19,13 +19,7 @@ export class UserService {
   constructor(private _http: HttpClient, private _mapper: MapperService) { }
 
   getUsers() {
-    return this._http.get(this.url, {
-      headers: {
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Origin": "https://www.example.com",
-        "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-      }
-    })
+    return this._http.get(this.url)
       .pipe(
         map((item: any) => {
           item = item.map((user: any) => {
