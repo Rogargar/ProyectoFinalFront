@@ -9,13 +9,4 @@ import { UserModel } from './models/user/user.model';
 })
 export class AppComponent {
   title = 'finalproject-front';
-  users: UserModel[];
-  constructor(private _userService: UserService) { }
-
-  ngOnInit() {
-    this._userService.getUsers().subscribe((data: any) => {
-      console.log(data);
-      this.users = data;
-    })
-  }
 }

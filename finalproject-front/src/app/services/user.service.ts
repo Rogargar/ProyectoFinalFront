@@ -30,4 +30,8 @@ export class UserService {
       );
   }
 
+  validatorEmailAndPass(user) {
+    return this._http.post(`${this.url}/emailPass`, user);
+  }
+
 }
