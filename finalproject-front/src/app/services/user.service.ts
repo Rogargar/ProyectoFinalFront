@@ -1,3 +1,5 @@
+import { CookieService } from 'ngx-cookie-service';
+import { UserModel } from './../models/user/user.model';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
@@ -12,11 +14,13 @@ export class UserService {
 
   private enviroment = environment;
 
-  private headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-
   private url = `${this.enviroment.urlBack}/users`;
 
-  constructor(private _http: HttpClient, private _mapper: MapperService) { }
+  headers: HttpHeaders = new HttpHeaders({
+    "Content-Type": "application/json"
+  });
+
+  constructor(private _http: HttpClient, private _mapper: MapperService, private cookies: CookieService) { }
 
   getUsers() {
     return this._http.get(this.url)
@@ -29,9 +33,32 @@ export class UserService {
         }),
       );
   }
+  getUserById(id) {
+    return this._http.get(this.url + '/' + id);
+  }
+
+  registerUser(user) {
+    return this._http.post(this.url, user);
+  }
 
   validatorEmailAndPass(user) {
-    return this._http.post(`${this.url}/emailPass`, user);
+    return this._http.post(`${this.url}/emailPass`, user,
+      { headers: this.headers })
+      .pipe(map(data => data));
+  }
+
+  getUserByEmail(email) {
+    return this._http.get(`${this.url}/email/${email}`);
+  }
+
+  setToken(token: string) {
+    this.cookies.set('token', token);
+  }
+  getToken() {
+    return this.cookies.get('token');
+  }
+  deleteToken() {
+    this.cookies.delete('nombre');
   }
 
 }

@@ -1,3 +1,4 @@
+import { CanActivateViaAuthGuard } from './guard/canActivateViaAuthGuard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -17,13 +18,16 @@ import { UserComponent } from '../app/modules/finalProject/components/user/user.
 /*import { FormBuilder, FormControl, Validators } from '@angular/forms';*/
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './modules/finalProject/components/home/home.component';
+import { CookieService } from 'ngx-cookie-service';
+import { RegisterComponent } from './modules/finalProject/components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     UserComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     RouterModule,
@@ -38,7 +42,10 @@ import { HomeComponent } from './modules/finalProject/components/home/home.compo
     ReactiveFormsModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    CanActivateViaAuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

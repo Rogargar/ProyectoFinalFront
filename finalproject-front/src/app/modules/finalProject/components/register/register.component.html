@@ -1,0 +1,16 @@
+<div class="register">
+    <form class="custom-form" method="post">
+        <h1>Register</h1>
+        <input type="text" [(ngModel)]="name" name="name" placeholder="Name" required="required" />
+        <input type="text" [(ngModel)]="surname" name="surname" placeholder="Surname" required="required" />
+        <select name="rol" [(ngModel)]="rolUser">
+          <option disabled selected>Selecciona un rol</option>
+          <option *ngFor="let rols of roles" [value]="rols">{{rols}}</option>
+          </select>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required="required" />
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required="required" />
+        <input type="password" [(ngModel)]="confirmPassword" name="password" placeholder="Repeat the password" required="required" />
+        <button type="submit" (click)="register()">Register</button>
+        <button type="button" class="mt-4" (click)="login()">Login</button>
+    </form>
+</div>

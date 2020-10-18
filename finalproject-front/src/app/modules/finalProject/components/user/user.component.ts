@@ -4,7 +4,7 @@ import { UserModel } from './../../../../models/user/user.model';
 import { UserService } from './../../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -21,6 +21,7 @@ export class UserComponent implements OnInit {
   constructor(private _userService: UserService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
+    this._userService.deleteToken();
     this.createFormGroup();
   }
 
@@ -33,13 +34,10 @@ export class UserComponent implements OnInit {
 
   recogerDatos() {
     let user = new UserModel();
-    console.log(user);
-    console.log(this.form.value.pass);
     const pass = CryptoJS.MD5(this.form.value.pass).toString();
     this.form.value.pass = pass;
     user = this.form.value;
     if (user.email !== null) {
-      console.log(user);
       this._userService.validatorEmailAndPass(user)
         .subscribe(data => {
           switch (data) {
@@ -53,11 +51,18 @@ export class UserComponent implements OnInit {
               break;
             case 1:
               this.esError = false;
-              //this.router.navigateByUrl('<pathDefinedInRouteConfig>');
+              this._userService.getUserByEmail(this.form.value.email).subscribe(data => {
+                console.log(data);
+                this._userService.setToken(data['id']);
+                this.router.navigate(['/home']);
+              })
               break;
           }
         });
     }
+  }
+  register() {
+    this.router.navigate(['/register']);
   }
 
 }
