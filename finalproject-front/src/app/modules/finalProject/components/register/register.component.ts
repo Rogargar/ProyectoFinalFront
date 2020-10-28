@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   password: string;
   confirmPassword: string;
   passwordError: boolean;
-  roles = ['creador', 'lector'];
+  roles = ['creador', 'user'];
 
   constructor(private _userService: UserService, private router: Router) { }
 

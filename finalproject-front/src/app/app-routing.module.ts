@@ -1,3 +1,4 @@
+import { ContactComponent } from './modules/finalProject/components/contact/contact.component';
 import { CanActivateViaAuthGuard } from './guard/canActivateViaAuthGuard';
 import { RegisterComponent } from './modules/finalProject/components/register/register.component';
 import { AppComponent } from './app.component';
@@ -9,7 +10,8 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 const routes: Routes = [
   { path: '', component: UserComponent, pathMatch: 'full' },
   { path: 'register', component: RegisterComponent, pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] }
+  { path: 'home', component: HomeComponent, pathMatch: 'full'},
+  { path: 'help', component: ContactComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] }
 ];
 
 @NgModule({

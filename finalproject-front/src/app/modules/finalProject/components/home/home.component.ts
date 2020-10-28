@@ -1,3 +1,6 @@
+import { RecipeService } from './../../../../services/recipe.service';
+import { LabelModel } from './../../../../models/label/label.model';
+import { LabelService } from './../../../../services/label.service';
 import { UserModel } from './../../../../models/user/user.model';
 import { UserService } from './../../../../services/user.service';
 import { Component, OnInit, Injectable } from '@angular/core';
@@ -12,20 +15,44 @@ import { Observable } from 'rxjs';
 
 export class HomeComponent implements OnInit {
   user: UserModel;
+  labels: LabelModel;
+  find: string;
 
-  constructor(private _userService: UserService, private router: Router) { }
+  constructor(private _userService: UserService, private router: Router,
+              private _labelService: LabelService,private _recipeService:RecipeService) { }
 
   ngOnInit(): void {
-    this.getUser();
+    this.getLabels();
+    if (this._userService.getToken()) {
+      this.getUser();
+    } else {
+      this.user = null;
+    }
   }
 
+  findWord(findss) {
+    console.log(findss);
+    console.log(this.find);
+  }
 
   getUser() {
-    this._userService.getUserById(this._userService.getToken()).subscribe(data => {
-      console.log(data);
-      this.user=data;
-    })
+    this._userService.getUserById(this._userService.getToken()).subscribe((data: UserModel) => {
+      this.user = data;
+    });
 
+  }
+
+  getLabels() {
+    this._labelService.getLabels().subscribe((data: LabelModel) => {
+      this.labels = data;
+    });
+  }
+
+  getLabel(id) {
+    console.log(id);
+    this._recipeService.getRecipeByLabel(id).subscribe(data => {
+      console.log(data);
+    })
   }
 
 }

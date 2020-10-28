@@ -1,10 +1,10 @@
+import { NavBarComponent } from './components/navBar/navBar.component';
 import { CanActivateViaAuthGuard } from './guard/canActivateViaAuthGuard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
@@ -20,14 +20,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './modules/finalProject/components/home/home.component';
 import { CookieService } from 'ngx-cookie-service';
 import { RegisterComponent } from './modules/finalProject/components/register/register.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ContactComponent } from './modules/finalProject/components/contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
+    NavBarComponent,
     UserComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    ContactComponent
   ],
   imports: [
     RouterModule,
@@ -41,6 +44,7 @@ import { RegisterComponent } from './modules/finalProject/components/register/re
     MatSelectModule,
     ReactiveFormsModule,
     MatIconModule,
+    FontAwesomeModule,
   ],
   providers: [
     CookieService,

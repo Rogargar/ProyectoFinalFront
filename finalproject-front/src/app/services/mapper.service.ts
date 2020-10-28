@@ -1,3 +1,4 @@
+import { LabelModel } from './../models/label/label.model';
 import { Injectable } from '@angular/core';
 import { UserModel } from '../models/user/user.model';
 
@@ -16,6 +17,13 @@ export class MapperService {
       pass: item.pass,
       rol: item.rol,
       surnames: item.surnames,
+    }) : null
+
+  }
+  mapLabel(item: any): LabelModel {
+    return item ? new LabelModel({
+      id: item.id,
+      name: item.name,
     }) : null
 
   }

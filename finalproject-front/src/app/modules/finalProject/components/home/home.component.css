@@ -1,0 +1,15 @@
+div.fondo {
+    height: 60vh;
+    background-image: url("/assets/img/portada.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+div.fondo>h1,
+div.fondo>p {
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px;
+}

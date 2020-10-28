@@ -58,7 +58,7 @@ export class UserService {
     return this.cookies.get('token');
   }
   deleteToken() {
-    this.cookies.delete('nombre');
+    this.cookies.delete('token');
   }
 
 }
