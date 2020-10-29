@@ -58,7 +58,6 @@ export class HomeComponent implements OnInit {
   findRecipe() {
     console.log(this.find);
     let palabra = this.find;
-
   }
 
 }

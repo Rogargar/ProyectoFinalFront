@@ -4,17 +4,17 @@
     <div class="card-body fondo">
         <h1 class="card-title">Hola {{user.name}}</h1>
         <p class="card-text">¿Que te gustaría comer hoy?</p>
+
         <form class="custom-form" method="post">
             <div class="form-group">
                 <input type="text" [(ngModel)]="find" name="name" placeholder="Buscar Receta" (keyup)="findRecipe()" required="required" />
-
             </div>
         </form>
     </div>
 </div>
 
-<div class="card text-center" *ngIf="labels">
-    <div class="card-body">
+<div class="card text-center " *ngIf="labels">
+    <div class="card-body ">
         <h1>Explorar todas las categorías de recetas</h1>
         <button *ngFor="let label of labels" (click)="getLabel(label.id)" class="btn btn-info ml-3 mr-3 mt- mb-3">{{label.name}}</button>
 
