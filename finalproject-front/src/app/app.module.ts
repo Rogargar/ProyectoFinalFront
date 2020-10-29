@@ -24,11 +24,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { RegisterComponent } from './modules/finalProject/components/register/register.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ContactComponent } from './modules/finalProject/components/contact/contact.component';
-import { AngularFireModule } from '@angular/fire';
 import { config } from 'rxjs';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -52,11 +48,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     ReactiveFormsModule,
     MatIconModule,
     FontAwesomeModule,
-    MatAutocompleteModule,
-    AngularFireModule.initializeApp(config),
-    AngularFirestoreModule, // firestore
-    AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
   ],
   providers: [
     CookieService,
