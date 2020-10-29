@@ -4,16 +4,21 @@
     <div class="card-body fondo">
         <h1 class="card-title">Hola {{user.name}}</h1>
         <p class="card-text">¿Que te gustaría comer hoy?</p>
-        <form>
-            <div class="form-group">
-                <input type="text" [(ngModel)]="find" class="form-control" id="formGroupExampleInput" placeholder="Buscar Recetas">
-            </div>
+        <form class="example-form " *ngIf="recipes">
+            <mat-form-field class="example-full-width">
+                <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="find" [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" *ngIf="recipes">
+                    <mat-option *ngFor="let option of recipes" [value]="option.name">
+                        {{option.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
         </form>
     </div>
 </div>
 
-<div class="card text-center" *ngIf="labels">
-    <div class="card-body">
+<div class="card text-center " *ngIf="labels">
+    <div class="card-body ">
         <h1>Explorar todas las categorías de recetas</h1>
         <button *ngFor="let label of labels" (click)="getLabel(label.id)" class="btn btn-info ml-3 mr-3 mt- mb-3">{{label.name}}</button>
 

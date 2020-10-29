@@ -1,3 +1,4 @@
+import { RecipeModel } from './../models/recipe/recipe.model';
 import { LabelModel } from './../models/label/label.model';
 import { Injectable } from '@angular/core';
 import { UserModel } from '../models/user/user.model';
@@ -17,15 +18,32 @@ export class MapperService {
       pass: item.pass,
       rol: item.rol,
       surnames: item.surnames,
-    }) : null
-
+    }) : null;
   }
+
   mapLabel(item: any): LabelModel {
     return item ? new LabelModel({
       id: item.id,
       name: item.name,
-    }) : null
+    }) : null;
 
+  }
+
+  mapRecipes(item: any): RecipeModel {
+    return item ? new RecipeModel({
+      id: item.id,
+      name: item.name,
+      difficulty: item.difficulty,
+      img: item.img,
+      ingredients: item.ingredients,
+      preparation: item.preparation,
+      ration: item.ration,
+      suggestions: item.suggestions,
+      owner: this.mapUsers(item.owner),
+      time: item.time,
+      state: item.state,
+      publicationDate: item.publicationDate,
+    }) : null;
   }
 
 }

@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
@@ -22,6 +24,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { RegisterComponent } from './modules/finalProject/components/register/register.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ContactComponent } from './modules/finalProject/components/contact/contact.component';
+import { AngularFireModule } from '@angular/fire';
+import { config } from 'rxjs';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -45,6 +52,11 @@ import { ContactComponent } from './modules/finalProject/components/contact/cont
     ReactiveFormsModule,
     MatIconModule,
     FontAwesomeModule,
+    MatAutocompleteModule,
+    AngularFireModule.initializeApp(config),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   providers: [
     CookieService,

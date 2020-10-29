@@ -1,11 +1,14 @@
+import { FirebaseListObservable } from 'angularfire2/database';
 import { RecipeService } from './../../../../services/recipe.service';
 import { LabelModel } from './../../../../models/label/label.model';
 import { LabelService } from './../../../../services/label.service';
 import { UserModel } from './../../../../models/user/user.model';
 import { UserService } from './../../../../services/user.service';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -16,18 +19,34 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   user: UserModel;
   labels: LabelModel;
-  find: string;
+  recipes: FirebaseListObservable<any[]>;
+  find = new FormControl();
+  filteredOptions: Observable<string[]>;
 
   constructor(private _userService: UserService, private router: Router,
-              private _labelService: LabelService,private _recipeService:RecipeService) { }
+    private _labelService: LabelService, private _recipeService: RecipeService) {
+    if (this.recipes !== []) {
+
+    }
+  }
 
   ngOnInit(): void {
+    this.getRecipes();
     this.getLabels();
     if (this._userService.getToken()) {
       this.getUser();
     } else {
       this.user = null;
     }
+
+
+  }
+
+  private _filter(value: string): string[] {
+    console.log(this.find.valueChanges);
+    const filterValue = value.toLowerCase();
+    console.log(filterValue);
+    return this.recipes.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   findWord(findss) {
@@ -52,6 +71,22 @@ export class HomeComponent implements OnInit {
     console.log(id);
     this._recipeService.getRecipeByLabel(id).subscribe(data => {
       console.log(data);
+    });
+  }
+
+  getRecipes() {
+    this._recipeService.getAllRecipes().subscribe((data) => {
+      let datas=[]
+      data.forEach(recipe => {
+        datas.push(recipe.name);
+      })
+      this.recipes = datas;
+      console.log(this.recipes);
+      this.filteredOptions = this.find.valueChanges
+        .pipe(
+          startWith(''),
+          map(value => this._filter(value))
+        );
     })
   }
 
