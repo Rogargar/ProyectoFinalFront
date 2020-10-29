@@ -13,6 +13,19 @@
     </div>
 </div>
 
+<div class="card-deck" *ngIf="savedRecipe">
+    <div class="card" *ngFor="let savedR of savedRecipe">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{savedR.recipes.name}}</h5>
+            <p class="card-text">{{savedR.recipes.preparation}}</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted"></small>
+        </div>
+    </div>
+</div>
+
 <div class="card text-center " *ngIf="labels">
     <div class="card-body ">
         <h1>Explorar todas las categorías de recetas</h1>

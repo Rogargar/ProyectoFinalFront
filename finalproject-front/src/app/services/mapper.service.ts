@@ -1,3 +1,4 @@
+import { SavedRecipeModel } from './../models/savedRecipe/savedRecipe.model';
 import { RecipeModel } from './../models/recipe/recipe.model';
 import { LabelModel } from './../models/label/label.model';
 import { Injectable } from '@angular/core';
@@ -43,6 +44,16 @@ export class MapperService {
       time: item.time,
       state: item.state,
       publicationDate: item.publicationDate,
+      label: this.mapLabel(item.label),
+    }) : null;
+  }
+
+  mapSavedRecipe(item: any): SavedRecipeModel {
+    return item ? new SavedRecipeModel({
+      id: item.id,
+      name: item.name,
+      user: this.mapUsers(item.user),
+      recipes: this.mapRecipes(item.recipes),
     }) : null;
   }
 

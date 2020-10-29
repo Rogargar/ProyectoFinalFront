@@ -1,3 +1,5 @@
+import { SavedRecipeModel } from './../../../../models/savedRecipe/savedRecipe.model';
+import { SavedRecipeService } from './../../../../services/saved-recipe.service';
 import { RecipeService } from './../../../../services/recipe.service';
 import { LabelModel } from './../../../../models/label/label.model';
 import { LabelService } from './../../../../services/label.service';
@@ -16,16 +18,26 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   user: UserModel;
   labels: LabelModel;
-  find = "";
+  find = '';
+  userId = '';
+  savedRecipe: SavedRecipeModel;
 
   constructor(private _userService: UserService, private router: Router,
-    private _labelService: LabelService, private _recipeService: RecipeService) {
+    private _labelService: LabelService, private _recipeService: RecipeService,
+    private _srService: SavedRecipeService) {
+
+  }
+
+  getUserId() {
+    this.userId = this._userService.getToken();
   }
 
   ngOnInit(): void {
     this.getLabels();
     if (this._userService.getToken()) {
       this.getUser();
+      this.getUserId();
+      this.getSavedRecipeByUser();
     } else {
       this.user = null;
     }
@@ -37,7 +49,7 @@ export class HomeComponent implements OnInit {
   }
 
   getUser() {
-    this._userService.getUserById(this._userService.getToken()).subscribe((data: UserModel) => {
+    this._userService.getUserById(this.userId).subscribe((data: UserModel) => {
       this.user = data;
     });
 
@@ -53,11 +65,20 @@ export class HomeComponent implements OnInit {
     console.log(id);
     this._recipeService.getRecipeByLabel(id).subscribe(data => {
       console.log(data);
-    })
+    });
   }
+
   findRecipe() {
     console.log(this.find);
     let palabra = this.find;
+  }
+
+  getSavedRecipeByUser() {
+    this._srService.getSavedRecipeByUser(this.userId).subscribe((data: SavedRecipeModel) => {
+      this.savedRecipe = data;
+      console.log(this.savedRecipe);
+    });
+
   }
 
 }
