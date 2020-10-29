@@ -16,10 +16,11 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   user: UserModel;
   labels: LabelModel;
-  find: string;
+  find = "";
 
   constructor(private _userService: UserService, private router: Router,
-              private _labelService: LabelService,private _recipeService:RecipeService) { }
+    private _labelService: LabelService, private _recipeService: RecipeService) {
+  }
 
   ngOnInit(): void {
     this.getLabels();
@@ -53,6 +54,11 @@ export class HomeComponent implements OnInit {
     this._recipeService.getRecipeByLabel(id).subscribe(data => {
       console.log(data);
     })
+  }
+  findRecipe() {
+    console.log(this.find);
+    let palabra = this.find;
+
   }
 
 }

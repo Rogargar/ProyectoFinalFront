@@ -4,9 +4,10 @@
     <div class="card-body fondo">
         <h1 class="card-title">Hola {{user.name}}</h1>
         <p class="card-text">¿Que te gustaría comer hoy?</p>
-        <form>
+        <form class="custom-form" method="post">
             <div class="form-group">
-                <input type="text" [(ngModel)]="find" class="form-control" id="formGroupExampleInput" placeholder="Buscar Recetas">
+                <input type="text" [(ngModel)]="find" name="name" placeholder="Buscar Receta" (keyup)="findRecipe()" required="required" />
+
             </div>
         </form>
     </div>
