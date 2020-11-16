@@ -17,12 +17,13 @@ export class UserComponent implements OnInit {
   esError = false;
   form: FormGroup;
   error: string;
-
+  hide = true;
   constructor(private _userService: UserService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this._userService.deleteToken();
     this.createFormGroup();
+
   }
 
   createFormGroup() {

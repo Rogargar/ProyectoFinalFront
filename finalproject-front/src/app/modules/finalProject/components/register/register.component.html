@@ -5,7 +5,7 @@
         <input type="text" [(ngModel)]="surname" name="surname" placeholder="Surname" required="required" />
         <select name="rol" [(ngModel)]="rolUser">
           <option disabled selected>Selecciona un rol</option>
-          <option *ngFor="let rols of roles" [value]="rols">{{rols}}</option>
+          <option  *ngFor="let rols of roles" [value]="rols.id">{{rols.name}}</option>
           </select>
         <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required="required" />
         <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required="required" />

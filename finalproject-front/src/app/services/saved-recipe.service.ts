@@ -23,12 +23,16 @@ export class SavedRecipeService {
     return this._http.get(this.url + '/user/' + id)
       .pipe(
         map((item: any) => {
-        item = item.map((recipe: any) => {
-          return this._mapper.mapSavedRecipe(recipe);
-        });
-        return item;
-      }),
-    );;
+          item = item.map((recipe: any) => {
+            return this._mapper.mapSavedRecipe(recipe);
+          });
+          return item;
+        }),
+      );
+  }
+
+  getSavedRecipeByUserAndRecipe(idUser, idRecipe) {
+    return this._http.get(this.url + '/user/' + idUser + '/recipes/' + idRecipe);
   }
 
   saveSavedRecipe(savedRecipe) {
@@ -40,7 +44,7 @@ export class SavedRecipeService {
   }
 
   deleteSavedRecipe(id) {
-    return this._http.delete(this.url + '/' + id)
+    return this._http.delete(this.url + '/' + id);
   }
 
 }

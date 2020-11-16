@@ -1,10 +1,8 @@
-<p>home works!</p>
 <app-navBar></app-navBar>
-<div class="card" *ngIf="user">
-    <div class="card-body fondo">
+<div class="mt-2" *ngIf="user">
+    <div class="fondo">
         <h1 class="card-title">Hola {{user.name}}</h1>
-        <p class="card-text">¿Que te gustaría comer hoy?</p>
-
+        <p>¿Que te gustaría comer hoy?</p>
         <form class="custom-form" method="post">
             <div class="form-group">
                 <input type="text" [(ngModel)]="find" name="name" placeholder="Buscar Receta" (keyup)="findRecipe()" required="required" />
@@ -12,24 +10,20 @@
         </form>
     </div>
 </div>
-
-<div class="card-deck" *ngIf="savedRecipe">
-    <div class="card" *ngFor="let savedR of savedRecipe">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{savedR.recipes.name}}</h5>
-            <p class="card-text">{{savedR.recipes.preparation}}</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted"></small>
+<div class="container-fluid mt-3">
+    <h2>Recetas favoritas</h2>
+    <div class="row" *ngIf="savedRecipe">
+        <div class="card col" *ngFor="let savedR of savedRecipe" (click)="findRecipeS(savedR.recipes.id)">
+            <img class="card-img-top" src="api/recipes/uploads/img/{{savedR.recipes.img}}" alt="Card image cap">
+            <div class="card-body">
+                <h3 class="card-title">{{savedR.recipes.name}}</h3>
+            </div>
         </div>
     </div>
 </div>
-
 <div class="card text-center " *ngIf="labels">
     <div class="card-body ">
         <h1>Explorar todas las categorías de recetas</h1>
-        <button *ngFor="let label of labels" (click)="getLabel(label.id)" class="btn btn-info ml-3 mr-3 mt- mb-3">{{label.name}}</button>
-
+        <button *ngFor="let label of labels" (click)="getLabel(label.id)" class="btn btn-info ml-3 mr-3 mt- mb-3 label">{{label.name}}</button>
     </div>
 </div>

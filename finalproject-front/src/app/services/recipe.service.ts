@@ -19,6 +19,10 @@ export class RecipeService {
     return this._http.get(`${this.url}/label/${id}`);
   }
 
+  getRecipeByOwner(id) {
+    return this._http.get(`${this.url}/owner/${id}`);
+  }
+
   getAllRecipes() {
     return this._http.get(this.url).pipe(
       map((item: any) => {
@@ -28,6 +32,14 @@ export class RecipeService {
         return item;
       }),
     );
+  }
+
+  getRecipe(id) {
+    return this._http.get(this.url + '/' + id);
+  }
+
+  getImg(img) {
+    return this._http.get(`${this.url}/uploads/img/${img}`);
   }
 
 }

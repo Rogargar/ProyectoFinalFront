@@ -1,3 +1,4 @@
+import { RolModel } from './../models/rol/rol.model';
 import { SavedRecipeModel } from './../models/savedRecipe/savedRecipe.model';
 import { RecipeModel } from './../models/recipe/recipe.model';
 import { LabelModel } from './../models/label/label.model';

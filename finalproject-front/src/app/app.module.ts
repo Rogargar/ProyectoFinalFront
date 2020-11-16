@@ -1,3 +1,5 @@
+import { RecipeComponent } from './modules/finalProject/components/recipe/recipe.component';
+import { LabelComponent } from './modules/finalProject/components/label/label.component';
 import { NavBarComponent } from './components/navBar/navBar.component';
 import { CanActivateViaAuthGuard } from './guard/canActivateViaAuthGuard';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
+import {MatCardModule} from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
@@ -24,7 +26,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { RegisterComponent } from './modules/finalProject/components/register/register.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ContactComponent } from './modules/finalProject/components/contact/contact.component';
-import { config } from 'rxjs';
+import { RecipesComponent } from './modules/finalProject/components/recipes/recipes.component';
+import { UserRecipesComponent } from './modules/finalProject/components/user-recipes/user-recipes.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { config } from 'rxjs';
     UserComponent,
     HomeComponent,
     RegisterComponent,
-    ContactComponent
+    ContactComponent,
+    LabelComponent,
+    RecipeComponent,
+    RecipesComponent,
+    UserRecipesComponent,
   ],
   imports: [
     RouterModule,
@@ -48,6 +56,7 @@ import { config } from 'rxjs';
     ReactiveFormsModule,
     MatIconModule,
     FontAwesomeModule,
+    MatCardModule,
   ],
   providers: [
     CookieService,

@@ -33,6 +33,11 @@ export class NavBarComponent implements OnInit {
   home() {
     this.router.navigate(['/home']);
   }
+
+  recetas() {
+    this.router.navigate(['/recipes']);
+  }
+
   close() {
     this._userService.deleteToken();
     this.router.navigate(['']);

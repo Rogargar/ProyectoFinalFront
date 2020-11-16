@@ -1,3 +1,7 @@
+import { UserRecipesComponent } from './modules/finalProject/components/user-recipes/user-recipes.component';
+import { RecipesComponent } from './modules/finalProject/components/recipes/recipes.component';
+import { RecipeComponent } from './modules/finalProject/components/recipe/recipe.component';
+import { LabelComponent } from './modules/finalProject/components/label/label.component';
 import { ContactComponent } from './modules/finalProject/components/contact/contact.component';
 import { CanActivateViaAuthGuard } from './guard/canActivateViaAuthGuard';
 import { RegisterComponent } from './modules/finalProject/components/register/register.component';
@@ -11,7 +15,11 @@ const routes: Routes = [
   { path: '', component: UserComponent, pathMatch: 'full' },
   { path: 'register', component: RegisterComponent, pathMatch: 'full' },
   { path: 'home', component: HomeComponent, pathMatch: 'full'},
-  { path: 'help', component: ContactComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] }
+  { path: 'recipes', component: RecipesComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
+  { path: ':id/recipe', component: RecipeComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
+  { path: 'help', component: ContactComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
+  { path: ':id/label', component: LabelComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
+  { path: ':id/user', component: UserRecipesComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
 ];
 
 @NgModule({

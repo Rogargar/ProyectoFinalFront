@@ -33,6 +33,15 @@ export class UserService {
         }),
       );
   }
+
+  getRoles() {
+    return this._http.get(`${this.enviroment.urlBack}/roles`);
+  }
+
+  getRole(id) {
+    return this._http.get(`${this.enviroment.urlBack}/roles/${id}`);
+  }
+
   getUserById(id) {
     return this._http.get(this.url + '/' + id);
   }

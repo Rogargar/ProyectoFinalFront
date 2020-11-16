@@ -28,5 +28,9 @@ export class LabelService {
       );
   }
 
+  getLabelById(id) {
+    return this._http.get(this.url + '/' + id);
+  }
+
 
 }

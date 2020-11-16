@@ -1,0 +1,11 @@
+<app-navBar></app-navBar>
+<p>recipes works!</p>
+<div class="card-columns">
+    <div class="card" *ngFor="let recipe of recipes" (click)="findRecipe(recipe.id)">
+        <img *ngIf="recipe?.img" class="card-img-top" src="api/recipes/uploads/img/{{recipe.img}}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{recipe.name}}</h5>
+            <p class="card-text">{{recipe.preparation}}</p>
+        </div>
+    </div>
+</div>

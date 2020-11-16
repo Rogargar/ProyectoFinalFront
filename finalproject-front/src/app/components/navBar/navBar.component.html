@@ -4,16 +4,19 @@
         <!--Anguletas//-->DAW-cetas
     </a>
     <div class="column navbar-collapse" *ngIf="user!==null">
-        <ul class="navbar-nav" *ngIf="user.rol==='user' ||user.rol==='creador'">
+        <ul class="navbar-nav" *ngIf="user.roles[0].name==='ROLE_READER' ||user.roles[0].name==='ROLE_CREATOR'">
             <li class="nav-item">
                 <a class="nav-link" (click)="home()">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" (click)="recetas()">Recetas</a>
+            </li>
+            <li class="nav-item">
                 <nav>
                     <button class="nav-link" *ngIf="user!==null" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                      <fa-icon *ngIf="user.rol==='user'"  [icon]="faUser"> </fa-icon>
-                      <fa-icon *ngIf="user.rol==='creador'"  [icon]="faUserEdit"> </fa-icon>
-                      <fa-icon *ngIf="user.rol==='admin'"  [icon]="faUserCog"> </fa-icon>
+                      <fa-icon *ngIf="user.roles[0].name==='ROLE_READER'"  [icon]="faUser"> </fa-icon>
+                      <fa-icon *ngIf="user.roles[0].name==='ROLE_CREATOR'"  [icon]="faUserEdit"> </fa-icon>
+                      <fa-icon *ngIf="user.roles[0].name==='ROLE_ADMIN'"  [icon]="faUserCog"> </fa-icon>
                       {{user.name}}
                   </button>
                 </nav>

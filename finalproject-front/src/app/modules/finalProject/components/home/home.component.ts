@@ -63,9 +63,7 @@ export class HomeComponent implements OnInit {
 
   getLabel(id) {
     console.log(id);
-    this._recipeService.getRecipeByLabel(id).subscribe(data => {
-      console.log(data);
-    });
+    this.router.navigate([ id + '/label']);
   }
 
   findRecipe() {
@@ -79,6 +77,10 @@ export class HomeComponent implements OnInit {
       console.log(this.savedRecipe);
     });
 
+  }
+
+  findRecipeS(id) {
+    this.router.navigate([ id + '/recipe']);
   }
 
 }
