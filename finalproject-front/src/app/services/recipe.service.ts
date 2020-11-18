@@ -34,6 +34,17 @@ export class RecipeService {
     );
   }
 
+  getLastRecipes(){
+    return this._http.get(this.url+'/day').pipe(
+      map((item: any) => {
+        item = item.map((label: any) => {
+          return this._mapper.mapRecipes(label);
+        });
+        return item;
+      }),
+    );
+  }
+
   getRecipe(id) {
     return this._http.get(this.url + '/' + id);
   }

@@ -1,3 +1,5 @@
+import { FormControl } from '@angular/forms';
+import { RecipeModel } from './../../../../models/recipe/recipe.model';
 import { SavedRecipeModel } from './../../../../models/savedRecipe/savedRecipe.model';
 import { SavedRecipeService } from './../../../../services/saved-recipe.service';
 import { RecipeService } from './../../../../services/recipe.service';
@@ -8,6 +10,8 @@ import { UserService } from './../../../../services/user.service';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-home',
@@ -21,6 +25,10 @@ export class HomeComponent implements OnInit {
   find = '';
   userId = '';
   savedRecipe: SavedRecipeModel;
+  recipes: RecipeModel[];
+  lastRecipes: RecipeModel;
+  myControl = new FormControl();
+  filteredOptions: Observable<RecipeModel[]>;
 
   constructor(private _userService: UserService, private router: Router,
     private _labelService: LabelService, private _recipeService: RecipeService,
@@ -33,6 +41,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllRecipes();
+    this.getLastRecipes();
     this.getLabels();
     if (this._userService.getToken()) {
       this.getUser();
@@ -41,6 +51,12 @@ export class HomeComponent implements OnInit {
     } else {
       this.user = null;
     }
+  }
+
+  getAllRecipes() {
+    this._recipeService.getAllRecipes().subscribe((data: RecipeModel[]) => {
+      this.recipes = data;
+    });
   }
 
   findWord(findss) {
@@ -61,26 +77,29 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getLastRecipes() {
+    this._recipeService.getLastRecipes().subscribe((data: RecipeModel) => {
+      this.lastRecipes = data;
+    });
+  }
+
   getLabel(id) {
-    console.log(id);
-    this.router.navigate([ id + '/label']);
+    this.router.navigate([id + '/label']);
   }
 
   findRecipe() {
-    console.log(this.find);
     let palabra = this.find;
   }
 
   getSavedRecipeByUser() {
     this._srService.getSavedRecipeByUser(this.userId).subscribe((data: SavedRecipeModel) => {
       this.savedRecipe = data;
-      console.log(this.savedRecipe);
     });
 
   }
 
   findRecipeS(id) {
-    this.router.navigate([ id + '/recipe']);
+    this.router.navigate([id + '/recipe']);
   }
 
 }

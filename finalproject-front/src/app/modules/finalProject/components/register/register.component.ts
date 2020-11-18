@@ -43,13 +43,10 @@ export class RegisterComponent implements OnInit {
       user.name = this.name;
       user.surnames = this.surname;
       user.pass = this.password;
-      console.log(user);
       this._userService.getRole(this.rolUser).subscribe((data: any) => {
         user.rol.push(data);
-        console.log(user);
         this._userService.registerUser(user).subscribe(data => {
           this._userService.getUserByEmail(this.email).subscribe(data => {
-            console.log(data);
             this._userService.setToken(data['id']);
             this.router.navigate(['/home']);
           });

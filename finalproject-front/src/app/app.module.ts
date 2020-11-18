@@ -56,6 +56,7 @@ import { UserRecipesComponent } from './modules/finalProject/components/user-rec
     ReactiveFormsModule,
     MatIconModule,
     FontAwesomeModule,
+    MatAutocompleteModule,
     MatCardModule,
   ],
   providers: [

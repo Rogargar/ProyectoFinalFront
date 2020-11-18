@@ -54,4 +54,8 @@ export class NavBarComponent implements OnInit {
 
   }
 
+  recetasGuardadas() {
+    this.router.navigate(['/recipes/1']);
+  }
+
 }

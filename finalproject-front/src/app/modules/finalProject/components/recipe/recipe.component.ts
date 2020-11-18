@@ -55,7 +55,6 @@ export class RecipeComponent implements OnInit {
 
   deleteSaveRecipe(idSaveRecipe) {
     this._savedRecipeService.deleteSavedRecipe(idSaveRecipe).subscribe(data => {
-      console.log(data);
       this.getRecipe(this.id);
       this.isSaved = false;
     });
@@ -63,7 +62,6 @@ export class RecipeComponent implements OnInit {
 
   saveRecipe() {
     this._savedRecipeService.saveSavedRecipe(this.recipeForSave).subscribe(data => {
-      console.log(data);
       this.isSaved = true;
       this.getRecipe(this.id);
       this.isSavedRecipe(this._userService.getToken(), this.id);
@@ -72,7 +70,6 @@ export class RecipeComponent implements OnInit {
   }
 
   serchRecipeOwner(idUser) {
-    console.log(idUser);
     this.routerN.navigate([idUser + '/user']);
 
   }

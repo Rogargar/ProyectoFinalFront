@@ -1,15 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-        <fa-icon [icon]="faCoffee"> </fa-icon>&nbsp;&nbsp;
-        <!--Anguletas//-->DAW-cetas
+    <a class="navbar-brand" (click)="home()">
+        <fa-icon [icon]="faCoffee"> </fa-icon>&nbsp;&nbsp; DAW-cetas
     </a>
     <div class="column navbar-collapse" *ngIf="user!==null">
         <ul class="navbar-nav" *ngIf="user.roles[0].name==='ROLE_READER' ||user.roles[0].name==='ROLE_CREATOR'">
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a class="nav-link" (click)="home()">Home <span class="sr-only">(current)</span></a>
-            </li>
+            </li>-->
             <li class="nav-item">
                 <a class="nav-link" (click)="recetas()">Recetas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="recetasGuardadas()">Recetas Guardadas</a>
             </li>
             <li class="nav-item">
                 <nav>

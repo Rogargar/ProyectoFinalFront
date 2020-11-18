@@ -14,8 +14,9 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 const routes: Routes = [
   { path: '', component: UserComponent, pathMatch: 'full' },
   { path: 'register', component: RegisterComponent, pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, pathMatch: 'full'},
+  { path: 'home', component: HomeComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard]},
   { path: 'recipes', component: RecipesComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
+  { path: 'recipes/:id', component: RecipesComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
   { path: ':id/recipe', component: RecipeComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
   { path: 'help', component: ContactComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
   { path: ':id/label', component: LabelComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },

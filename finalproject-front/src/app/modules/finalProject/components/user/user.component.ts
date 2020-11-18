@@ -53,7 +53,6 @@ export class UserComponent implements OnInit {
             case 1:
               this.esError = false;
               this._userService.getUserByEmail(this.form.value.email).subscribe(data => {
-                console.log(data);
                 this._userService.setToken(data['id']);
                 this.router.navigate(['/home']);
               })

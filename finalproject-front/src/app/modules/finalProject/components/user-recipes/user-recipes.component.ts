@@ -29,7 +29,7 @@ export class UserRecipesComponent implements OnInit {
   getOwner() {
     this._userService.getUserById(this.idOwner).subscribe((data: UserModel) => {
       this.owner = data;
-    })
+    });
   }
 
 

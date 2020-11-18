@@ -3,20 +3,41 @@
     <div class="fondo">
         <h1 class="card-title">Hola {{user.name}}</h1>
         <p>¿Que te gustaría comer hoy?</p>
-        <form class="custom-form" method="post">
+        <form *ngIf="recipes" class="custom-form" method="post">
             <div class="form-group">
                 <input type="text" [(ngModel)]="find" name="name" placeholder="Buscar Receta" (keyup)="findRecipe()" required="required" />
             </div>
         </form>
+        <!--<form class="example-form" *ngIf="recipes">
+            <mat-form-field class="example-full-width">
+                <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of recipes | async" [value]="option.name">
+                        {{option.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>-->
     </div>
 </div>
-<div class="container-fluid mt-3">
+<div class="container-fluid mt-3" *ngIf="lastRecipes">
+    <h2>Ultimas recetas</h2>
+    <div class="row">
+        <div class="card" *ngFor="let recipe of lastRecipes" (click)="findRecipeS(recipe.id)">
+            <img class="card-img-top" src="api/recipes/uploads/img/{{recipe.img}}" alt="Card image cap">
+            <div class="card-body card-body-recipe">
+                <h3 class="card-title card-title-recipe">{{recipe.name}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt-3" *ngIf="savedRecipe">
     <h2>Recetas favoritas</h2>
-    <div class="row" *ngIf="savedRecipe">
-        <div class="card col" *ngFor="let savedR of savedRecipe" (click)="findRecipeS(savedR.recipes.id)">
+    <div class="row">
+        <div class="card" *ngFor="let savedR of savedRecipe" (click)="findRecipeS(savedR.recipes.id)">
             <img class="card-img-top" src="api/recipes/uploads/img/{{savedR.recipes.img}}" alt="Card image cap">
-            <div class="card-body">
-                <h3 class="card-title">{{savedR.recipes.name}}</h3>
+            <div class="card-body card-body-recipe">
+                <h3 class="card-title card-title-recipe">{{savedR.recipes.name}}</h3>
             </div>
         </div>
     </div>

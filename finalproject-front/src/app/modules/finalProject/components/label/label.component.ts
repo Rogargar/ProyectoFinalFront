@@ -15,7 +15,7 @@ export class LabelComponent implements OnInit {
   label: LabelModel;
   recipes: RecipeModel;
 
-  constructor(private _recipeService: RecipeService, private router: ActivatedRoute,
+  constructor(private _recipeService: RecipeService, private router: ActivatedRoute, private routerN: Router,
     private _labelService: LabelService) {
     this.id = this.router.snapshot.paramMap.get('id');
     this.getLabel(this.id);
@@ -28,20 +28,18 @@ export class LabelComponent implements OnInit {
 
   getLabel(id) {
     this._labelService.getLabelById(id).subscribe((data: LabelModel) => {
-      console.log(data);
       this.label = data;
     })
   }
 
   getRecipesByLabel(id) {
     this._recipeService.getRecipeByLabel(id).subscribe((data: RecipeModel) => {
-      console.log(data);
       this.recipes = data;
     });
   }
 
   findRecipe(id) {
-    console.log(id);
+    this.routerN.navigate([id + '/recipe']);
   }
 
 }
