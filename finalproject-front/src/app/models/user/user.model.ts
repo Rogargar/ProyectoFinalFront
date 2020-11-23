@@ -6,7 +6,7 @@ export class UserModel extends ElementModel {
   email: string;
   name: string;
   pass: string;
-  rol: RolModel[];
+  roles: RolModel[];
   surnames: string;
   constructor(props?: UserModel) {
     super(props);
@@ -15,7 +15,7 @@ export class UserModel extends ElementModel {
       this.email = null;
       this.name = null;
       this.pass = null;
-      this.rol = [];
+      this.roles = [];
       this.surnames = null;
     }
     Object.assign(this, props);

@@ -28,6 +28,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ContactComponent } from './modules/finalProject/components/contact/contact.component';
 import { RecipesComponent } from './modules/finalProject/components/recipes/recipes.component';
 import { UserRecipesComponent } from './modules/finalProject/components/user-recipes/user-recipes.component';
+import { PersonalDataComponent } from './modules/finalProject/components/personal-data/personal-data.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { UserRecipesComponent } from './modules/finalProject/components/user-rec
     RecipeComponent,
     RecipesComponent,
     UserRecipesComponent,
+    PersonalDataComponent,
   ],
   imports: [
     RouterModule,

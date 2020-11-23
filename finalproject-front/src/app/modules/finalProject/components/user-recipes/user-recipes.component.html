@@ -1,5 +1,5 @@
 <app-navBar></app-navBar>
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="isCreator===false">
     <h2 *ngIf="owner">Recetas del autor {{owner.name}}</h2>
     <div class="card-columns" *ngIf="recipes">
         <div class="card" *ngFor="let recipe of recipes" (click)="findRecipe(recipe.id)">
@@ -9,4 +9,18 @@
             </div>
         </div>
     </div>
+</div>
+<div class="container-fluid" *ngIf="isCreator===true">
+    <table class="table table-striped" *ngIf="recipes">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let recipe of recipes">
+                <td>{{recipe.name}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

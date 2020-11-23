@@ -1,37 +1,40 @@
 <app-navBar></app-navBar>
 
-<div class="container" *ngIf="recipe">
+<div class="container mt-3" *ngIf="recipe">
     <div class="row">
         <div class="col">
             <div class="row">
                 <h1 class="text-center">{{recipe.name}}</h1>
             </div>
             <div class="row">
-                <div class="col">
-                    <button (click)=saveRecipe() *ngIf="isSaved===false"><img src="assets/icons/bookmark-regular.png" style="width: 2vw;"></button>
-                    <button (click)="deleteSaveRecipe(recipeSave.id)" *ngIf="isSaved===true"><img src="assets/icons/bookmark-solid.png" style="width: 2vw;"></button>
+                <div class="col text-center">
+                    <button class="noBorder" (click)=saveRecipe() *ngIf="isSaved===false"><img src="assets/icons/bookmark-regular.png" style="width: 2vw"></button>
+                    <button class="noBorder" (click)="deleteSaveRecipe(recipeSave.id)" *ngIf="isSaved===true"><img src="assets/icons/bookmark-solid.png" style="width: 2vw"></button>
+                    <a class="ml-3" (click)="serchRecipeOwner(recipe.owner.id)">Receta de {{recipe.owner.name}}</a>
                 </div>
-                <div class="col">
-                    <a (click)="serchRecipeOwner(recipe.owner.id)">Receta de {{recipe.owner.name}}</a>
+            </div>
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <img src="assets/icons/gorro-de-cocinero.png" style="width: 10vw;">
+                    <h4>
+                        Dificultad: <span class="datosReceta">{{recipe.difficulty}}</span>
+                    </h4>
+                </div>
+                <div class="col text-center">
+                    <img src="assets/icons/tiempo-rapido.png" style="width: 10vw;">
+                    <h4 class="text-center"> Tiempo: <span class="datosReceta">{{recipe.time}}</span></h4>
+                </div>
+                <div class="col text-center">
+                    <img src="assets/icons/cuchilleria.png" style="width: 10vw;">
+                    <h4 class="text-center"> Raciones: <span class="datosReceta">{{recipe.ration}}</span></h4>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <img src="api/recipes/uploads/img/{{recipe.img}}" style="width: 25vw;">
+        <div class="col text-center">
+            <img class="shadowRecipe" src="api/recipes/uploads/img/{{recipe.img}}" style="width: 25vw;">
         </div>
     </div>
-    <div class="row mt-3">
-        <div class="col">
-            <h4><img src="assets/icons/gorro-de-cocinero.png" style="width: 10vw;"> Dificultad: <span class="datosReceta">{{recipe.difficulty}}</span></h4>
-        </div>
-        <div class="col">
-            <h4><img src="assets/icons/tiempo-rapido.png" style="width: 10vw;"> Tiempo: <span class="datosReceta">{{recipe.time}}</span></h4>
-        </div>
-        <div class="col">
-            <h4><img src="assets/icons/cuchilleria.png" style="width: 10vw;"> Raciones: <span class="datosReceta">{{recipe.ration}}</span></h4>
-        </div>
-    </div>
-    <div class="row">
+    <div class="row contenedor">
         <div class="col">
             <h4><img src="assets/icons/cesta-de-la-compra.png" style="width: 3vw;"> Ingredientes: </h4>
             <div>

@@ -18,7 +18,7 @@ export class MapperService {
       email: item.email,
       name: item.name,
       pass: item.pass,
-      rol: item.rol,
+      roles: item.roles,
       surnames: item.surnames,
     }) : null;
   }

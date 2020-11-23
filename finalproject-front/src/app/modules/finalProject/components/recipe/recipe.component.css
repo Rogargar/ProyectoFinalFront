@@ -1,0 +1,15 @@
+.contenedor {
+    padding-top: 20px;
+}
+
+.shadowRecipe {
+    box-shadow: 5px 9px 15px 2px #000000;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.noBorder {
+    border: none;
+}

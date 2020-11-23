@@ -23,10 +23,10 @@
 <div class="container-fluid mt-3" *ngIf="lastRecipes">
     <h2>Ultimas recetas</h2>
     <div class="row">
-        <div class="card" *ngFor="let recipe of lastRecipes" (click)="findRecipeS(recipe.id)">
+        <div class="card card-recipe" *ngFor="let recipe of lastRecipes" (click)="findRecipeS(recipe.id)">
             <img class="card-img-top" src="api/recipes/uploads/img/{{recipe.img}}" alt="Card image cap">
-            <div class="card-body card-body-recipe">
-                <h3 class="card-title card-title-recipe">{{recipe.name}}</h3>
+            <div class="card-body text-center">
+                <h3 class="card-title">{{recipe.name}}</h3>
             </div>
         </div>
     </div>
@@ -34,10 +34,10 @@
 <div class="container-fluid mt-3" *ngIf="savedRecipe">
     <h2>Recetas favoritas</h2>
     <div class="row">
-        <div class="card" *ngFor="let savedR of savedRecipe" (click)="findRecipeS(savedR.recipes.id)">
+        <div class="card card-recipe" *ngFor="let savedR of savedRecipe" (click)="findRecipeS(savedR.recipes.id)">
             <img class="card-img-top" src="api/recipes/uploads/img/{{savedR.recipes.img}}" alt="Card image cap">
-            <div class="card-body card-body-recipe">
-                <h3 class="card-title card-title-recipe">{{savedR.recipes.name}}</h3>
+            <div class="card-body text-center">
+                <h3 class="card-title">{{savedR.recipes.name}}</h3>
             </div>
         </div>
     </div>

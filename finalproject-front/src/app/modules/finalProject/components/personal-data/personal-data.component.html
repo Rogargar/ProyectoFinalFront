@@ -1,0 +1,47 @@
+<app-navBar></app-navBar>
+<div class="container-fluid">
+    <table class="table" *ngIf="users">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido/s</th>
+                <th scope="col">Email</th>
+                <th scope="col">ROL</th>
+                <th scope="col">Herramientas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users;">
+                <th scope="row">{{user.id}}</th>
+                <td>{{user.name}}</td>
+                <td>{{user.surnames}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.roles[0].name}}</td>
+                <td>---</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table" *ngIf="user">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido/s</th>
+                <th scope="col">Email</th>
+                <th scope="col">ROL</th>
+                <th scope="col">Herramientas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>{{user.name}}</td>
+                <td>{{user.surnames}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.roles[0].name}}</td>
+                <td><button (click)="editUser()"><img src="assets/icons/edicion.png"></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -37,6 +37,9 @@ export class NavBarComponent implements OnInit {
   recetas() {
     this.router.navigate(['/recipes']);
   }
+  misRecetas() {
+    this.router.navigate([this._userService.getToken() + '/user/1']);
+  }
 
   close() {
     this._userService.deleteToken();
@@ -52,6 +55,10 @@ export class NavBarComponent implements OnInit {
       this.user = data;
     });
 
+  }
+
+  personalData() {
+    this.router.navigate(['/personalData']);
   }
 
   recetasGuardadas() {

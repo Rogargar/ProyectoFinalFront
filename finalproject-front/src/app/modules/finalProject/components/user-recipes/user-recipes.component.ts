@@ -13,14 +13,19 @@ import { Component, OnInit } from '@angular/core';
 export class UserRecipesComponent implements OnInit {
 
   idOwner;
+  isCreator = false;
   owner: UserModel;
   recipes: RecipeModel;
 
   constructor(private router: ActivatedRoute, private _userService: UserService,
     private _recipeService: RecipeService, private routerN: Router) {
     this.idOwner = this.router.snapshot.paramMap.get('id');
+    let creator = this.router.snapshot.paramMap.get('creator');
     this.getOwner();
     this.getRecipesByOwner();
+    if (creator != null) {
+      this.isCreator = true;
+    }
   }
 
   ngOnInit(): void {

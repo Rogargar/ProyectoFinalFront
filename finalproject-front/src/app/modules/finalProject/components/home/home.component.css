@@ -18,12 +18,22 @@ h3 {
     font-weight: bolder;
 }
 
-img {
-    width: 24vw;
-    height: 40vh;
+a:hover,
+div.card-recipe:hover {
+    cursor: pointer;
 }
 
-.card-title-recipe,
-.card-body-recipe {
-    width: 24vw;
+
+/*Object-fit se ajusta al contenedor*/
+
+img {
+    height: 40vh;
+    object-fit: cover;
+}
+
+
+/*Anchura del padre, como queremos mostrar cuatro es 25% 100/4*/
+
+.card-recipe {
+    width: 25%;
 }
