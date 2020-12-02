@@ -1,3 +1,4 @@
+import { RecipeModel } from './../models/recipe/recipe.model';
 import { map } from 'rxjs/operators';
 import { MapperService } from './mapper.service';
 import { HttpClient } from '@angular/common/http';
@@ -34,8 +35,8 @@ export class RecipeService {
     );
   }
 
-  getLastRecipes(){
-    return this._http.get(this.url+'/day').pipe(
+  getLastRecipes() {
+    return this._http.get(this.url + '/day').pipe(
       map((item: any) => {
         item = item.map((label: any) => {
           return this._mapper.mapRecipes(label);
@@ -51,6 +52,21 @@ export class RecipeService {
 
   getImg(img) {
     return this._http.get(`${this.url}/uploads/img/${img}`);
+  }
+
+  postRecipe(recipe: RecipeModel) {
+    return this._http.post(this.url, recipe);
+  }
+
+  postRecipeImg(img: File, idRecipe) {
+    let formData = new FormData();
+    formData.append("file", img);
+    formData.append("id", idRecipe);
+    return this._http.post(this.url + '/upload', formData);
+  }
+
+  deleteRecipe(id){
+    return this._http.delete(this.url + '/' + id);
   }
 
 }

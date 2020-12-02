@@ -11,8 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatCardModule} from '@angular/material/card';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
@@ -29,7 +29,8 @@ import { ContactComponent } from './modules/finalProject/components/contact/cont
 import { RecipesComponent } from './modules/finalProject/components/recipes/recipes.component';
 import { UserRecipesComponent } from './modules/finalProject/components/user-recipes/user-recipes.component';
 import { PersonalDataComponent } from './modules/finalProject/components/personal-data/personal-data.component';
-
+import { AddEditRecipeComponent } from './modules/finalProject/components/add-edit-recipe/add-edit-recipe.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { PersonalDataComponent } from './modules/finalProject/components/persona
     RecipesComponent,
     UserRecipesComponent,
     PersonalDataComponent,
+    AddEditRecipeComponent,
   ],
   imports: [
     RouterModule,
@@ -60,6 +62,7 @@ import { PersonalDataComponent } from './modules/finalProject/components/persona
     FontAwesomeModule,
     MatAutocompleteModule,
     MatCardModule,
+    MatTableModule
   ],
   providers: [
     CookieService,

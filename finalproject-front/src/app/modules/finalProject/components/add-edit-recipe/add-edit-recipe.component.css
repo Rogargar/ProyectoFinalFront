@@ -1,0 +1,21 @@
+textarea,
+input,
+select {
+    width: 30vw;
+    margin-right: 2vw;
+}
+
+label {
+    font-weight: 100;
+    font-size: 2vw;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+img {
+    width: 2vw;
+}
+
+.file-width {
+    width: 30vw;
+}

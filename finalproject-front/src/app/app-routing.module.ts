@@ -1,3 +1,4 @@
+import { AddEditRecipeComponent } from './modules/finalProject/components/add-edit-recipe/add-edit-recipe.component';
 import { PersonalDataComponent } from './modules/finalProject/components/personal-data/personal-data.component';
 import { UserRecipesComponent } from './modules/finalProject/components/user-recipes/user-recipes.component';
 import { RecipesComponent } from './modules/finalProject/components/recipes/recipes.component';
@@ -24,6 +25,8 @@ const routes: Routes = [
   { path: ':id/user', component: UserRecipesComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
   { path: ':id/user/:creator', component: UserRecipesComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
   { path: 'personalData', component: PersonalDataComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
+  { path: 'add', component: AddEditRecipeComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
+  { path: 'edit/:id', component: AddEditRecipeComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
 ];
 
 @NgModule({

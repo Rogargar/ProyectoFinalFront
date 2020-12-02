@@ -1,0 +1,79 @@
+<app-navBar></app-navBar>
+<div class="container-fluid">
+    <h2 *ngIf="editOrAdd==='Añadir'">Añadir una nueva receta</h2>
+    <h2 *ngIf="editOrAdd!=='Añadir'">Editar la receta -----</h2>
+    <form *ngIf="formGroup && saved!==true" [formGroup]="formGroup" class="mb-3 mt-3 form-row">
+        <div class="form-group">
+            <label>Titulo</label>
+            <input class="form-control" formControlName="name" type="text">
+        </div>
+        <div class="form-group">
+            <label>Raciones</label>
+            <input formControlName="ration" class="form-control" type="number">
+        </div>
+        <div class="form-group">
+            <label>Tiempo</label>
+            <input formControlName="time" class="form-control" type="number">
+        </div>
+        <div class="form-group">
+            <label>Ingredientes</label>
+            <textarea formControlName="ingredients" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Preparación</label>
+            <textarea formControlName="preparation" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Sugerencias</label>
+            <textarea formControlName="suggestions" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Dificultad</label>
+            <select class="form-control" formControlName="difficulty">
+        <option *ngFor="let dificultad of dificultades" [value]="dificultad">{{dificultad}}</option>
+      </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Estado</label>
+            <select class="form-control" formControlName="state">
+        <option *ngFor="let estado of estados" [value]="estado">{{estado}}</option>
+      </select>
+        </div>
+        <div class="form-group" *ngIf="etiquetas">
+            <label for="exampleFormControlSelect1">Etiquetas</label>
+            <select class="form-control" formControlName="label">
+        <option *ngFor="let etiqueta of etiquetas" [value]="etiqueta.id">{{etiqueta.name}}</option>
+      </select>
+            <button class="mt-3" (click)="addLabel()"><img class="iconos" src="assets/icons/add.png"></button>
+        </div>
+        <br>
+        <div class="mat-elevation-z8 container-fluid" *ngIf="labels['length']!==0">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Herramientas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let label of labels">
+                        <td>{{label.name}}</td>
+                        <td><button class="ml-3" (click)="removeLabel(label.id)"><img class="iconos"
+                  src="assets/icons/borrador.png"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary mb-3" (click)="addOrEditRecipe()">{{editOrAdd}}</button>
+    </form>
+    <div *ngIf="saved===true" class="container-fluid">
+        <h2>{{editOrAdd}} imagen a la receta {{newRecipe.name}}</h2>
+        <form class="form-row">
+            <div>
+                <input (change)="selectImg($event)" type="file" accept="image/png, .jpeg, .jpg, image/gif">
+            </div>
+            <button (click)="addOrEditImg()" class="btn btn-outline-secondary ml-3" type="button">{{editOrAdd}} Foto</button>
+        </form>
+    </div>
+</div>

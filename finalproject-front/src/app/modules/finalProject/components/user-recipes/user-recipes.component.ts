@@ -20,7 +20,7 @@ export class UserRecipesComponent implements OnInit {
   constructor(private router: ActivatedRoute, private _userService: UserService,
     private _recipeService: RecipeService, private routerN: Router) {
     this.idOwner = this.router.snapshot.paramMap.get('id');
-    let creator = this.router.snapshot.paramMap.get('creator');
+    const creator = this.router.snapshot.paramMap.get('creator');
     this.getOwner();
     this.getRecipesByOwner();
     if (creator != null) {
@@ -47,6 +47,23 @@ export class UserRecipesComponent implements OnInit {
 
   findRecipe(id) {
     this.routerN.navigate([id + '/recipe']);
+  }
+
+  editRecipe(id) {
+    console.log(id);
+    this.routerN.navigate(['/edit/' + id]);
+  }
+
+  removeRecipe(id) {
+    console.log(id);
+    this._recipeService.deleteRecipe(id).subscribe(data => {
+      console.log(data);
+      this.getRecipesByOwner();
+    })
+  }
+
+  addRecipe() {
+    this.routerN.navigate(['/add']);
   }
 
 

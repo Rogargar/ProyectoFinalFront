@@ -10,3 +10,23 @@ a:hover,
 div.card:hover {
     cursor: pointer;
 }
+
+.iconos {
+    width: 2vw;
+}
+
+.quitarColor {
+    background-color: white;
+    border: none;
+}
+
+.quitarColor>img {
+    display: flex;
+    justify-content: end;
+    justify-items: end;
+    width: 8vw;
+}
+
+.row {
+    margin-top: 8vh;
+}
