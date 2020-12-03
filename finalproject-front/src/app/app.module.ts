@@ -32,6 +32,8 @@ import { PersonalDataComponent } from './modules/finalProject/components/persona
 import { AddEditRecipeComponent } from './modules/finalProject/components/add-edit-recipe/add-edit-recipe.component';
 import {MatTableModule} from '@angular/material/table';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +64,8 @@ import {MatTableModule} from '@angular/material/table';
     FontAwesomeModule,
     MatAutocompleteModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    NgxPaginationModule
   ],
   providers: [
     CookieService,

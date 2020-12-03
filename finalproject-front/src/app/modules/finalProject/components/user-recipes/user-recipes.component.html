@@ -15,19 +15,22 @@
         <thead>
             <tr>
                 <th scope="col">Nombre</th>
+                <th scope="col">Estado</th>
                 <th scope="col">Herramientas</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let recipe of recipes">
+            <tr *ngFor="let recipe of recipes | paginate:{itemsPerPage:5, currentPage: pageActual}" (click)="findRecipe(recipe.id)">
                 <td>{{recipe.name}}</td>
+                <td>{{recipe.state}}</td>
                 <td>
                     <button (click)="editRecipe(recipe.id)"><img class="iconos" src="assets/icons/edicion.png"></button>
-                    <button class="ml-3" (click)="removeRecipe(recipe.id)"><img class="iconos"  src="assets/icons/borrador.png"></button>
+                    <button class="ml-3" (click)="removeRecipe(recipe.id)"><img class="iconos" src="assets/icons/borrador.png"></button>
                 </td>
             </tr>
         </tbody>
     </table>
+    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
     <div class="row">
         <button class="quitarColor col-md-1 offset-md-10" (click)="addRecipe()"><img class="iconos" src="assets/icons/anadir.png"></button>
     </div>

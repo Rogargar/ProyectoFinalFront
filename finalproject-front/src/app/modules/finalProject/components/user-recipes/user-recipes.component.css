@@ -7,7 +7,7 @@ h3 {
 }
 
 a:hover,
-div.card:hover {
+div.card:hover,tr:hover {
     cursor: pointer;
 }
 

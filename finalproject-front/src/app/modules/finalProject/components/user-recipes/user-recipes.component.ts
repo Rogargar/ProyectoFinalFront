@@ -16,6 +16,7 @@ export class UserRecipesComponent implements OnInit {
   isCreator = false;
   owner: UserModel;
   recipes: RecipeModel;
+  pageActual: number = 1;
 
   constructor(private router: ActivatedRoute, private _userService: UserService,
     private _recipeService: RecipeService, private routerN: Router) {
@@ -36,8 +37,6 @@ export class UserRecipesComponent implements OnInit {
       this.owner = data;
     });
   }
-
-
 
   getRecipesByOwner() {
     this._recipeService.getRecipeByOwner(this.idOwner).subscribe((data: RecipeModel) => {

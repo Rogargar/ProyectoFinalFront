@@ -65,7 +65,12 @@ export class RecipeService {
     return this._http.post(this.url + '/upload', formData);
   }
 
-  deleteRecipe(id){
+  putRecipe(recipe: RecipeModel, id) {
+    return this._http.put(this.url + '/' + id, recipe);
+  }
+
+
+  deleteRecipe(id) {
     return this._http.delete(this.url + '/' + id);
   }
 

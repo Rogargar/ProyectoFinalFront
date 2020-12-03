@@ -1,7 +1,7 @@
 <app-navBar></app-navBar>
 <div class="container-fluid">
     <h2 *ngIf="editOrAdd==='Añadir'">Añadir una nueva receta</h2>
-    <h2 *ngIf="editOrAdd!=='Añadir'">Editar la receta -----</h2>
+    <h2 *ngIf="editOrAdd!=='Añadir' && editRecipe">Editar la receta {{editRecipe.name}}</h2>
     <form *ngIf="formGroup && saved!==true" [formGroup]="formGroup" class="mb-3 mt-3 form-row">
         <div class="form-group">
             <label>Titulo</label>
