@@ -1,13 +1,11 @@
 * {
     box-sizing: border-box;
-}
-
-html,
-body {
-    background: #ecf0f3;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
     margin: 0;
     padding: 0;
 }
@@ -16,7 +14,9 @@ h1 {
     min-width: 300px;
     max-width: 60%;
     margin: 0px auto;
-    background: rgba(255, 255, 255, 0.15);
+    background: #ef32d9;
+    background: -webkit-linear-gradient(to left, #b1f1f0, #f5b3ed);
+    background: linear-gradient(to left, #b1f1f0, #f5b3ed);
     padding: 2rem 3rem;
     margin: auto;
     border-radius: 2.5rem;
@@ -35,7 +35,10 @@ h1 {
     border: none;
     box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
     border: 0 none;
-    background: #ebf5fc;
+    background: #ef32d9;
+    color: black;
+    background: -webkit-linear-gradient(to left, #b1f1f0, #f3aeeb);
+    background: linear-gradient(to left, #b1f1f0, #f3aeeb);
 }
 
 .custom-form button {
@@ -43,7 +46,7 @@ h1 {
     letter-spacing: 0.15em;
     border: none;
     font-size: 0.875rem;
-    color: #ffffff;
+    color: black;
     font-weight: bold;
     background-color: #BCE8E3;
     width: 100%;

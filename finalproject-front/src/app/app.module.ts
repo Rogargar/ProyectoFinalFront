@@ -30,9 +30,11 @@ import { RecipesComponent } from './modules/finalProject/components/recipes/reci
 import { UserRecipesComponent } from './modules/finalProject/components/user-recipes/user-recipes.component';
 import { PersonalDataComponent } from './modules/finalProject/components/personal-data/personal-data.component';
 import { AddEditRecipeComponent } from './modules/finalProject/components/add-edit-recipe/add-edit-recipe.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatAutocompleteModule,
     MatCardModule,
     MatTableModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatFormFieldModule
   ],
   providers: [
     CookieService,

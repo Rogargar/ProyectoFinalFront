@@ -15,6 +15,7 @@ import swal from 'sweetalert';
 })
 export class AddEditRecipeComponent implements OnInit {
   id;
+  idRecipeImg;
   dificultades = ['Fácil', 'Media', 'Dificil'];
   estados = ['Publicada', 'Borrador'];
   etiquetas: LabelModel[];
@@ -33,12 +34,21 @@ export class AddEditRecipeComponent implements OnInit {
     private formBuilder: FormBuilder, private _recipeService: RecipeService, private routerN: Router) {
     this.getLabels();
     this.id = this.router.snapshot.paramMap.get('id');
+    this.idRecipeImg = this.router.snapshot.paramMap.get('idRecipeImg');
     if (this.id !== null) {
       this.isAdd = false;
       this.saved = false;
       this.getRecipe();
       this.editOrAdd = 'Editar';
       this.isAdd = false;
+    } else if (this.idRecipeImg !== null) {
+      this.editOrAdd = 'Editar';
+      this._recipeService.getRecipe(this.idRecipeImg).subscribe((data: RecipeModel) => {
+        this.editRecipe = data;
+        this.newRecipe = data;
+        this.newFomGroupEdit();
+        this.saved = true;
+      });
     } else {
       //this.newFomGroup();
       this.saved = false;
@@ -132,10 +142,7 @@ export class AddEditRecipeComponent implements OnInit {
       this.formGroup.value.label = this.labels;
       this._recipeService.putRecipe(this.formGroup.value, this.editRecipe.id).subscribe((data: RecipeModel) => {
         swal('La receta se ha editado correctamente!', `La receta ${data.name} se ha editado con éxito`, 'success');
-        this.saved = true;
-        this.editRecipe = data;
-        this.newRecipe = data;
-        this.newFormImgEdit();
+        this.routerN.navigate([this.owner.id + '/user/1']);
       });
     }
   }
@@ -177,7 +184,6 @@ export class AddEditRecipeComponent implements OnInit {
 
   addOrEditImg() {
     this._recipeService.postRecipeImg(this.imgSeleccionada, this.newRecipe.id).subscribe(data => {
-      console.log(data);
       swal('La foto se ha subido correctamente!', `La foto se ha subido con éxito`, 'success');
       this.routerN.navigate([this.owner.id + '/user/1']);
     });

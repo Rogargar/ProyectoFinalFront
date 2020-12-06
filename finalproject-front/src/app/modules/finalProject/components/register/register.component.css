@@ -1,13 +1,11 @@
 * {
     box-sizing: border-box;
-}
-
-html,
-body {
-    background: #ecf0f3;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
     margin: 0;
     padding: 0;
 }
@@ -16,18 +14,20 @@ h1 {
     min-width: 300px;
     max-width: 60%;
     margin: 0px auto;
-    background: rgba(255, 255, 255, 0.15);
+    background: #ef32d9;
+    background: -webkit-linear-gradient(to left, #b1f1f0, #f5b3ed);
+    background: linear-gradient(to left, #b1f1f0, #f5b3ed);
     padding: 2rem 3rem;
     margin: auto;
     border-radius: 2.5rem;
     background-color: #ecf0f3;
     box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
     color: black;
-    margin-top: 10rem;
+    margin-top: 8vh;
 }
 
 .custom-form input,
-.custom-form select {
+select {
     display: block;
     margin: 2rem 0;
     width: 100%;
@@ -36,7 +36,10 @@ h1 {
     border: none;
     box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
     border: 0 none;
-    background: #ebf5fc;
+    background: #f3aeeb;
+    color: black;
+    background: -webkit-linear-gradient(to left, #b1f1f0, #f3aeeb);
+    background: linear-gradient(to left, #b1f1f0, #f3aeeb);
 }
 
 .custom-form button {
@@ -44,13 +47,17 @@ h1 {
     letter-spacing: 0.15em;
     border: none;
     font-size: 0.875rem;
-    color: #ffffff;
+    color: black;
     font-weight: bold;
-    background-color: #E9D3E7;
+    background-color: #BCE8E3;
     width: 100%;
     display: block;
     padding: 0.875rem 1rem;
     border-radius: 1.5rem;
     box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
     cursor: pointer;
+}
+
+.custom-form button.mt-4 {
+    background-color: #E9D3E7;
 }

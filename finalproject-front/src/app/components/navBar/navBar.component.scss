@@ -2,19 +2,22 @@ a:hover {
     cursor: pointer;
 }
 
-.collapse,
-.navbar,
+.navbar {
+    background: #ef32d9;
+    background: -webkit-linear-gradient(to left, #b1f1f0, #f5b3ed);
+    background: linear-gradient(to left, #b1f1f0, #f5b3ed);
+}
+
+.navbar {
+    display: flex;
+    justify-items: flex-start;
+    flex-direction: column;
+}
+
 button.nav-link {
-    background-color: #d4faf5;
+    background: #ccd8ef;
 }
 
 a.nav-link {
     font-weight: bolder;
-}
-
-button.nav-link,
-div.collapse {
-    /*left: 60vw;
-    position: relative;
-    float: right;*/
 }

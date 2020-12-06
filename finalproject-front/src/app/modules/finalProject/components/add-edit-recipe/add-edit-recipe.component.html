@@ -1,7 +1,7 @@
 <app-navBar></app-navBar>
 <div class="container-fluid">
-    <h2 *ngIf="editOrAdd==='Añadir'">Añadir una nueva receta</h2>
-    <h2 *ngIf="editOrAdd!=='Añadir' && editRecipe">Editar la receta {{editRecipe.name}}</h2>
+    <h2 *ngIf="editOrAdd==='Añadir' && saved!==true">Añadir una nueva receta</h2>
+    <h2 *ngIf="editOrAdd!=='Añadir' && editRecipe && saved!==true">Editar la receta {{editRecipe.name}}</h2>
     <form *ngIf="formGroup && saved!==true" [formGroup]="formGroup" class="mb-3 mt-3 form-row">
         <div class="form-group">
             <label>Titulo</label>
@@ -48,7 +48,7 @@
         </div>
         <br>
         <div class="mat-elevation-z8 container-fluid" *ngIf="labels['length']!==0">
-            <table class="table">
+            <table class="table mb-3">
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
@@ -65,7 +65,7 @@
             </table>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary mb-3" (click)="addOrEditRecipe()">{{editOrAdd}}</button>
+        <button class="mt-3" type="submit" class="btn btn-primary mb-3" (click)="addOrEditRecipe()">{{editOrAdd}}</button>
     </form>
     <div *ngIf="saved===true" class="container-fluid">
         <h2>{{editOrAdd}} imagen a la receta {{newRecipe.name}}</h2>

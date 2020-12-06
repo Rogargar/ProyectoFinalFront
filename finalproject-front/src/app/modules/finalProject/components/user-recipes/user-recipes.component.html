@@ -20,11 +20,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let recipe of recipes | paginate:{itemsPerPage:5, currentPage: pageActual}" (click)="findRecipe(recipe.id)">
-                <td>{{recipe.name}}</td>
-                <td>{{recipe.state}}</td>
+            <tr *ngFor="let recipe of recipes | paginate:{itemsPerPage:5, currentPage: pageActual}">
+                <td (click)="findRecipe(recipe.id)">{{recipe.name}}</td>
+                <td>{{recipe.state}}<span *ngIf="recipe.state==='Borrador'">
+                  <button class="ml-2" (click)="publicatedRecipe(recipe.id)"><img class="iconos" src="assets/icons/megafono.png"></button>
+                </span></td>
                 <td>
-                    <button (click)="editRecipe(recipe.id)"><img class="iconos" src="assets/icons/edicion.png"></button>
+                    <button (click)="editImagen(recipe.id)"><img class="iconos" src="assets/icons/editarImg.png"></button>
+                    <button class="ml-3" (click)="editRecipe(recipe.id)"><img class="iconos" src="assets/icons/edicion.png"></button>
                     <button class="ml-3" (click)="removeRecipe(recipe.id)"><img class="iconos" src="assets/icons/borrador.png"></button>
                 </td>
             </tr>

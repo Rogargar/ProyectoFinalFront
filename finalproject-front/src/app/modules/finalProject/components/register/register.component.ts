@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { UserModel } from './../../../../models/user/user.model';
 import { UserService } from './../../../../services/user.service';
 
+import { faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,14 +12,18 @@ import { UserService } from './../../../../services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
   name: string;
   surname: string;
   rolUser: string;//Mejora que salga una opcion por defecto
   email: string;
-  password: string;
+  password: null;
   confirmPassword: string;
   passwordError: boolean;
   roles = [];
+  hide = true;
+  hide2 = true;
 
   constructor(private _userService: UserService, private router: Router) { }
 

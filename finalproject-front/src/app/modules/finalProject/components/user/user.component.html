@@ -1,9 +1,14 @@
 <div class="container-fluid my-3 register">
     <form class="form-container custom-form" [formGroup]="form">
-        <h1>Login</h1>
+        <h1 class="text-center">Login</h1>
         <input type="email" class="form-control" formControlName="email" name="email" placeholder="Email" required="required">
-        <input type="password" class="form-control" formControlName="pass" name="password" placeholder="Password" required>
-
+        <div class="form-inline">
+            <input class="col" [type]="hide ? 'password' : 'text'" formControlName="pass" name="password" placeholder="Password" required>
+            <button class="col-sm-2 ml-2" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <fa-icon *ngIf="!hide"  [icon]="faEye"></fa-icon>
+            <fa-icon *ngIf="hide"  [icon]="faEyeSlash"></fa-icon>
+            </button>
+        </div>
         <div *ngIf="esError===true">{{error}}</div>
         <button type="submit" (click)="recogerDatos()" [disabled]="!form">Login</button>
         <button type="button" class="mt-4" (click)="register()">Register</button>

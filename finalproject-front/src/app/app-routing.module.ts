@@ -27,6 +27,7 @@ const routes: Routes = [
   { path: 'personalData', component: PersonalDataComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
   { path: 'add', component: AddEditRecipeComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
   { path: 'edit/:id', component: AddEditRecipeComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
+  { path: 'editImg/:idRecipeImg', component: AddEditRecipeComponent, pathMatch: 'full', canActivate: [CanActivateViaAuthGuard] },
 ];
 
 @NgModule({

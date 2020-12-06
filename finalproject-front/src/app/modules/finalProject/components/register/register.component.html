@@ -1,6 +1,6 @@
-<div class="register">
+<div class="register container-fluid my-3">
     <form class="custom-form" method="post">
-        <h1>Register</h1>
+        <h1 class="text-center">Register</h1>
         <input type="text" [(ngModel)]="name" name="name" placeholder="Name" required="required" />
         <input type="text" [(ngModel)]="surname" name="surname" placeholder="Surname" required="required" />
         <select name="rol" [(ngModel)]="rolUser">
@@ -8,8 +8,20 @@
           <option  *ngFor="let rols of roles" [value]="rols.id">{{rols.name}}</option>
           </select>
         <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required="required" />
-        <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required="required" />
-        <input type="password" [(ngModel)]="confirmPassword" name="password" placeholder="Repeat the password" required="required" />
+        <div class="form-inline">
+            <input class="col" [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password" placeholder="Password" required="required" />
+            <button class="col-sm-2 ml-2" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <fa-icon *ngIf="!hide"  [icon]="faEye"></fa-icon>
+              <fa-icon *ngIf="hide"  [icon]="faEyeSlash"></fa-icon>
+              </button>
+        </div>
+        <div class="form-inline">
+            <input class="col" type="password" [type]="hide2 ? 'password' : 'text'" [(ngModel)]="confirmPassword" name="password" placeholder="Repeat the password" required="required" />
+            <button class="col-sm-2 ml-2" (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <fa-icon *ngIf="!hide2"  [icon]="faEye"></fa-icon>
+          <fa-icon *ngIf="hide2"  [icon]="faEyeSlash"></fa-icon>
+          </button>
+        </div>
         <button type="submit" (click)="register()">Register</button>
         <button type="button" class="mt-4" (click)="login()">Login</button>
     </form>

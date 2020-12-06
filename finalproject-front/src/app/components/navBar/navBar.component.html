@@ -2,8 +2,8 @@
     <a class="navbar-brand" (click)="home()">
         <fa-icon [icon]="faCoffee"> </fa-icon>&nbsp;&nbsp; DAW-cetas
     </a>
-    <div class="column navbar-collapse" *ngIf="user!==null">
-        <ul class="navbar-nav" *ngIf="user.roles[0].name==='ROLE_READER' ||user.roles[0].name==='ROLE_CREATOR'">
+    <div class="navbar-expand-sm" *ngIf="user!==null">
+        <ul class="navbar-nav mr-auto" *ngIf="user.roles[0].name==='ROLE_READER' ||user.roles[0].name==='ROLE_CREATOR'">
             <li class="nav-item" *ngIf="user.roles[0].name==='ROLE_CREATOR'">
                 <a class="nav-link" (click)="misRecetas()">MisRecetas</a>
             </li>
@@ -13,7 +13,7 @@
             <li class="nav-item">
                 <a class="nav-link" (click)="recetasGuardadas()">Recetas Guardadas</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item inline my-2 my-lg-0">
                 <nav>
                     <button class="nav-link" *ngIf="user!==null" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                       <fa-icon *ngIf="user.roles[0].name==='ROLE_READER'"  [icon]="faUser" class="ml-3"> </fa-icon>

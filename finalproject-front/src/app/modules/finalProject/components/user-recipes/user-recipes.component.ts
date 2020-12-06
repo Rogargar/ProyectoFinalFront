@@ -1,3 +1,4 @@
+import swal from 'sweetalert';
 import { UserModel } from './../../../../models/user/user.model';
 import { UserService } from './../../../../services/user.service';
 import { RecipeModel } from './../../../../models/recipe/recipe.model';
@@ -49,14 +50,11 @@ export class UserRecipesComponent implements OnInit {
   }
 
   editRecipe(id) {
-    console.log(id);
     this.routerN.navigate(['/edit/' + id]);
   }
 
   removeRecipe(id) {
-    console.log(id);
     this._recipeService.deleteRecipe(id).subscribe(data => {
-      console.log(data);
       this.getRecipesByOwner();
     })
   }
@@ -65,5 +63,20 @@ export class UserRecipesComponent implements OnInit {
     this.routerN.navigate(['/add']);
   }
 
+  editImagen(id) {
+    this.routerN.navigate(['/editImg/' + id]);
+  }
+
+  publicatedRecipe(id) {
+    this._recipeService.getRecipe(id).subscribe((data: RecipeModel) => {
+      let recipe = new RecipeModel();
+      recipe = data;
+      recipe.state = 'Publicada';
+      this._recipeService.putRecipe(recipe, id).subscribe(datas => {
+        swal('La receta se ha editado correctamente!', `La receta ${data.name} se ha editado con éxito`, 'success');
+        this.getRecipesByOwner();
+      });
+    });
+  }
 
 }
