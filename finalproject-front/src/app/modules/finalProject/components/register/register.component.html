@@ -1,28 +1,52 @@
 <div class="register container-fluid my-3">
-    <form class="custom-form" method="post">
-        <h1 class="text-center">Register</h1>
-        <input type="text" [(ngModel)]="name" name="name" placeholder="Name" required="required" />
-        <input type="text" [(ngModel)]="surname" name="surname" placeholder="Surname" required="required" />
-        <select name="rol" [(ngModel)]="rolUser">
-          <option disabled selected>Selecciona un rol</option>
-          <option  *ngFor="let rols of roles" [value]="rols.id">{{rols.name}}</option>
-          </select>
-        <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required="required" />
+    <form [formGroup]="formGroup" class="custom-form" method="post" *ngIf="formGroup" novalidate>
+        <h1 class="text-center">Registro</h1>
+        <input type="text" formControlName="name" name="name" placeholder="Name" required />
+        <div *ngIf="formGroup.controls['name'].invalid && formGroup.controls['name'].dirty">
+            <div class="text-danger">Campo obligatorio</div>
+        </div>
+        <input type="text" formControlName="surname" name="surname" placeholder="Surname" />
+        <select name="rol" formControlName="rolUser">
+      <option disabled selected>Selecciona un rol</option>
+      <option *ngFor="let rols of roles" [value]="rols.id">{{rols.name}}</option>
+    </select>
+        <div *ngIf="formGroup.controls['rolUser'].invalid && formGroup.controls['rolUser'].dirty">
+            <div class="text-danger">Selecciona un rol</div>
+        </div>
+        <input type="email" formControlName="email" name="email" placeholder="Email" required />
+        <div *ngIf="formGroup.controls['email'].invalid && formGroup.controls['email'].dirty">
+            <div class="text-danger" *ngIf="formGroup.controls['email'].hasError('email')">Introduce un email valido</div>
+        </div>
         <div class="form-inline">
-            <input class="col" [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password" placeholder="Password" required="required" />
+            <input class="col" [type]="hide ? 'password' : 'text'" formControlName="password" name="password" placeholder="Password" required />
             <button class="col-sm-2 ml-2" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <fa-icon *ngIf="!hide"  [icon]="faEye"></fa-icon>
-              <fa-icon *ngIf="hide"  [icon]="faEyeSlash"></fa-icon>
-              </button>
+        <fa-icon *ngIf="!hide" [icon]="faEye"></fa-icon>
+        <fa-icon *ngIf="hide" [icon]="faEyeSlash"></fa-icon>
+      </button>
         </div>
+        <div class="col" [ngClass]="formGroup.controls['password'].hasError('required') || formGroup.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+            8 caracteres</div>
+
+        <div class="col" [ngClass]="formGroup.controls['password'].hasError('required') || formGroup.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+            Minimo un número</div>
+
+        <div class="col" [ngClass]="formGroup.controls['password'].hasError('required') || formGroup.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+            Minimo una mayúscula</div>
+
+        <div class="col" [ngClass]="formGroup.controls['password'].hasError('required') || formGroup.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+            Minimo una minúscula</div>
+
         <div class="form-inline">
-            <input class="col" type="password" [type]="hide2 ? 'password' : 'text'" [(ngModel)]="confirmPassword" name="password" placeholder="Repeat the password" required="required" />
+            <input class="col" type="password" [type]="hide2 ? 'password' : 'text'" formControlName="confirmPassword" name="password" placeholder="Repeat the password" required />
             <button class="col-sm-2 ml-2" (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <fa-icon *ngIf="!hide2"  [icon]="faEye"></fa-icon>
-          <fa-icon *ngIf="hide2"  [icon]="faEyeSlash"></fa-icon>
-          </button>
+        <fa-icon *ngIf="!hide2" [icon]="faEye"></fa-icon>
+        <fa-icon *ngIf="hide2" [icon]="faEyeSlash"></fa-icon>
+      </button>
         </div>
-        <button type="submit" (click)="register()">Register</button>
+        <div *ngIf="formGroup.controls['confirmPassword'].dirty">
+            <div class="text-danger" *ngIf="formGroup.value['password']!==formGroup.value['confirmPassword']">Las contraseñas no coinciden</div>
+        </div>
+        <button type="submit" [disabled]="formGroup.invalid" (click)="register()">Register</button>
         <button type="button" class="mt-4" (click)="login()">Login</button>
     </form>
 </div>
