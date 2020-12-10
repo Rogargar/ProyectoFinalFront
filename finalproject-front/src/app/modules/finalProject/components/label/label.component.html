@@ -3,7 +3,7 @@
     <h2 *ngIf="label">Recetas con la etiqueta {{label.name}}</h2>
 
     <div class="row row-cols-md-3" *ngIf="recipes">
-        <div class="col mb-4" *ngFor="let recipe of recipes">
+        <div class="col mb-4" *ngFor="let recipe of recipes | paginate:{itemsPerPage:6, currentPage: pageActual}">
             <div class="card" (click)="findRecipe(recipe.id)">
                 <img src="api/recipes/uploads/img/{{recipe.img}}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -12,4 +12,5 @@
             </div>
         </div>
     </div>
+    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 </div>

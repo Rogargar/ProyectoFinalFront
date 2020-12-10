@@ -14,6 +14,10 @@ div.fondo>p {
     text-shadow: 2px;
 }
 
+h2 {
+    font: oblique bold 2vw cursive;
+}
+
 h3 {
     font-weight: bolder;
 }
@@ -39,7 +43,7 @@ img {
 }
 
 .btn-formato {
-    color: #0099CC;
+    color: #0099cc;
     background: transparent;
     border: 2px solid #ccd8ef;
     border-radius: 6px;
@@ -57,11 +61,15 @@ img {
     text-decoration: none;
     text-transform: uppercase;
     background-color: white;
-    color: black;
     border: 2px solid #ccd8ef;
+    font-weight: bolder;
+    color: gray;
+    -webkit-border-radius: 20vw;
+    -moz-border-radius: 20vw;
+    border-radius: 20vw;
 }
 
 .btn-formato:hover {
     background-color: #ccd8ef;
-    color: white;
+    color: black;
 }

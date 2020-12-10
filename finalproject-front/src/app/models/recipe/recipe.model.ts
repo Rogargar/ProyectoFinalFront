@@ -15,7 +15,7 @@ export class RecipeModel extends ElementModel {
   time: string;
   state: string;
   publicationDate: string;
-  label: LabelModel;
+  label: LabelModel[];
 
   constructor(props?: RecipeModel) {
     super(props);
@@ -33,7 +33,7 @@ export class RecipeModel extends ElementModel {
       this.state = null;
       this.publicationDate = null;
       // tslint:disable-next-line: new-parens
-      this.label = new LabelModel();
+      this.label = [];
 
     }
     Object.assign(this, props);

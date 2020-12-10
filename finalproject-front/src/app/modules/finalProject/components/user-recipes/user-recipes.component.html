@@ -2,13 +2,16 @@
 <div class="container-fluid" *ngIf="isCreator===false">
     <h2 *ngIf="owner">Recetas del autor {{owner.name}}</h2>
     <div class="card-columns" *ngIf="recipes">
-        <div class="card" *ngFor="let recipe of recipes" (click)="findRecipe(recipe.id)">
+        <span *ngFor="let recipe of recipes | paginate:{itemsPerPage:6, currentPage: pageActual}">
+        <div class="card" *ngIf="recipe.state==='Publicada'"  (click)="findRecipe(recipe.id)">
             <img class="card-img-top" src="api/recipes/uploads/img/{{recipe.img}}" alt="Card image cap">
             <div class="card-body">
                 <h3 class="card-title">{{recipe.name}}</h3>
             </div>
         </div>
+      </span>
     </div>
+    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 </div>
 <div class="container-fluid" *ngIf="isCreator===true">
     <table class="table table-striped" *ngIf="recipes">

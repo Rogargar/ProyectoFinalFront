@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   userId = '';
   savedRecipe: SavedRecipeModel;
   recipes: RecipeModel[];
-  lastRecipes: RecipeModel;
+  lastRecipes: RecipeModel[];
   myControl = new FormControl();
   filteredOptions: Observable<RecipeModel[]>;
 
@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
   }
 
   getLastRecipes() {
-    this._recipeService.getLastRecipes().subscribe((data: RecipeModel) => {
+    this._recipeService.getLastRecipes().subscribe((data: RecipeModel[]) => {
       this.lastRecipes = data;
     });
   }
@@ -94,6 +94,7 @@ export class HomeComponent implements OnInit {
   getSavedRecipeByUser() {
     this._srService.getSavedRecipeByUser(this.userId).subscribe((data: SavedRecipeModel) => {
       this.savedRecipe = data;
+      console.log(data);
     });
 
   }

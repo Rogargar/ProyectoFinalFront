@@ -1,5 +1,6 @@
-<app-navBar></app-navBar>
-<div class="mt-2" *ngIf="user">
+<app-navBar>
+</app-navBar>
+<div *ngIf="user">
     <div class="fondo">
         <h1 class="card-title">Hola {{user.name}}</h1>
         <p>¿Que te gustaría comer hoy?</p>
@@ -21,7 +22,7 @@
     </div>
 </div>
 <div class="container-fluid mt-3" *ngIf="lastRecipes">
-    <h2>Ultimas recetas</h2>
+    <h2 class="text-center">Ultimas recetas</h2>
     <div class="row">
         <div class="card card-recipe" *ngFor="let recipe of lastRecipes" (click)="findRecipeS(recipe.id)">
             <img class="card-img-top" src="api/recipes/uploads/img/{{recipe.img}}" alt="Card image cap">
@@ -31,10 +32,10 @@
         </div>
     </div>
 </div>
-<div class="container-fluid mt-3" *ngIf="savedRecipe">
-    <h2>Recetas favoritas</h2>
+<div class="container-fluid mt-3" *ngIf="savedRecipe!==undefined ||savedRecipe['length']!==0">
+    <h2 class="text-center">Recetas favoritas</h2>
     <div class="row">
-        <div class="card card-recipe" *ngFor="let savedR of savedRecipe" (click)="findRecipeS(savedR.recipes.id)">
+        <div class="card card-recipe" *ngFor="let savedR of savedRecipe | paginate:{itemsPerPage:4, currentPage: 1}" (click)="findRecipeS(savedR.recipes.id)">
             <img class="card-img-top" src="api/recipes/uploads/img/{{savedR.recipes.img}}" alt="Card image cap">
             <div class="card-body text-center">
                 <h3 class="card-title">{{savedR.recipes.name}}</h3>
@@ -44,7 +45,7 @@
 </div>
 <div class="card text-center " *ngIf="labels">
     <div class="card-body ">
-        <h1>Explorar todas las categorías de recetas</h1>
+        <h2 class="text-center">Explorar todas las categorías de recetas</h2>
         <button *ngFor="let label of labels" (click)="getLabel(label.id)" class="btn btn-info ml-3 mr-3 mt- mb-3 label btn-formato">{{label.name}}</button>
     </div>
 </div>

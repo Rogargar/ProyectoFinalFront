@@ -4,61 +4,65 @@
     <div class="row">
         <div class="col">
             <div class="row">
-                <h1 class="text-center">{{recipe.name}}</h1>
+                <h1 class="text-center mt-1">{{recipe.name}}</h1>
             </div>
-            <div class="row">
+            <div class="row  mt-5">
                 <div class="col text-center">
                     <button class="noBorder" (click)=saveRecipe() *ngIf="isSaved===false"><img src="assets/icons/bookmark-regular.png" style="width: 2vw"></button>
                     <button class="noBorder" (click)="deleteSaveRecipe(recipeSave.id)" *ngIf="isSaved===true"><img src="assets/icons/bookmark-solid.png" style="width: 2vw"></button>
-                    <a class="ml-3" (click)="serchRecipeOwner(recipe.owner.id)">Receta de {{recipe.owner.name}}</a>
+                    <a class="ml-3 cocinero" (click)="serchRecipeOwner(recipe.owner.id)">Receta de {{recipe.owner.name}}</a>
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-lg-5">
                 <div class="col text-center">
-                    <img src="assets/icons/gorro-de-cocinero.png" style="width: 10vw;">
+                    <img src="assets/icons/cocinero.png" class="iconosGrandes">
                     <h4>
                         Dificultad: <span class="datosReceta">{{recipe.difficulty}}</span>
                     </h4>
                 </div>
                 <div class="col text-center">
-                    <img src="assets/icons/tiempo-rapido.png" style="width: 10vw;">
+                    <img src="assets/icons/reloj.png" class="iconosGrandes">
                     <h4 class="text-center"> Tiempo: <span class="datosReceta">{{recipe.time}}</span></h4>
                 </div>
                 <div class="col text-center">
-                    <img src="assets/icons/cuchilleria.png" style="width: 10vw;">
+                    <img src="assets/icons/plato.png" class="iconosGrandes">
                     <h4 class="text-center"> Raciones: <span class="datosReceta">{{recipe.ration}}</span></h4>
                 </div>
             </div>
         </div>
         <div class="col text-center">
-            <img class="shadowRecipe" src="api/recipes/uploads/img/{{recipe.img}}" style="width: 25vw;">
+            <img class="shadowRecipe imagen" *ngIf="recipe.img" src="api/recipes/uploads/img/{{recipe.img}}">
+            <img class="shadowRecipe imagen" *ngIf="!recipe.img" src="assets/icons/imagen.png">
         </div>
     </div>
-    <div class="row contenedor">
+    <div class="row contenedor  mt-5">
         <div class="col">
-            <h4><img src="assets/icons/cesta-de-la-compra.png" style="width: 3vw;"> Ingredientes: </h4>
+            <h4><img src="assets/icons/cesta-de-la-compra.png" class="iconosPeques"> <span class="ml-3 subtitulo">Ingredientes:</span> </h4>
             <div>
                 {{recipe.ingredients}}
             </div>
         </div>
         <div class="col">
-            <h4><img src="assets/icons/receta.png" style="width: 3vw;"> Preparación: </h4>
+            <h4><img src="assets/icons/receta.png" class="iconosPeques"> <span class="ml-3 subtitulo">Preparación:</span> </h4>
             <div>
                 {{recipe.preparation}}
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-5">
         <div class="col">
-            <h4>Sugerencias: </h4>
-            <div>
+            <h4><img src="assets/icons/bombilla.png" class="iconosPeques"><span class="ml-3 subtitulo">Sugerencias:</span> </h4>
+            <div *ngIf="recipe.suggestions">
                 {{recipe.suggestions}}
+            </div>
+            <div *ngIf="!recipe.suggestions">
+                Esta receta no tiene sugerencias.
             </div>
         </div>
         <div class="col">
-            <h4>Label: </h4>
+            <h4><img src="assets/icons/etiqueta.png" class="iconosPeques"><span class="ml-3 subtitulo">Label:</span> </h4>
             <div>
-                <button *ngFor="let label of recipe.label" (click)="getLabel(label.id)" class="btn btn-info ml-3 mr-3 mt- mb-3">{{label.name}}</button>
+                <button *ngFor="let label of recipe.label" (click)="getLabel(label.id)" class="btn btn-formato ml-3 mr-3 mt- mb-3">{{label.name}}</button>
             </div>
         </div>
     </div>

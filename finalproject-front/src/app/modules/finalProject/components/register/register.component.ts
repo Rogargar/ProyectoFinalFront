@@ -77,7 +77,7 @@ export class RegisterComponent implements OnInit {
       user.surnames = this.formGroup.value['surname'];
       user.pass = this.formGroup.value['password'];
       this._userService.getRole(this.formGroup.value['rolUser']).subscribe((data: any) => {
-        user.roles = data;
+        user.roles.push(data);
         this._userService.registerUser(user).subscribe(data => {
           this._userService.getUserByEmail(this.formGroup.value['email']).subscribe(data => {
             this._userService.setToken(data['id']);

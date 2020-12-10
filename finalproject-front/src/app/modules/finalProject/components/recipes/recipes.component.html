@@ -1,23 +1,25 @@
 <app-navBar></app-navBar>
-<div class="container-fluid" *ngIf="isSave===null">
+<div class="container-fluid mt-3" *ngIf="isSave===null">
     <h2>Todas las recetas</h2>
     <div class="card-columns">
-        <div class="card" *ngFor="let recipe of recipes" (click)="findRecipe(recipe.id)">
+        <div class="card" *ngFor="let recipe of recipes | paginate:{itemsPerPage:6, currentPage: pageActual}" (click)="findRecipe(recipe.id)">
             <img *ngIf="recipe?.img" class="card-img-top" src="api/recipes/uploads/img/{{recipe.img}}" alt="Card image cap">
             <div class="card-body">
                 <h3 class="card-title">{{recipe.name}}</h3>
             </div>
         </div>
     </div>
+    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 </div>
 <div class="container-fluid" *ngIf="isSave!==null">
     <h2>Tus Recetas Favoritas</h2>
     <div class="card-columns">
-        <div class="card" *ngFor="let recipe of recipesSave" (click)="findRecipe(recipe.recipes.id)">
+        <div class="card" *ngFor="let recipe of recipesSave | paginate:{itemsPerPage:6, currentPage: pageActual}" (click)="findRecipe(recipe.recipes.id)">
             <img class="card-img-top" src="api/recipes/uploads/img/{{recipe.recipes.img}}" alt="Card image cap">
             <div class="card-body">
                 <h3 class="card-title">{{recipe.recipes.name}}</h3>
             </div>
         </div>
     </div>
+    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 </div>

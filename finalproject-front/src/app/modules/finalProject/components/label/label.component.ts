@@ -14,6 +14,7 @@ export class LabelComponent implements OnInit {
   id;
   label: LabelModel;
   recipes: RecipeModel;
+  pageActual: number = 1;
 
   constructor(private _recipeService: RecipeService, private router: ActivatedRoute, private routerN: Router,
     private _labelService: LabelService) {

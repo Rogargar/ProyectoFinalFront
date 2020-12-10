@@ -34,6 +34,16 @@ export class RecipeService {
       }),
     );
   }
+  getAllRecipesPublicated() {
+    return this._http.get(this.url + '/publicated').pipe(
+      map((item: any) => {
+        item = item.map((label: any) => {
+          return this._mapper.mapRecipes(label);
+        });
+        return item;
+      }),
+    );
+  }
 
   getLastRecipes() {
     return this._http.get(this.url + '/day').pipe(

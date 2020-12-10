@@ -16,6 +16,7 @@ export class RecipesComponent implements OnInit {
   recipes: RecipeModel;
   recipesSave: SavedRecipeModel;
   isSave;
+  pageActual: number = 1;
 
   constructor(private _recipesService: RecipeService, private _saveRecipeService: SavedRecipeService, private _userService: UserService,
     private router: Router, private routerN: ActivatedRoute) {
@@ -29,7 +30,7 @@ export class RecipesComponent implements OnInit {
   }
 
   getAllRecipes() {
-    this._recipesService.getAllRecipes().subscribe((data: RecipeModel) => {
+    this._recipesService.getAllRecipesPublicated().subscribe((data: RecipeModel) => {
       this.recipes = data;
     });
   }

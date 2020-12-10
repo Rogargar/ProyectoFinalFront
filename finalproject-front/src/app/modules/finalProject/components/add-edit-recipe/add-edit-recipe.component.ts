@@ -40,7 +40,6 @@ export class AddEditRecipeComponent implements OnInit {
       this.saved = false;
       this.getRecipe();
       this.editOrAdd = 'Editar';
-      this.isAdd = false;
     } else if (this.idRecipeImg !== null) {
       this.editOrAdd = 'Editar';
       this._recipeService.getRecipe(this.idRecipeImg).subscribe((data: RecipeModel) => {
@@ -50,7 +49,6 @@ export class AddEditRecipeComponent implements OnInit {
         this.saved = true;
       });
     } else {
-      //this.newFomGroup();
       this.saved = false;
       this.editOrAdd = 'Añadir';
     }
@@ -109,6 +107,7 @@ export class AddEditRecipeComponent implements OnInit {
       state: new FormControl(this.editRecipe.state),
       difficulty: new FormControl(this.editRecipe.difficulty),
       label: new FormControl(null),
+      img: new FormControl(this.editRecipe.img),
       owner: new FormControl(this.owner),
     });
   }
@@ -140,6 +139,7 @@ export class AddEditRecipeComponent implements OnInit {
     } else {
       this.formGroup.value.time = this.formGroup.value.time + ' min';
       this.formGroup.value.label = this.labels;
+      this.formGroup.value.img = this.editRecipe.img;
       this._recipeService.putRecipe(this.formGroup.value, this.editRecipe.id).subscribe((data: RecipeModel) => {
         swal('La receta se ha editado correctamente!', `La receta ${data.name} se ha editado con éxito`, 'success');
         this.routerN.navigate([this.owner.id + '/user/1']);
@@ -192,5 +192,26 @@ export class AddEditRecipeComponent implements OnInit {
   selectImg(event) {
     this.imgSeleccionada = event.target.files[0];
   }
+
+  changeFont(txt, change) {
+    if (change == 'b') {
+        if (document.getElementById(txt).style.fontWeight == 'bold')
+            document.getElementById(txt).style.fontWeight = 'normal';
+        else
+            document.getElementById(txt).style.fontWeight = 'bold';
+    }
+    else if (change == 'i') {
+        if (document.getElementById(txt).style.fontStyle == 'italic')
+            document.getElementById(txt).style.fontStyle = 'normal';
+        else
+            document.getElementById(txt).style.fontStyle = 'italic';
+    }
+    else {
+        if (document.getElementById(txt).style.textDecoration == 'underline')
+            document.getElementById(txt).style.textDecoration = 'none';
+        else
+            document.getElementById(txt).style.textDecoration = 'underline';
+    }
+}
 
 }
