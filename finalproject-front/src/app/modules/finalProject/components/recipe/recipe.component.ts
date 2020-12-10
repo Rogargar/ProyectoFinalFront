@@ -33,12 +33,11 @@ export class RecipeComponent implements OnInit {
   getRecipe(id) {
     this._recipeService.getRecipe(id).subscribe((data: RecipeModel) => {
       this.recipe = data;
+      console.log(this.recipe);
       let sr = new SavedRecipeModel();
       sr.recipes = this.recipe;
       this._userService.getUserById(this._userService.getToken()).subscribe((data: UserModel) => {
         sr.user = data;
-        sr.id = '556';
-        sr.name = ' ';
         this.recipeForSave = sr;
       });
     });

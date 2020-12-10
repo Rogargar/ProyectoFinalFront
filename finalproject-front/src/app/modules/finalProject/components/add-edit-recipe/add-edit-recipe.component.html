@@ -17,18 +17,20 @@
         </div>
         <div class="form-group">
             <label>Ingredientes</label>
-            <textarea formControlName="ingredients" class="form-control" rows="3"></textarea>
+            <ckeditor [editor]="textRecipe" formControlName="ingredients" data="ingredients"></ckeditor>
+            <!--<textarea formControlName="ingredients" class="form-control" rows="3"></textarea>-->
         </div>
-        <div class="form-group">
+        <div class="form-group ml-3">
             <label>Preparación</label>
-            <button> Negrita</button>
-            <textarea formControlName="preparation" class="form-control" rows="3"></textarea>
+            <ckeditor [editor]="textRecipe" formControlName="preparation" data="preparation"></ckeditor>
+            <!--<textarea formControlName="preparation" class="form-control" rows="3"></textarea>-->
         </div>
         <div class="form-group">
             <label>Sugerencias</label>
-            <textarea formControlName="suggestions" class="form-control" rows="3"></textarea>
+            <ckeditor [editor]="textSugg" formControlName="suggestions" data="suggestions"></ckeditor>
+            <!--<textarea formControlName="suggestions" class="form-control" rows="3"></textarea>-->
         </div>
-        <div class="form-group">
+        <div class="form-group ml-3">
             <label for="exampleFormControlSelect1">Dificultad</label>
             <select class="form-control" formControlName="difficulty">
         <option *ngFor="let dificultad of dificultades" [value]="dificultad">{{dificultad}}</option>

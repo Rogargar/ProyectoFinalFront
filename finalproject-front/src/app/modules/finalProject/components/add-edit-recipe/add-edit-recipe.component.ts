@@ -7,6 +7,7 @@ import { LabelModel } from './../../../../models/label/label.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-add-edit-recipe',
@@ -29,6 +30,9 @@ export class AddEditRecipeComponent implements OnInit {
   labels = [];
   owner;
   private imgSeleccionada: File;
+  textRecipe = ClassicEditor;
+  textIngred = ClassicEditor;
+  textSugg = ClassicEditor;
 
   constructor(private router: ActivatedRoute, private _labelService: LabelService, private _userService: UserService,
     private formBuilder: FormBuilder, private _recipeService: RecipeService, private routerN: Router) {
@@ -127,6 +131,7 @@ export class AddEditRecipeComponent implements OnInit {
   }
 
   addOrEditRecipe() {
+    console.log(this.formGroup.value);
     if (this.isAdd === true) {
       this.formGroup.value.time = this.formGroup.value.time + ' min';
       this.formGroup.value.label = this.labels;
@@ -192,26 +197,5 @@ export class AddEditRecipeComponent implements OnInit {
   selectImg(event) {
     this.imgSeleccionada = event.target.files[0];
   }
-
-  changeFont(txt, change) {
-    if (change == 'b') {
-        if (document.getElementById(txt).style.fontWeight == 'bold')
-            document.getElementById(txt).style.fontWeight = 'normal';
-        else
-            document.getElementById(txt).style.fontWeight = 'bold';
-    }
-    else if (change == 'i') {
-        if (document.getElementById(txt).style.fontStyle == 'italic')
-            document.getElementById(txt).style.fontStyle = 'normal';
-        else
-            document.getElementById(txt).style.fontStyle = 'italic';
-    }
-    else {
-        if (document.getElementById(txt).style.textDecoration == 'underline')
-            document.getElementById(txt).style.textDecoration = 'none';
-        else
-            document.getElementById(txt).style.textDecoration = 'underline';
-    }
-}
 
 }

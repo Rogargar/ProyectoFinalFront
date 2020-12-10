@@ -33,6 +33,8 @@ import { AddEditRecipeComponent } from './modules/finalProject/components/add-ed
 import { MatTableModule } from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -68,7 +70,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatCardModule,
     MatTableModule,
     NgxPaginationModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    CKEditorModule
   ],
   providers: [
     CookieService,

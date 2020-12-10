@@ -38,23 +38,17 @@
     <div class="row contenedor  mt-5">
         <div class="col">
             <h4><img src="assets/icons/cesta-de-la-compra.png" class="iconosPeques"> <span class="ml-3 subtitulo">Ingredientes:</span> </h4>
-            <div>
-                {{recipe.ingredients}}
-            </div>
+            <div [innerHTML]="recipe.ingredients"> </div>
         </div>
         <div class="col">
             <h4><img src="assets/icons/receta.png" class="iconosPeques"> <span class="ml-3 subtitulo">Preparación:</span> </h4>
-            <div>
-                {{recipe.preparation}}
-            </div>
+            <div [innerHTML]="recipe.preparation"></div>
         </div>
     </div>
     <div class="row mt-5">
         <div class="col">
             <h4><img src="assets/icons/bombilla.png" class="iconosPeques"><span class="ml-3 subtitulo">Sugerencias:</span> </h4>
-            <div *ngIf="recipe.suggestions">
-                {{recipe.suggestions}}
-            </div>
+            <div *ngIf="recipe.suggestions" [innerHTML]="recipe.suggestions"></div>
             <div *ngIf="!recipe.suggestions">
                 Esta receta no tiene sugerencias.
             </div>
