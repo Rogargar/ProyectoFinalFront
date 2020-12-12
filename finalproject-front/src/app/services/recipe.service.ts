@@ -45,6 +45,10 @@ export class RecipeService {
     );
   }
 
+  getAllRecipesPublicatedForFind() {
+    return this._http.get(this.url + '/publicated');
+  }
+
   getLastRecipes() {
     return this._http.get(this.url + '/day').pipe(
       map((item: any) => {

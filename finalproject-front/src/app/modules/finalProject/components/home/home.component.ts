@@ -8,9 +8,7 @@ import { LabelService } from './../../../../services/label.service';
 import { UserModel } from './../../../../models/user/user.model';
 import { UserService } from './../../../../services/user.service';
 import { Component, OnInit, Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,15 +18,18 @@ import { startWith, map } from 'rxjs/operators';
 })
 
 export class HomeComponent implements OnInit {
+  keyword = 'name';
+  isLoading = false;
+  data = [];
+  datas: any;
+  errorMsg: string;
+  isLoadingResult: boolean;
   user: UserModel;
   labels: LabelModel;
   find = '';
   userId = '';
   savedRecipe: SavedRecipeModel;
-  recipes: RecipeModel[];
   lastRecipes: RecipeModel[];
-  myControl = new FormControl();
-  filteredOptions: Observable<RecipeModel[]>;
 
   constructor(private _userService: UserService, private router: Router,
     private _labelService: LabelService, private _recipeService: RecipeService,
@@ -54,14 +55,10 @@ export class HomeComponent implements OnInit {
   }
 
   getAllRecipes() {
-    this._recipeService.getAllRecipes().subscribe((data: RecipeModel[]) => {
-      this.recipes = data;
+    this._recipeService.getAllRecipesPublicatedForFind().subscribe((data: any) => {
+      this.data = data;
+      this.isLoadingResult = true;
     });
-  }
-
-  findWord(findss) {
-    console.log(findss);
-    console.log(this.find);
   }
 
   getUser() {
@@ -87,14 +84,6 @@ export class HomeComponent implements OnInit {
     this.router.navigate([id + '/label']);
   }
 
-  findRecipe(receta) {
-    console.log(this.recipes.indexOf(receta));
-    console.log(this.recipes.findIndex(receta));
-    /*if (receta.findIndex(this.recipes) > -1) {
-      console.log(this.recipes);
-    }*/
-  }
-
   getSavedRecipeByUser() {
     this._srService.getSavedRecipeByUser(this.userId).subscribe((data: SavedRecipeModel) => {
       this.savedRecipe = data;
@@ -108,6 +97,23 @@ export class HomeComponent implements OnInit {
 
   addRecipe() {
     this.router.navigate(['/add']);
+  }
+
+  searchCleared() {
+    this.data = [];
+  }
+
+  selectEvent(item) {
+    this.findRecipeS(item.id);
+  }
+
+  onChangeSearch(val: string) {
+    // fetch remote data from here
+    // And reassign the 'data' which is binded to 'data' property.
+  }
+
+  onFocused(e) {
+    // do something when input is focused
   }
 
 }

@@ -1,24 +1,21 @@
 <app-navBar>
 </app-navBar>
 <div *ngIf="user">
-    <div class="fondo">
+    <div class="fondo" *ngIf="isLoadingResult===true">
         <h1 class="card-title">Hola {{user.name}}</h1>
         <p>¿Que te gustaría comer hoy?</p>
-        <form *ngIf="recipes" class="custom-form" method="post">
-            <div class="form-group">
-                <input #receta type="text" placeholder="Buscar Receta ..." (keyup)="findRecipe(receta.value)" />
-            </div>
-        </form>
-        <!--<form class="example-form" *ngIf="recipes">
-            <mat-form-field class="example-full-width">
-                <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-                <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let option of recipes | async" [value]="option.name">
-                        {{option.name}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-        </form>-->
+        <div class="ng-autocomplete">
+            <ng-autocomplete [data]="data" [searchKeyword]="keyword" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+            </ng-autocomplete>
+
+            <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item.name"></a>
+            </ng-template>
+
+            <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+            </ng-template>
+        </div>
     </div>
 </div>
 <div class="container-fluid mt-3" *ngIf="lastRecipes">
