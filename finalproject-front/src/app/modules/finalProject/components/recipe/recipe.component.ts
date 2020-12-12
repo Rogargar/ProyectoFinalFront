@@ -43,6 +43,10 @@ export class RecipeComponent implements OnInit {
     });
   }
 
+  editRecipe(id) {
+    this.routerN.navigate(['/edit/' + id]);
+  }
+
   isSavedRecipe(idUser, idRecipe) {
     this._savedRecipeService.getSavedRecipeByUserAndRecipe(idUser, idRecipe).subscribe((data: SavedRecipeModel) => {
       if (data.recipes !== null) {
@@ -60,6 +64,7 @@ export class RecipeComponent implements OnInit {
   }
 
   saveRecipe() {
+    console.log(this.recipeForSave);
     this._savedRecipeService.saveSavedRecipe(this.recipeForSave).subscribe(data => {
       this.isSaved = true;
       this.getRecipe(this.id);

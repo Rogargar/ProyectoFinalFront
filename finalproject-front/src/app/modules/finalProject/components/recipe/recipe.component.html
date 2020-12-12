@@ -1,13 +1,16 @@
 <app-navBar></app-navBar>
 
-<div class="container mt-3" *ngIf="recipe">
+<div class="container mt-3" *ngIf="recipe  && recipeForSave">
     <div class="row">
         <div class="col">
             <div class="row">
                 <h1 class="text-center mt-1">{{recipe.name}}</h1>
             </div>
             <div class="row  mt-5">
-                <div class="col text-center">
+                <div class="col text-center" *ngIf="recipeForSave.user.id===recipe.owner.id">
+                    <button class="noBorder mb-3" (click)="editRecipe(recipe.id)"><img src="assets/icons/edicion.png" style="width: 2vw">Editar receta</button>
+                </div>
+                <div class="col text-center" *ngIf="recipeForSave.user.id!==recipe.owner.id">
                     <button class="noBorder" (click)=saveRecipe() *ngIf="isSaved===false"><img src="assets/icons/bookmark-regular.png" style="width: 2vw"></button>
                     <button class="noBorder" (click)="deleteSaveRecipe(recipeSave.id)" *ngIf="isSaved===true"><img src="assets/icons/bookmark-solid.png" style="width: 2vw"></button>
                     <a class="ml-3 cocinero" (click)="serchRecipeOwner(recipe.owner.id)">Receta de {{recipe.owner.name}}</a>

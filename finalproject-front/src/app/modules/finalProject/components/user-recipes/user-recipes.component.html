@@ -1,6 +1,6 @@
 <app-navBar></app-navBar>
 <div class="container-fluid" *ngIf="isCreator===false">
-    <h2 *ngIf="owner">Recetas del autor {{owner.name}}</h2>
+    <h2 class="text-center mt-3" *ngIf="owner">Recetas del autor {{owner.name}}</h2>
     <div class="card-columns" *ngIf="recipes">
         <span *ngFor="let recipe of recipes | paginate:{itemsPerPage:6, currentPage: pageActual}">
         <div class="card" *ngIf="recipe.state==='Publicada'"  (click)="findRecipe(recipe.id)">
@@ -14,16 +14,17 @@
     <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 </div>
 <div class="container-fluid" *ngIf="isCreator===true">
-    <table class="table table-striped" *ngIf="recipes">
+    <h2 class="text-center mt-3">Aquí encuentras todas tus recetas {{owner.name}}</h2>
+    <table class="table table-hover table-striped" *ngIf="recipes">
         <thead>
-            <tr>
+            <tr class="headColor text-center">
                 <th scope="col">Nombre</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Herramientas</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let recipe of recipes | paginate:{itemsPerPage:5, currentPage: pageActual}">
+            <tr class="text-center" *ngFor="let recipe of recipes | paginate:{itemsPerPage:5, currentPage: pageActual}">
                 <td (click)="findRecipe(recipe.id)">{{recipe.name}}</td>
                 <td>{{recipe.state}}<span *ngIf="recipe.state==='Borrador'">
                   <button class="ml-2" (click)="publicatedRecipe(recipe.id)"><img class="iconos" src="assets/icons/megafono.png"></button>
@@ -37,7 +38,6 @@
         </tbody>
     </table>
     <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
-    <div class="row">
-        <button class="quitarColor col-md-1 offset-md-10" (click)="addRecipe()"><img class="iconos" src="assets/icons/anadir.png"></button>
-    </div>
+
+    <a class="btn-flotante" (click)="addRecipe()"><img src="assets/icons/mas.png" class="icono">Añadir nueva receta</a>
 </div>

@@ -45,8 +45,8 @@ export class HomeComponent implements OnInit {
     this.getLastRecipes();
     this.getLabels();
     if (this._userService.getToken()) {
-      this.getUser();
       this.getUserId();
+      this.getUser();
       this.getSavedRecipeByUser();
     } else {
       this.user = null;
@@ -87,20 +87,27 @@ export class HomeComponent implements OnInit {
     this.router.navigate([id + '/label']);
   }
 
-  findRecipe() {
-    let palabra = this.find;
+  findRecipe(receta) {
+    console.log(this.recipes.indexOf(receta));
+    console.log(this.recipes.findIndex(receta));
+    /*if (receta.findIndex(this.recipes) > -1) {
+      console.log(this.recipes);
+    }*/
   }
 
   getSavedRecipeByUser() {
     this._srService.getSavedRecipeByUser(this.userId).subscribe((data: SavedRecipeModel) => {
       this.savedRecipe = data;
-      console.log(data);
     });
 
   }
 
   findRecipeS(id) {
     this.router.navigate([id + '/recipe']);
+  }
+
+  addRecipe() {
+    this.router.navigate(['/add']);
   }
 
 }

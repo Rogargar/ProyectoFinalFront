@@ -6,7 +6,7 @@
         <p>¿Que te gustaría comer hoy?</p>
         <form *ngIf="recipes" class="custom-form" method="post">
             <div class="form-group">
-                <input type="text" [(ngModel)]="find" name="name" placeholder="Buscar Receta" (keyup)="findRecipe()" required="required" />
+                <input #receta type="text" placeholder="Buscar Receta ..." (keyup)="findRecipe(receta.value)" />
             </div>
         </form>
         <!--<form class="example-form" *ngIf="recipes">
@@ -32,8 +32,8 @@
         </div>
     </div>
 </div>
-<div class="container-fluid mt-3" *ngIf="savedRecipe!==undefined ||savedRecipe['length']!==0">
-    <h2 class="text-center">Recetas favoritas</h2>
+<div class="container-fluid mt-3" *ngIf="savedRecipe">
+    <h2 class="text-center" *ngIf="savedRecipe['length']!==0">Recetas favoritas</h2>
     <div class="row">
         <div class="card card-recipe" *ngFor="let savedR of savedRecipe | paginate:{itemsPerPage:4, currentPage: 1}" (click)="findRecipeS(savedR.recipes.id)">
             <img class="card-img-top" src="api/recipes/uploads/img/{{savedR.recipes.img}}" alt="Card image cap">
@@ -43,6 +43,8 @@
         </div>
     </div>
 </div>
+<a *ngIf="user && user.roles[0].name==='ROLE_CREATOR'" class="btn-flotante" (click)="addRecipe()"><img src="assets/icons/mas.png" class="icono">Añadir nueva receta</a>
+
 <div class="card text-center " *ngIf="labels">
     <div class="card-body ">
         <h2 class="text-center">Explorar todas las categorías de recetas</h2>
