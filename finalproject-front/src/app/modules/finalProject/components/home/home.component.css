@@ -7,13 +7,25 @@ div.fondo {
     background-size: cover;
 }
 
-div.fondo>h1,
-div.fondo>p {
+div.fondo>div>h1,
+div.fondo>div>p {
+    font-size: 5vw;
     font-weight: bold;
     color: white;
-    text-shadow: 2px;
+    text-shadow: -5px 0px 4px rgba(0, 0, 0, 1);
 }
 
+.ng-autocomplete,
+div.autocomplete-container.active>div.suggestions-container.is-visible {
+    width: 75vw;
+}
+
+div.fondo>div {
+    padding-top: 5vw;
+    padding-left: 10vw;
+}
+
+h1,
 h2 {
     font: oblique bold 2vw cursive;
 }
@@ -23,7 +35,8 @@ h3 {
 }
 
 a:hover,
-div.card-recipe:hover {
+div.card-recipe:hover,
+li:hover {
     cursor: pointer;
 }
 
@@ -52,7 +65,7 @@ img {
     padding: 16px 32px;
     text-align: center;
     display: inline-block;
-    font-size: 1vw;
+    font-size: 1.5vw;
     margin: 4px 2px;
     -webkit-transition-duration: 0.4s;
     /* Safari */
@@ -76,21 +89,13 @@ img {
 
 .btn-flotante {
     font-size: 16px;
-    /* Cambiar el tamaño de la tipografia */
     text-transform: uppercase;
-    /* Texto en mayusculas */
     font-weight: bold;
-    /* Fuente en negrita o bold */
     color: #ffffff;
-    /* Color del texto */
     border-radius: 5px;
-    /* Borde del boton */
     letter-spacing: 2px;
-    /* Espacio entre letras */
     background-color: #f3b8ee;
-    /* Color de fondo */
     padding: 18px 30px;
-    /* Relleno del boton */
     position: fixed;
     bottom: 40px;
     right: 40px;
@@ -101,7 +106,6 @@ img {
 
 .btn-flotante:hover {
     background-color: #c3c4db;
-    /* Color de fondo al pasar el cursor */
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
     transform: translateY(-7px);
 }
@@ -118,4 +122,62 @@ img {
 .icono {
     height: 4vh;
     margin-right: 2vw;
+}
+
+.slider {
+    width: 98%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider ul {
+    display: flex;
+    padding: 0;
+    width: 335%;
+    animation: cambio 15s infinite alternate linear;
+}
+
+.slider li {
+    width: 100%;
+    list-style: none;
+}
+
+.slider img {
+    width: 100%;
+}
+
+@keyframes cambio {
+    0% {
+        margin-left: 0;
+    }
+    20% {
+        margin-left: 0;
+    }
+    25% {
+        margin-left: -100%;
+    }
+    45% {
+        margin-left: -100%;
+    }
+    50% {
+        margin-left: -200%;
+    }
+    70% {
+        margin-left: -200%;
+    }
+    75% {
+        margin-left: -300%;
+    }
+    100% {
+        margin-left: -300%;
+    }
+}
+
+div.text-center {
+    border: none;
+}
+
+.borderTop {
+    border-top: solid 1.5px #E36BDF;
+    margin-top: 2vh;
 }

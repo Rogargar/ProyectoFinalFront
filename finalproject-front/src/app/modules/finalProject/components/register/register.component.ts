@@ -17,14 +17,6 @@ export class RegisterComponent implements OnInit {
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   formGroup;
-  /*name: string;
-  surname: string;
-  rolUser: string;//Mejora que salga una opcion por defecto
-  email: string;
-  password: null;
-  confirmPassword: string;
-  passwordError: boolean;
-  roles = [];*/
   roles = [];
   hide = true;
   hide2 = true;

@@ -1,3 +1,4 @@
+import swal from 'sweetalert';
 import { UserModel } from './../../../../models/user/user.model';
 import { SavedRecipeModel } from './../../../../models/savedRecipe/savedRecipe.model';
 import { UserService } from './../../../../services/user.service';
@@ -33,7 +34,6 @@ export class RecipeComponent implements OnInit {
   getRecipe(id) {
     this._recipeService.getRecipe(id).subscribe((data: RecipeModel) => {
       this.recipe = data;
-      console.log(this.recipe);
       let sr = new SavedRecipeModel();
       sr.recipes = this.recipe;
       this._userService.getUserById(this._userService.getToken()).subscribe((data: UserModel) => {
@@ -60,13 +60,14 @@ export class RecipeComponent implements OnInit {
     this._savedRecipeService.deleteSavedRecipe(idSaveRecipe).subscribe(data => {
       this.getRecipe(this.id);
       this.isSaved = false;
+      swal('La receta se ha eliminado de favoritos correctamente!','ok', 'success');
     });
   }
 
   saveRecipe() {
-    console.log(this.recipeForSave);
     this._savedRecipeService.saveSavedRecipe(this.recipeForSave).subscribe(data => {
       this.isSaved = true;
+      swal('La receta se ha añadido a favoritos correctamente!','ok', 'success');
       this.getRecipe(this.id);
       this.isSavedRecipe(this._userService.getToken(), this.id);
     });
