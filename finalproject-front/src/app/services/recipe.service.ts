@@ -1,7 +1,7 @@
 import { RecipeModel } from './../models/recipe/recipe.model';
 import { map } from 'rxjs/operators';
 import { MapperService } from './mapper.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 
@@ -76,7 +76,13 @@ export class RecipeService {
     let formData = new FormData();
     formData.append("file", img);
     formData.append("id", idRecipe);
-    return this._http.post(this.url + '/upload', formData);
+    const req = new HttpRequest('POST', `${this.url}/upload`, formData, {
+      reportProgress: true
+    });
+
+      return this._http.request(req);
+
+    //return this._http.post(this.url + '/upload', formData);
   }
 
   putRecipe(recipe: RecipeModel, id) {

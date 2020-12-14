@@ -1,26 +1,28 @@
 <app-navBar></app-navBar>
 <div class="container-fluid">
-    <h2 *ngIf="editOrAdd==='Añadir' && saved!==true">Añadir una nueva receta</h2>
-    <h2 *ngIf="editOrAdd!=='Añadir' && editRecipe && saved!==true">Editar la receta {{editRecipe.name}}</h2>
-    <form *ngIf="formGroup && saved!==true" [formGroup]="formGroup" class="mb-3 mt-3 form-row">
-        <div class="form-group">
-            <label>Titulo</label>
-            <input class="form-control" formControlName="name" type="text">
-        </div>
-        <div class="form-group">
-            <label>Raciones</label>
-            <input formControlName="ration" class="form-control" type="number">
-        </div>
-        <div class="form-group">
-            <label>Tiempo</label>
-            <input formControlName="time" class="form-control" type="number">
+    <h2 *ngIf="editOrAdd==='Añadir' && saved!==true" class="text-center mt-3">Añadir una nueva receta</h2>
+    <h2 *ngIf="editOrAdd!=='Añadir' && editRecipe && saved!==true" class="text-center mt-3">Editar la receta {{editRecipe.name}}</h2>
+    <form *ngIf="formGroup && saved!==true" [formGroup]="formGroup" class="mb-3 mt-3 form-control-lg">
+        <div class="form-row">
+            <div class="form-group">
+                <label>Titulo</label>
+                <input class="form-control" formControlName="name" type="text">
+            </div>
+            <div class="form-group">
+                <label>Raciones</label>
+                <input formControlName="ration" class="form-control inputPeq" type="number">
+            </div>
+            <div class="form-group">
+                <label>Tiempo</label>
+                <input formControlName="time" class="form-control inputPeq" type="number">
+            </div>
         </div>
         <div class="form-group">
             <label>Ingredientes</label>
             <ckeditor [editor]="textRecipe" formControlName="ingredients" data="ingredients"></ckeditor>
             <!--<textarea formControlName="ingredients" class="form-control" rows="3"></textarea>-->
         </div>
-        <div class="form-group ml-3">
+        <div class="form-group ">
             <label>Preparación</label>
             <ckeditor [editor]="textRecipe" formControlName="preparation" data="preparation"></ckeditor>
             <!--<textarea formControlName="preparation" class="form-control" rows="3"></textarea>-->
@@ -30,24 +32,28 @@
             <ckeditor [editor]="textSugg" formControlName="suggestions" data="suggestions"></ckeditor>
             <!--<textarea formControlName="suggestions" class="form-control" rows="3"></textarea>-->
         </div>
-        <div class="form-group ml-3">
-            <label for="exampleFormControlSelect1">Dificultad</label>
-            <select class="form-control" formControlName="difficulty">
+        <div class="form-row">
+            <div class="form-group">
+                <label>Dificultad</label>
+                <select class="form-control inputPeq" formControlName="difficulty">
         <option *ngFor="let dificultad of dificultades" [value]="dificultad">{{dificultad}}</option>
       </select>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Estado</label>
-            <select class="form-control" formControlName="state">
+            </div>
+            <div class="form-group">
+                <label>Estado</label>
+                <select class="form-control inputPeq" formControlName="state">
         <option *ngFor="let estado of estados" [value]="estado">{{estado}}</option>
       </select>
-        </div>
-        <div class="form-group" *ngIf="etiquetas">
-            <label for="exampleFormControlSelect1">Etiquetas</label>
-            <select class="form-control" formControlName="label">
-        <option *ngFor="let etiqueta of etiquetas" [value]="etiqueta.id">{{etiqueta.name}}</option>
-      </select>
-            <button class="mt-3" (click)="addLabel()"><img class="iconos" src="assets/icons/add.png"></button>
+            </div>
+            <div class="form-group" *ngIf="etiquetas">
+                <label>Etiquetas</label>
+                <div class="form-row">
+                    <select class="form-control" formControlName="label">
+          <option *ngFor="let etiqueta of etiquetas" [value]="etiqueta.id">{{etiqueta.name}}</option>
+        </select>
+                    <button (click)="addLabel()"><img class="iconos" src="assets/icons/add.png"></button>
+                </div>
+            </div>
         </div>
         <br>
         <div class="mat-elevation-z8 container-fluid" *ngIf="labels['length']!==0">
@@ -68,15 +74,32 @@
             </table>
         </div>
         <br>
-        <button class="mt-3" type="submit" class="btn btn-primary mb-3" (click)="addOrEditRecipe()">{{editOrAdd}}</button>
+        <div class="row row-cols-auto">
+            <button [disabled]="formGroup.invalid" type="submit" class="btn btn-primary mb-3 col-6 col-md-2 mt-3" (click)="addOrEditRecipe()">{{editOrAdd}}</button>
+            <button type="button" class="btn btn-warning mb-3 ml-3 col-6 col-md-2 mt-3" (click)="cancelOrEditRecipe()">Cancelar</button>
+        </div>
     </form>
     <div *ngIf="saved===true" class="container-fluid">
-        <h2>{{editOrAdd}} imagen a la receta {{newRecipe.name}}</h2>
-        <form class="form-row">
-            <div>
-                <input (change)="selectImg($event)" type="file" accept="image/png, .jpeg, .jpg, image/gif">
+        <h2 class="text-center mt-3">{{editOrAdd}} imagen a la receta {{newRecipe.name}}</h2>
+        <div class="row">
+            <form class="form-control-lg col-8 p-lg-5 ml-5">
+                <div class="form-row">
+                    <input (change)="selectImg($event)" class="form-row" type="file" accept="image/png, .jpeg, .jpg, image/gif">
+                </div>
+                <div *ngIf="progreso>0" class="progress form-row">
+                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" [ngStyle]="{width:progreso+'%'}" attr.aria-valuenow="{{progreso}}" aria-valuemin="0" aria-valuemax="100">
+                        {{progreso}}%
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    <button (click)="addOrEditImg()" class="btn btn-primary ml-3" type="button">{{editOrAdd}} Foto</button>
+                    <button *ngIf="editOrAdd==='Editar'" type="button" class="btn btn-warning  ml-3" (click)="cancelOrEditRecipe()">Cancelar</button>
+                </div>
+            </form>
+            <div class="col-2 text-center" *ngIf="editOrAdd==='Editar'">
+                <h3 class="text-center">Imagen anterior</h3>
+                <img class="shadowRecipe imagen" src="api/recipes/uploads/img/{{newRecipe.img}}">
             </div>
-            <button (click)="addOrEditImg()" class="btn btn-outline-secondary ml-3" type="button">{{editOrAdd}} Foto</button>
-        </form>
+        </div>
     </div>
 </div>
