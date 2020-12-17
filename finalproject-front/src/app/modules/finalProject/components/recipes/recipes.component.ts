@@ -13,8 +13,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipesComponent implements OnInit {
 
-  recipes: RecipeModel;
-  recipesSave: SavedRecipeModel;
+  recipes: RecipeModel[];
+  recipesSave: SavedRecipeModel[];
   isSave;
   pageActual: number = 1;
 
@@ -30,7 +30,7 @@ export class RecipesComponent implements OnInit {
   }
 
   getAllRecipes() {
-    this._recipesService.getAllRecipesPublicated().subscribe((data: RecipeModel) => {
+    this._recipesService.getAllRecipesPublicated().subscribe((data: RecipeModel[]) => {
       this.recipes = data;
     });
   }
@@ -40,7 +40,7 @@ export class RecipesComponent implements OnInit {
   }
 
   findSaveRecipes() {
-    this._saveRecipeService.getSavedRecipeByUser(this._userService.getToken()).subscribe((data: SavedRecipeModel) => {
+    this._saveRecipeService.getSavedRecipeByUser(this._userService.getToken()).subscribe((data: SavedRecipeModel[]) => {
       this.recipesSave = data;
     });
   }

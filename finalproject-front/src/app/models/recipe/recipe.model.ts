@@ -32,7 +32,6 @@ export class RecipeModel extends ElementModel {
       this.time = null;
       this.state = null;
       this.publicationDate = null;
-      // tslint:disable-next-line: new-parens
       this.label = [];
 
     }

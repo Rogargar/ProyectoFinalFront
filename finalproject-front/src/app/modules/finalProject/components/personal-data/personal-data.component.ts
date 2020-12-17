@@ -56,6 +56,7 @@ export class PersonalDataComponent implements OnInit {
         });
       } else {
         this.user = data;
+        //console.log(CryptoJS.AES.decrypt(this.user.pass.trim()).toString());
       }
 
     });

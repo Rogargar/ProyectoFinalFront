@@ -25,10 +25,10 @@ export class HomeComponent implements OnInit {
   errorMsg: string;
   isLoadingResult: boolean;
   user: UserModel;
-  labels: LabelModel;
+  labels: LabelModel[];
   find = '';
   userId = '';
-  savedRecipe: SavedRecipeModel;
+  savedRecipe: SavedRecipeModel[];
   lastRecipes: RecipeModel[];
 
   constructor(private _userService: UserService, private router: Router,
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
   }
 
   getLabels() {
-    this._labelService.getLabels().subscribe((data: LabelModel) => {
+    this._labelService.getLabels().subscribe((data: LabelModel[]) => {
       this.labels = data;
     });
   }
@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
   }
 
   getSavedRecipeByUser() {
-    this._srService.getSavedRecipeByUser(this.userId).subscribe((data: SavedRecipeModel) => {
+    this._srService.getSavedRecipeByUser(this.userId).subscribe((data: SavedRecipeModel[]) => {
       this.savedRecipe = data;
     });
 

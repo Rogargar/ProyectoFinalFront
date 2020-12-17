@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class LabelComponent implements OnInit {
   id;
   label: LabelModel;
-  recipes: RecipeModel;
+  recipes: RecipeModel[];
   pageActual: number = 1;
 
   constructor(private _recipeService: RecipeService, private router: ActivatedRoute, private routerN: Router,
@@ -34,7 +34,7 @@ export class LabelComponent implements OnInit {
   }
 
   getRecipesByLabel(id) {
-    this._recipeService.getRecipeByLabel(id).subscribe((data: RecipeModel) => {
+    this._recipeService.getRecipeByLabel(id).subscribe((data: RecipeModel[]) => {
       this.recipes = data;
     });
   }

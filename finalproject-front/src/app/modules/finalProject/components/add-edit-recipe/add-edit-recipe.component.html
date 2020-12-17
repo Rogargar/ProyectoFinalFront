@@ -82,7 +82,8 @@
     <div *ngIf="saved===true" class="container-fluid">
         <h2 class="text-center mt-3">{{editOrAdd}} imagen a la receta {{newRecipe.name}}</h2>
         <div class="row">
-            <form class="form-control-lg col-8 p-lg-5 ml-5">
+            <form class="form-control-lg col-6 p-lg-5 ml-5 formImg">
+                <h3 class="text-center">Añadir imagen</h3>
                 <div class="form-row">
                     <input (change)="selectImg($event)" class="form-row" type="file" accept="image/png, .jpeg, .jpg, image/gif">
                 </div>
@@ -96,7 +97,7 @@
                     <button *ngIf="editOrAdd==='Editar'" type="button" class="btn btn-warning  ml-3" (click)="cancelOrEditRecipe()">Cancelar</button>
                 </div>
             </form>
-            <div class="col-2 text-center" *ngIf="editOrAdd==='Editar'">
+            <div class="col-4 text-center imgStyle" *ngIf="editOrAdd==='Editar'">
                 <h3 class="text-center">Imagen anterior</h3>
                 <img class="shadowRecipe imagen" src="api/recipes/uploads/img/{{newRecipe.img}}">
             </div>

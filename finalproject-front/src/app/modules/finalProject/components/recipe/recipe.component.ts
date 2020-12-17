@@ -1,4 +1,4 @@
-import swal from 'sweetalert';
+import  swal  from 'sweetalert';
 import { UserModel } from './../../../../models/user/user.model';
 import { SavedRecipeModel } from './../../../../models/savedRecipe/savedRecipe.model';
 import { UserService } from './../../../../services/user.service';

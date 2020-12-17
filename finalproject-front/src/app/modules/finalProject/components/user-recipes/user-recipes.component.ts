@@ -16,7 +16,7 @@ export class UserRecipesComponent implements OnInit {
   idOwner;
   isCreator = false;
   owner: UserModel;
-  recipes: RecipeModel;
+  recipes: RecipeModel[];
   pageActual: number = 1;
 
   constructor(private router: ActivatedRoute, private _userService: UserService,
@@ -40,7 +40,7 @@ export class UserRecipesComponent implements OnInit {
   }
 
   getRecipesByOwner() {
-    this._recipeService.getRecipeByOwner(this.idOwner).subscribe((data: RecipeModel) => {
+    this._recipeService.getRecipeByOwner(this.idOwner).subscribe((data: RecipeModel[]) => {
       this.recipes = data;
     });
   }
@@ -55,6 +55,7 @@ export class UserRecipesComponent implements OnInit {
 
   removeRecipe(id) {
     this._recipeService.deleteRecipe(id).subscribe(data => {
+      swal('La receta se ha borrado correctamente!', `La receta  se ha eliminado con éxito`, 'success');
       this.getRecipesByOwner();
     })
   }
@@ -73,7 +74,7 @@ export class UserRecipesComponent implements OnInit {
       recipe = data;
       recipe.state = 'Publicada';
       this._recipeService.putRecipe(recipe, id).subscribe(datas => {
-        swal('La receta se ha editado correctamente!', `La receta ${data.name} se ha editado con éxito`, 'success');
+        swal('La receta se ha publicado correctamente!', `La receta ${data.name} se ha editado con éxito`, 'success');
         this.getRecipesByOwner();
       });
     });

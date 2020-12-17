@@ -68,5 +68,28 @@ h2 {
 }
 
 .shadowRecipe {
-    width: 20vw;
+    width: 15vw;
+}
+
+.formImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    border: solid 1px #ccd8ef;
+}
+
+.imgStyle {
+    border: solid 1px #E9D3E7;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 2vw;
 }

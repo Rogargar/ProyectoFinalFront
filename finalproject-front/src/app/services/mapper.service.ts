@@ -45,7 +45,7 @@ export class MapperService {
       time: item.time,
       state: item.state,
       publicationDate: item.publicationDate,
-      label: this.mapLabel(item.label),
+      label:item.label,
     }) : null;
   }
 
