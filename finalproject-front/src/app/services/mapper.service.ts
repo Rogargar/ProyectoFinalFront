@@ -20,6 +20,7 @@ export class MapperService {
       pass: item.pass,
       roles: item.roles,
       surnames: item.surnames,
+      img: item.img,
     }) : null;
   }
 

@@ -2,7 +2,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { UserModel } from './../models/user/user.model';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpRequest, HttpHeaders } from '@angular/common/http';
 import { MapperService } from './mapper.service';
 import { map } from 'rxjs/operators';
 
@@ -15,10 +15,6 @@ export class UserService {
   private enviroment = environment;
 
   private url = `${this.enviroment.urlBack}/users`;
-
-  headers: HttpHeaders = new HttpHeaders({
-    "Content-Type": "application/json"
-  });
 
   constructor(private _http: HttpClient, private _mapper: MapperService, private cookies: CookieService) { }
 
@@ -51,8 +47,7 @@ export class UserService {
   }
 
   validatorEmailAndPass(user) {
-    return this._http.post(`${this.url}/emailPass`, user,
-      { headers: this.headers })
+    return this._http.post(`${this.url}/emailPass`, user)
       .pipe(map(data => data));
   }
 
@@ -68,6 +63,23 @@ export class UserService {
   }
   deleteToken() {
     this.cookies.delete('token');
+  }
+
+  getImg(img) {
+    return this._http.get(`${this.url}/uploads/img/${img}`);
+  }
+
+  postUserImg(img: File, idRecipe) {
+    let formData = new FormData();
+    formData.append("file", img);
+    formData.append("id", idRecipe);
+    const req = new HttpRequest('POST', `${this.url}/upload`, formData, {
+      reportProgress: true
+    });
+
+      return this._http.request(req);
+
+    //return this._http.post(this.url + '/upload', formData);
   }
 
 }

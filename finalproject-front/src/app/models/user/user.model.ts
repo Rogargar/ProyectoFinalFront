@@ -8,6 +8,8 @@ export class UserModel extends ElementModel {
   pass: string;
   roles: RolModel[];
   surnames: string;
+  img: string;
+
   constructor(props?: UserModel) {
     super(props);
     if (props === undefined) {
@@ -17,6 +19,7 @@ export class UserModel extends ElementModel {
       this.pass = null;
       this.roles = [];
       this.surnames = null;
+      this.img = null;
     }
     Object.assign(this, props);
   }

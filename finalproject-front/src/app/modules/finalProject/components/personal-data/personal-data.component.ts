@@ -1,3 +1,5 @@
+import swal  from 'sweetalert';
+import { HttpEventType } from '@angular/common/http';
 import { Md5 } from 'angular-md5';
 import { CustomValidators } from './../register/CustomValidators';
 import { FormControl, Validators, FormBuilder } from '@angular/forms';
@@ -24,11 +26,13 @@ export class PersonalDataComponent implements OnInit {
   roles = [];
   hide = true;
   hide2 = true;
+  private imgSeleccionada: File;
+  progreso = 0;
 
   constructor(private _userService: UserService, private formBuilder: FormBuilder) {
+    this.getRoles();
     this.getIdUser();
     this.getUser();
-    this.getRoles();
   }
 
   ngOnInit(): void {
@@ -76,15 +80,33 @@ export class PersonalDataComponent implements OnInit {
         Validators.email,
         Validators.pattern(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/),
         Validators.required]),
-      password: new FormControl(this.user.pass, [
-        Validators.required,
-        CustomValidators.patternValidator(/\d/, { hasNumber: true }),
-        CustomValidators.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
-        CustomValidators.patternValidator(/[a-z]/, { hasSmallCase: true }), Validators.minLength(8)],
-      ),
-      confirmPassword: new FormControl(this.user.pass, Validators.compose([Validators.required])),
+      img: new FormControl(this.user.img)
     }
     );
+  }
+
+  addOrEditImg() {
+    if (!this.imgSeleccionada) {
+      swal('Error Upload: ', `Debe seleccionar una foto`, 'error');
+    } else {
+      this._userService.postUserImg(this.imgSeleccionada, this.user.id).subscribe(data => {
+        if (data.type === HttpEventType.UploadProgress) {
+          this.progreso = Math.round((data.loaded / data.total) * 100);
+        } else if (data.type === HttpEventType.Response) {
+          let response: any = data.body;
+          swal('La foto se ha subido correctamente!', `La foto se ha subido con éxito`, 'success');
+        }
+      });
+    }
+  }
+
+  selectImg(event) {
+    this.imgSeleccionada = event.target.files[0];
+    this.progreso = 0;
+    if (this.imgSeleccionada.type.indexOf('image') < 0) {
+      swal('Error selecinar imagen: ', ' El archivo tiene que ser del tipo imagen', 'error');
+      this.imgSeleccionada = null;
+    }
   }
 
 }
