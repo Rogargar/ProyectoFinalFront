@@ -1,6 +1,6 @@
 <app-navBar></app-navBar>
 <div class="container-fluid mt-3" *ngIf="isSave===null">
-    <h2>Todas las recetas</h2>
+    <h2 class="text-center">Todas las recetas</h2>
     <div class="card-columns">
         <div class="card" *ngFor="let recipe of recipes | paginate:{itemsPerPage:6, currentPage: pageActual}" (click)="findRecipe(recipe.id)">
             <img *ngIf="recipe?.img" class="card-img-top" src="api/recipes/uploads/img/{{recipe.img}}" alt="Card image cap">
@@ -9,11 +9,14 @@
             </div>
         </div>
     </div>
-    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+    <div class="mt-2 pb-3">
+        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+    </div>
 </div>
 <div class="container-fluid" *ngIf="isSave!==null">
-    <h2>Tus Recetas Favoritas</h2>
-    <div class="card-columns">
+    <h2 class="text-center">Tus Recetas Favoritas</h2>
+    <h3 class="text-center text-danger" *ngIf="recipesSave && recipesSave.length===0">No tienes recetas favoritas</h3>
+    <div class="card-columns" *ngIf="recipesSave && recipesSave.length!==0">
         <div class="card" *ngFor="let recipe of recipesSave | paginate:{itemsPerPage:6, currentPage: pageActual}" (click)="findRecipe(recipe.recipes.id)">
             <img class="card-img-top" src="api/recipes/uploads/img/{{recipe.recipes.img}}" alt="Card image cap">
             <div class="card-body">
@@ -21,5 +24,7 @@
             </div>
         </div>
     </div>
-    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+    <div class="mt-2 pb-3" *ngIf="recipesSave && recipesSave.length!==0">
+        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+    </div>
 </div>

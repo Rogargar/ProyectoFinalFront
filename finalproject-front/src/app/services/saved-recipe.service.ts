@@ -1,8 +1,11 @@
-import { map } from 'rxjs/operators';
+import swal  from 'sweetalert';
+import { Router } from '@angular/router';
+import { map, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { MapperService } from './mapper.service';
 import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +16,16 @@ export class SavedRecipeService {
 
   private url = `${this.enviroment.urlBack}/savedRecipes`;
 
-  constructor(private _http: HttpClient, private _mapper: MapperService) { }
+  constructor(private _http: HttpClient, private _mapper: MapperService,private router:Router) { }
 
   getSavedRecipeById(id) {
-    return this._http.get(this.url + '/' + id);
+    return this._http.get(this.url + '/' + id).pipe(
+      catchError(e => {
+        this.router.navigate(['/recipes']);
+        swal('No encuentro la receta con ese id','error', 'error')
+        return throwError(e);
+      })
+    );
   }
 
   getSavedRecipeByUser(id) {

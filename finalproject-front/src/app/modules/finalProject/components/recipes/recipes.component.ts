@@ -42,6 +42,7 @@ export class RecipesComponent implements OnInit {
   findSaveRecipes() {
     this._saveRecipeService.getSavedRecipeByUser(this._userService.getToken()).subscribe((data: SavedRecipeModel[]) => {
       this.recipesSave = data;
+      console.log(this.recipesSave)
     });
   }
 

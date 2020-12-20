@@ -1,9 +1,12 @@
+import { Router } from '@angular/router';
+import swal from 'sweetalert';
 import { RecipeModel } from './../models/recipe/recipe.model';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { MapperService } from './mapper.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +17,7 @@ export class RecipeService {
 
   private url = `${this.enviroment.urlBack}/recipes`;
 
-  constructor(private _http: HttpClient, private _mapper: MapperService) { }
+  constructor(private router:Router,private _http: HttpClient, private _mapper: MapperService) { }
 
   getRecipeByLabel(id) {
     return this._http.get(`${this.url}/label/${id}`);
@@ -61,7 +64,13 @@ export class RecipeService {
   }
 
   getRecipe(id) {
-    return this._http.get(this.url + '/' + id);
+    return this._http.get(this.url + '/' + id).pipe(
+      catchError(e => {
+        this.router.navigate(['/recipes']);
+        swal('No encuentro la receta con ese id','error', 'error')
+        return throwError(e);
+      })
+    );
   }
 
   getImg(img) {
@@ -80,7 +89,7 @@ export class RecipeService {
       reportProgress: true
     });
 
-      return this._http.request(req);
+    return this._http.request(req);
 
     //return this._http.post(this.url + '/upload', formData);
   }

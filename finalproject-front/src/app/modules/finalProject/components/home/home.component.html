@@ -5,7 +5,7 @@
         <div class="ml-5">
             <h1 class="card-title textStyle" id="h1Style">Hola {{user.name}},</h1>
             <p class="textStyle mb-5">¿Que te gustaría comer hoy?</p>
-            <div class="ng-autocomplete text-center ">
+            <div class="ng-autocomplete text-center bordes">
                 <ng-autocomplete [data]="data " [searchKeyword]="keyword " (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate " [notFoundTemplate]="notFoundTemplate ">
                 </ng-autocomplete>
 
@@ -47,9 +47,9 @@
     </div>
     <a *ngIf="user && user.roles[0].name==='ROLE_CREATOR' " class="btn-flotante " (click)="addRecipe() "><img src="assets/icons/mas.png " class="icono ">Añadir nueva receta</a>
     <div class="borderTop"></div>
-    <div container-fluid class="card text-center mb-2" *ngIf="labels ">
-        <div class="card-body ">
-            <h2 class="text-center ">Explorar todas las categorías de recetas</h2>
-            <button *ngFor="let label of labels " (click)="getLabel(label.id) " class="btn btn-info ml-3 mr-3 mt- mb-3 label btn-formato ">{{label.name}}</button>
+    <div class="container-fluid card text-center mb-2" *ngIf="labels ">
+        <div class="card-body">
+            <h2 class="text-center">Explorar todas las categorías de recetas</h2>
+            <button *ngFor="let label of labels " (click)="getLabel(label.id) " class="btn ml-3 mr-3 mt- mb-3 label btn-formato ">{{label.name}}</button>
         </div>
     </div>

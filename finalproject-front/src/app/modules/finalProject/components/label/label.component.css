@@ -1,12 +1,12 @@
-h3 {
-    font-weight: bolder;
-}
-
 .card {
-    border: solid 2px gray;
+    border: solid 2px rgb(235, 235, 235);
 }
 
 a:hover,
 div.card:hover {
     cursor: pointer;
+}
+
+h2 {
+    font: oblique bold 2vw cursive;
 }
