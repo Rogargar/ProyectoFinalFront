@@ -1,0 +1,30 @@
+h1 {
+    font-weight: bolder;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2vw;
+}
+
+.btnColorA {
+    background-color: #BCE8E3;
+}
+
+.btnColorB {
+    background-color: rgb(253, 125, 125);
+}
+
+textarea {
+    width: 35vw;
+    resize: none;
+}
+
+.formImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    background-size: contain;
+    background-image: url("/assets/img/circulo.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+}

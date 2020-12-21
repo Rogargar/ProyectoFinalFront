@@ -8,5 +8,7 @@ div.card:hover {
 }
 
 h2 {
-    font: oblique bold 2vw cursive;
+    font-weight: bolder;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2vw;
 }

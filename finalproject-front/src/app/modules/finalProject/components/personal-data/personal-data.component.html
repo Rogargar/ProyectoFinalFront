@@ -46,39 +46,42 @@
     </table>
 </div>
 
-<div class="container-fluid my-3 row" *ngIf="isEdit">
-    <form [formGroup]="formGroup" class="custom-form form-row col-4" method="post" *ngIf="formGroup" novalidate>
-        <h1 class="text-center">Registro</h1>
-        <input type="text" disabled formControlName="name" name="name" placeholder="Name" required />
-        <div *ngIf="formGroup.controls['name'].invalid && formGroup.controls['name'].dirty">
-            <div class="text-danger">Campo obligatorio</div>
-        </div>
-        <input type="text" disabled formControlName="surname" name="surname" placeholder="Surname" />
-        <select name="rol" formControlName="rolUser">
+<div class="container-fluid" *ngIf="isEdit">
+    <div class="row">
+        <form [formGroup]="formGroup" class="custom-form formImg col-5 mt-3 ml-2" method="post" *ngIf="formGroup" novalidate>
+            <h1 class="text-center">Cambiar datos</h1>
+
+            <input type="text" class="form-control" disabled formControlName="name" name="name" placeholder="Name" required />
+            <br>
+            <input type="text" class="form-control" disabled formControlName="surname" name="surname" placeholder="Surname" />
+
+            <select name="rol" class="form-control mt-3 mb-3" formControlName="rolUser">
     <option disabled selected>Selecciona un rol</option>
     <option *ngFor="let rols of roles" [value]="rols.id">{{rols.name}}</option>
   </select>
-        <div *ngIf="formGroup.controls['rolUser'].invalid && formGroup.controls['rolUser'].dirty">
-            <div class="text-danger">Selecciona un rol</div>
-        </div>
-        <input type="email" disabled formControlName="email" name="email" placeholder="Email" required />
-        <div *ngIf="formGroup.controls['email'].invalid && formGroup.controls['email'].dirty">
-            <div class="text-danger" *ngIf="formGroup.controls['email'].hasError('email')">Introduce un email valido</div>
-        </div>
-        <button type="submit" [disabled]="formGroup.invalid">Guardar Cambios</button>
-    </form>
-    <form class="form-control-lg col-6 p-lg-5 ml-5 formImg form-row">
-        <h1 class="text-center">Añadir imagen</h1>
-        <div class="form-row">
-            <input (change)="selectImg($event)" class="form-row" type="file" accept="image/png, .jpeg, .jpg, image/gif">
-        </div>
-        <div *ngIf="progreso>0" class="progress form-row">
-            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" [ngStyle]="{width:progreso+'%'}" attr.aria-valuenow="{{progreso}}" aria-valuemin="0" aria-valuemax="100">
-                {{progreso}}%
+            <input type="email" class="form-control" disabled formControlName="email" name="email" placeholder="Email" required />
+
+            <div class="form-row mt-3 mb-3">
+                <button class="btn btnColorA" (click)="saveChange()" type="submit" [disabled]="formGroup.invalid">Guardar Cambios</button>
+                <button class="btn btnColorB ml-2" (click)="cancelChange()" type="button">Cancelar</button>
             </div>
+        </form>
+
+        <form class="custom-form form-group col-4 formImg mt-3">
+            <h1 class="text-center">Añadir imagen</h1>
+            <input type="file" (change)="selectImg($event)" accept="image/png, .jpeg, .jpg, image/gif" class="form-control" id="customFile" />
+            <div *ngIf="progreso>0" class="progress form-row">
+                <div class="progress-bar progress-bar-striped bg-info" role="progressbar" [ngStyle]="{width:progreso+'%'}" attr.aria-valuenow="{{progreso}}" aria-valuemin="0" aria-valuemax="100">
+                    {{progreso}}%
+                </div>
+            </div>
+            <div class="form-row mt-3">
+                <button (click)="addOrEditImg()" class="btn btnColorA ml-3" type="button">Añadir Foto</button>
+            </div>
+        </form>
+        <div class="col text-center mt-3 mr-2 imgStyle" *ngIf="user.img">
+            <h1>Tú imagen anterior</h1>
+            <img src="api/users/uploads/img/{{user.img}}" class="img-thumbnail imgUser" alt="userImg">
         </div>
-        <div class="form-row mt-3">
-            <button (click)="addOrEditImg()" class="btn btn-primary ml-3" type="button">Añadir Foto</button>
-        </div>
-    </form>
+    </div>
 </div>

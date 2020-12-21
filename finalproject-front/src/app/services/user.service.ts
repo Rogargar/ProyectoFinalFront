@@ -42,6 +42,10 @@ export class UserService {
     return this._http.get(this.url + '/' + id);
   }
 
+  putUser(id,user) {
+    return this._http.put(this.url + '/' + id,user);
+  }
+
   registerUser(user) {
     return this._http.post(this.url, user);
   }
@@ -81,5 +85,7 @@ export class UserService {
 
     //return this._http.post(this.url + '/upload', formData);
   }
+
+  
 
 }

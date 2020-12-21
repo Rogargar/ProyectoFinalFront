@@ -11,7 +11,9 @@
         </div>
       </span>
     </div>
-    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+    <div class="mt-2 pb-3">
+        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+    </div>
 </div>
 <div class="container-fluid" *ngIf="isCreator===true">
     <h2 class="text-center mt-3" *ngIf="owner">Aquí encuentras todas tus recetas {{owner.name}}</h2>
@@ -37,6 +39,7 @@
             </tr>
         </tbody>
     </table>
+
     <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 
     <a class="btn-flotante" (click)="addRecipe()"><img src="assets/icons/mas.png" class="icono">Añadir nueva receta</a>

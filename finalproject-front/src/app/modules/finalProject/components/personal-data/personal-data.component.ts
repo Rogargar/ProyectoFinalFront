@@ -1,4 +1,4 @@
-import swal  from 'sweetalert';
+import swal from 'sweetalert';
 import { HttpEventType } from '@angular/common/http';
 import { Md5 } from 'angular-md5';
 import { CustomValidators } from './../register/CustomValidators';
@@ -95,6 +95,11 @@ export class PersonalDataComponent implements OnInit {
         } else if (data.type === HttpEventType.Response) {
           let response: any = data.body;
           swal('La foto se ha subido correctamente!', `La foto se ha subido con éxito`, 'success');
+          this.getUser();
+          this.progreso = 0;
+          this.imgSeleccionada = null;
+          this.newFomGroup();
+          this.isEdit = true;
         }
       });
     }
@@ -107,6 +112,22 @@ export class PersonalDataComponent implements OnInit {
       swal('Error selecinar imagen: ', ' El archivo tiene que ser del tipo imagen', 'error');
       this.imgSeleccionada = null;
     }
+  }
+
+  saveChange() {
+    this.user.roles = this.formGroup.value.rolUser;
+    console.log(this.user);
+    /*this._userService.putUser(this.user.id, this.formGroup.value).subscribe(data => {
+      console.log(data);
+      this.cancelChange();
+    });*/
+  }
+
+  cancelChange() {
+    this.isEdit = false;
+    this.getRoles();
+    this.getIdUser();
+    this.getUser();
   }
 
 }

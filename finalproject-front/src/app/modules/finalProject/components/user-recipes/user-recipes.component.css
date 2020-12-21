@@ -1,7 +1,6 @@
 h2 {
     font-weight: bolder;
     font-family: 'Courier New', Courier, monospace;
-    color: #E36BDF;
     font-size: 2vw;
 }
 
@@ -10,7 +9,7 @@ h3 {
 }
 
 .card {
-    border: solid 2px #53A399;
+    border: solid 2px rgb(235, 235, 235);
 }
 
 a:hover,
