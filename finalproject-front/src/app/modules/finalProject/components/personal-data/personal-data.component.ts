@@ -1,3 +1,4 @@
+import { RolModel } from './../../../../models/rol/rol.model';
 import swal from 'sweetalert';
 import { HttpEventType } from '@angular/common/http';
 import { Md5 } from 'angular-md5';
@@ -24,8 +25,7 @@ export class PersonalDataComponent implements OnInit {
   faEyeSlash = faEyeSlash;
   formGroup;
   roles = [];
-  hide = true;
-  hide2 = true;
+  edited = false;
   private imgSeleccionada: File;
   progreso = 0;
 
@@ -49,6 +49,7 @@ export class PersonalDataComponent implements OnInit {
   }
 
   getIdUser() {
+    this.edited = false;
     this.idUser = this._userService.getToken();
   }
 
@@ -115,15 +116,20 @@ export class PersonalDataComponent implements OnInit {
   }
 
   saveChange() {
-    this.user.roles = this.formGroup.value.rolUser;
-    console.log(this.user);
-    /*this._userService.putUser(this.user.id, this.formGroup.value).subscribe(data => {
-      console.log(data);
-      this.cancelChange();
-    });*/
+    this.user.roles = [];
+    this._userService.getRole(this.formGroup.value.rolUser).subscribe((data: any) => {
+      this.user.roles.push(data);
+      console.log(this.user);
+      this._userService.putUser(this.user.id, this.user).subscribe(data => {
+        swal('Cambios realizados correctamente!', `Los cambios se han realizado con éxito`, 'success');
+        this.cancelChange();
+      });
+    });
   }
 
   cancelChange() {
+    this.edited = true;
+    this.roles = [];
     this.isEdit = false;
     this.getRoles();
     this.getIdUser();

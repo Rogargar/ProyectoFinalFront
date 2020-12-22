@@ -36,3 +36,13 @@ h1 {
 .btnColorB {
     background-color: rgb(253, 125, 125);
 }
+
+.col-5,
+.col-4,
+div:nth-child(3)>div>div {
+    height: 60vh;
+}
+
+#customFile {
+    width: 30vw;
+}
