@@ -5,7 +5,7 @@
     <div class="navbar-expand-sm" *ngIf="user!==null">
         <ul class="navbar-nav mr-auto" *ngIf="user.roles[0].name==='ROLE_READER' ||user.roles[0].name==='ROLE_CREATOR'">
             <li class="nav-item" *ngIf="user.roles[0].name==='ROLE_CREATOR'">
-                <a class="nav-link" (click)="misRecetas()">MisRecetas</a>
+                <a class="nav-link" (click)="misRecetas()">Mis Recetas</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" (click)="recetas()">Recetas</a>

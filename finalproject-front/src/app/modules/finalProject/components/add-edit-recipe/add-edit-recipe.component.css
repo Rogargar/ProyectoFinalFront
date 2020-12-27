@@ -28,13 +28,6 @@ div.ck.ck-reset.ck-editor.ck-rounded-corners {
     width: 90vw;
 }
 
-h2 {
-    font-weight: bolder;
-    font-family: 'Courier New', Courier, monospace;
-    color: #E36BDF;
-    font-size: 2vw;
-}
-
 .progress {
     height: 40px;
 }
@@ -74,7 +67,6 @@ h2 {
 .formImg {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 50vh;
     border: solid 1px #ccd8ef;
@@ -85,8 +77,22 @@ h2 {
     height: 50vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+}
+
+h2 {
+    font-weight: bolder;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2vw;
+    margin-top: 1vw;
+}
+
+.btnColorA {
+    background-color: #BCE8E3;
+}
+
+.btnColorB {
+    background-color: rgb(253, 125, 125);
 }
 
 h3 {

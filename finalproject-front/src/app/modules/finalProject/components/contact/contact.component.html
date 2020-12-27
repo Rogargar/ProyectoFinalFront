@@ -1,11 +1,11 @@
 <app-navBar></app-navBar>
 <div class="container-fluid formImg text-center mt-5">
-    <h1 class="text-center mt-2">Contacto</h1>
+    <h1 class="text-center mt-2">¿Como podemos ayudarte?</h1>
     <form *ngIf="formGroup" [formGroup]="formGroup" class="custom-form">
         <div class="form-group">
             <textarea formControlName="content" class="form-control" placeholder="Mensaje" rows="3"></textarea>
         </div>
-        <button type="button" class="btn btnColorA" (click)="sendEmail()" type="submit" [disabled]="formGroup.invalid">Contactar</button>
+        <button type="button" class="btn btnColorA" (click)="sendEmail()" type="submit" [disabled]="formGroup.invalid">Enviar</button>
         <button type="button" class="btn btnColorB ml-2" (click)="cancel()">Cancelar</button>
     </form>
 </div>

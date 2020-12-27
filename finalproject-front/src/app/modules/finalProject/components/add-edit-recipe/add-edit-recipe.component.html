@@ -75,17 +75,17 @@
         </div>
         <br>
         <div class="row row-cols-auto">
-            <button [disabled]="formGroup.invalid" type="submit" class="btn btn-primary mb-3 col-6 col-md-2 mt-3" (click)="addOrEditRecipe()">{{editOrAdd}}</button>
-            <button type="button" class="btn btn-warning mb-3 ml-3 col-6 col-md-2 mt-3" (click)="cancelOrEditRecipe()">Cancelar</button>
+            <button [disabled]="formGroup.invalid" type="submit" class="btn btnColorA mb-3 col-6 col-md-2 mt-3" (click)="addOrEditRecipe()">{{editOrAdd}}</button>
+            <button type="button" class="btn btnColorB mb-3 ml-3 col-6 col-md-2 mt-3" (click)="cancelOrEditRecipe()">Cancelar</button>
         </div>
     </form>
     <div *ngIf="saved===true" class="container-fluid">
         <h2 class="text-center mt-3">{{editOrAdd}} imagen a la receta {{newRecipe.name}}</h2>
         <div class="row">
-            <form class="form-control-lg col-6 p-lg-5 ml-5 formImg">
+            <form class="form-control-lg col-8 formImg">
                 <h3 class="text-center">Añadir imagen</h3>
                 <div class="form-row">
-                    <input (change)="selectImg($event)" class="form-row" type="file" accept="image/png, .jpeg, .jpg, image/gif">
+                    <input (change)="selectImg($event)" class="form-control" type="file" accept="image/png, .jpeg, .jpg, image/gif">
                 </div>
                 <div *ngIf="progreso>0" class="progress form-row">
                     <div class="progress-bar progress-bar-striped bg-info" role="progressbar" [ngStyle]="{width:progreso+'%'}" attr.aria-valuenow="{{progreso}}" aria-valuemin="0" aria-valuemax="100">
@@ -93,8 +93,8 @@
                     </div>
                 </div>
                 <div class="form-row mt-3">
-                    <button (click)="addOrEditImg()" class="btn btn-primary ml-3" type="button">{{editOrAdd}} Foto</button>
-                    <button *ngIf="editOrAdd==='Editar'" type="button" class="btn btn-warning  ml-3" (click)="cancelOrEditRecipe()">Cancelar</button>
+                    <button (click)="addOrEditImg()" class="btn  ml-3 btnColorA" type="button">{{editOrAdd}} Foto</button>
+                    <button *ngIf="editOrAdd==='Editar'" type="button" class="btn  btnColorB ml-3" (click)="cancelOrEditRecipe()">Cancelar</button>
                 </div>
             </form>
             <div class="col-4 text-center imgStyle" *ngIf="editOrAdd==='Editar'">
