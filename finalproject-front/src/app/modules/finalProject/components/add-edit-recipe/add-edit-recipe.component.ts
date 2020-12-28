@@ -133,7 +133,6 @@ export class AddEditRecipeComponent implements OnInit {
   }
 
   addOrEditRecipe() {
-    console.log(this.formGroup.value);
     if (this.isAdd === true) {
       this.formGroup.value.time = this.formGroup.value.time + ' min';
       this.formGroup.value.label = this.labels;

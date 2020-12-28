@@ -21,8 +21,8 @@ export class SavedRecipeService {
   getSavedRecipeById(id) {
     return this._http.get(this.url + '/' + id).pipe(
       catchError(e => {
-        this.router.navigate(['/recipes']);
-        swal('No encuentro la receta con ese id','error', 'error')
+        this.router.navigate(['/home']);
+        swal('No encuentro ninguna receta guardada con ese id','error', 'error')
         return throwError(e);
       })
     );

@@ -27,7 +27,14 @@ export class RegisterComponent implements OnInit {
     this._userService.deleteToken();
     this.getRoles();
     this.newFomGroup();
+    this.getAllUser();
   }
+
+getAllUser(){
+  this._userService.getUsers().subscribe((data: UserModel[]) => {
+    console.log(data);
+  })
+}
 
   newFomGroup() {
     this.formGroup = this.formBuilder.group({

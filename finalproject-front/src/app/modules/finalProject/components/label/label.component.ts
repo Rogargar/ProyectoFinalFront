@@ -28,14 +28,21 @@ export class LabelComponent implements OnInit {
   }
 
   getLabel(id) {
-    this._labelService.getLabelById(id).subscribe((data: LabelModel) => {
-      this.label = data;
-    })
+    this._labelService.getLabelById(id).subscribe(
+      (data: LabelModel) => {
+        this.label = data;
+      }, (error) => {
+      if (error.status === 404) {
+      }
+    });
   }
 
   getRecipesByLabel(id) {
     this._recipeService.getRecipeByLabel(id).subscribe((data: RecipeModel[]) => {
       this.recipes = data;
+    }, (error) => {
+      if (error.status === 404) {
+      }
     });
   }
 

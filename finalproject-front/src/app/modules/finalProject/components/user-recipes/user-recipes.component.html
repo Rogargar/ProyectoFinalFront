@@ -28,7 +28,7 @@
         </thead>
         <tbody>
             <tr class="text-center" *ngFor="let recipe of recipes | paginate:{itemsPerPage:5, currentPage: pageActual}">
-                <td (click)="findRecipe(recipe.id)">{{recipe.name}}</td>
+                <td (click)="findRecipe(recipe.id)" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver receta">{{recipe.name}}</td>
                 <td>{{recipe.state}}<span *ngIf="recipe.state==='Borrador'">
                   <button class="ml-2" (click)="publicatedRecipe(recipe.id)" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Publicar receta"><img class="iconos" src="assets/icons/megafono.png"></button>
                 </span></td>

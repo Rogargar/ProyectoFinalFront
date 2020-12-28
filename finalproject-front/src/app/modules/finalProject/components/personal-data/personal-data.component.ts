@@ -61,7 +61,6 @@ export class PersonalDataComponent implements OnInit {
         });
       } else {
         this.user = data;
-        //console.log(CryptoJS.AES.decrypt(this.user.pass.trim()).toString());
       }
 
     });
@@ -100,7 +99,7 @@ export class PersonalDataComponent implements OnInit {
           this.progreso = 0;
           this.imgSeleccionada = null;
           this.newFomGroup();
-          this.isEdit = true;
+          this.cancelChange();
         }
       });
     }
@@ -119,7 +118,6 @@ export class PersonalDataComponent implements OnInit {
     this.user.roles = [];
     this._userService.getRole(this.formGroup.value.rolUser).subscribe((data: any) => {
       this.user.roles.push(data);
-      console.log(this.user);
       this._userService.putUser(this.user.id, this.user).subscribe(data => {
         swal('Cambios realizados correctamente!', `Los cambios se han realizado con éxito`, 'success');
         this.cancelChange();

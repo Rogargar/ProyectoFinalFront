@@ -41,9 +41,7 @@ export class RecipeComponent implements OnInit {
         this.recipeForSave = sr;
       });
     }, (error) => {
-      console.log(error);
       if (error.status === 404) {
-        console.log("hola");
       }
     });
   }
@@ -59,9 +57,7 @@ export class RecipeComponent implements OnInit {
         this.recipeSave = data;
       }
     }, (error) => {
-      console.log(error);
       if (error.status === 404) {
-        console.log("hola1");
       }
     }
     );

@@ -1,7 +1,7 @@
 <app-navBar></app-navBar>
 <div class="container-fluid">
-    <h2 *ngIf="label" class="text-center">Recetas con la etiqueta {{label.name}}</h2>
-
+    <h2 *ngIf="label && recipes" class="text-center">Recetas con la etiqueta {{label.name}}</h2>
+    <h3 class="text-center text-danger" *ngIf="recipes && recipes.length===0">No existen recetas con la etiqueta {{label.name}}</h3>
     <div class="row row-cols-md-3" *ngIf="recipes">
         <div class="col mb-4" *ngFor="let recipe of recipes | paginate:{itemsPerPage:6, currentPage: pageActual}">
             <div class="card" (click)="findRecipe(recipe.id)">
@@ -13,6 +13,6 @@
         </div>
     </div>
     <div class="mt-2 pb-3">
-        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+        <pagination-controls *ngIf="recipes && recipes.length!==0" (pageChange)="pageActual = $event"></pagination-controls>
     </div>
 </div>

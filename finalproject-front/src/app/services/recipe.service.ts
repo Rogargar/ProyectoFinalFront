@@ -20,11 +20,23 @@ export class RecipeService {
   constructor(private router:Router,private _http: HttpClient, private _mapper: MapperService) { }
 
   getRecipeByLabel(id) {
-    return this._http.get(`${this.url}/label/${id}`);
+    return this._http.get(`${this.url}/label/${id}`).pipe(
+      catchError(e => {
+        this.router.navigate(['/home']);
+        swal('No se encuentra el label con ese id','error', 'error')
+        return throwError(e);
+      })
+    );
   }
 
   getRecipeByOwner(id) {
-    return this._http.get(`${this.url}/owner/${id}`);
+    return this._http.get(`${this.url}/owner/${id}`).pipe(
+      catchError(e => {
+        this.router.navigate(['/home']);
+        swal('No se encuentra el usuario con ese id','error', 'error')
+        return throwError(e);
+      })
+    );;
   }
 
   getAllRecipes() {
@@ -66,8 +78,8 @@ export class RecipeService {
   getRecipe(id) {
     return this._http.get(this.url + '/' + id).pipe(
       catchError(e => {
-        this.router.navigate(['/recipes']);
-        swal('No encuentro la receta con ese id','error', 'error')
+        this.router.navigate(['/home']);
+        swal('No se encuentra ninguna receta con ese id','error', 'error')
         return throwError(e);
       })
     );
