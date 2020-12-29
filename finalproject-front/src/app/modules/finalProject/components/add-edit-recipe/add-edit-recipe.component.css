@@ -68,13 +68,13 @@ div.ck.ck-reset.ck-editor.ck-rounded-corners {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 50vh;
+    height: 70vh;
     border: solid 1px #ccd8ef;
 }
 
 .imgStyle {
     border: solid 1px #E9D3E7;
-    height: 50vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;

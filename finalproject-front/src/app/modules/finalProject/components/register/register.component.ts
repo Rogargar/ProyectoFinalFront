@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
   roles = [];
   hide = true;
   hide2 = true;
+  emails = [];
 
   constructor(private _userService: UserService, private router: Router, private formBuilder: FormBuilder) { }
 
@@ -31,8 +32,12 @@ export class RegisterComponent implements OnInit {
   }
 
 getAllUser(){
+  let emailss = [];
   this._userService.getUsers().subscribe((data: UserModel[]) => {
-    console.log(data);
+    data.forEach(datas => {
+      emailss.push(datas.email);
+    })
+    this.emails = emailss;
   })
 }
 

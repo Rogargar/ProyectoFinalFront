@@ -5,7 +5,7 @@ import { RecipeModel } from './../../../../models/recipe/recipe.model';
 import { RecipeService } from './../../../../services/recipe.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-user-recipes',
   templateUrl: './user-recipes.component.html',
@@ -54,10 +54,27 @@ export class UserRecipesComponent implements OnInit {
   }
 
   removeRecipe(id) {
-    this._recipeService.deleteRecipe(id).subscribe(data => {
-      swal('La receta se ha borrado correctamente!', `La receta  se ha eliminado con éxito`, 'success');
-      this.getRecipesByOwner();
+    Swal.fire({
+      title: '¿Deseas eliminar esta receta?',
+      text: "Los cambios no se podran revertir",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._recipeService.deleteRecipe(id).subscribe(data => {
+          Swal.fire(
+            'Eliminado correctamente!',
+            'La receta a sido eliminada con exito',
+            'success'
+          )
+          this.getRecipesByOwner();
+        })
+      }
     })
+
   }
 
   addRecipe() {

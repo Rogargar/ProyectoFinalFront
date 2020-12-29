@@ -17,6 +17,11 @@
         <div *ngIf="formGroup.controls['email'].invalid && formGroup.controls['email'].dirty">
             <div class="text-danger" *ngIf="formGroup.controls['email'].hasError('email')">Introduce un email valido</div>
         </div>
+        <div *ngIf="formGroup.controls['email'].dirty">
+            <span *ngFor="let email of emails">
+              <div class="text-danger" *ngIf="email===formGroup.value['email']">El correo ya existe en la base de datos</div>
+            </span>
+        </div>
         <div class="form-inline">
             <input class="col form-control" [type]="hide ? 'password' : 'text'" formControlName="password" name="password" placeholder="Contraseña" required />
             <button class="col-sm-2 ml-2 other" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
