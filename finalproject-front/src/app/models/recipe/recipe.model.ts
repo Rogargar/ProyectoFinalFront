@@ -2,6 +2,13 @@ import { LabelModel } from './../label/label.model';
 import { UserModel } from './../user/user.model';
 import { ElementModel } from '../element.model';
 
+/**
+ * Model for recipes
+ *
+ * @export
+ * @class RecipeModel
+ * @extends {ElementModel}
+ */
 export class RecipeModel extends ElementModel {
   id: string;
   name: string;
@@ -17,6 +24,11 @@ export class RecipeModel extends ElementModel {
   publicationDate: string;
   label: LabelModel[];
 
+  /**
+   * Creates an instance of RecipeModel.
+   * @param {RecipeModel} [props]
+   * @memberof RecipeModel
+   */
   constructor(props?: RecipeModel) {
     super(props);
     if (props === undefined) {

@@ -8,6 +8,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 
+/**
+ * Label service
+ *
+ * @export
+ * @class LabelService
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +25,12 @@ export class LabelService {
 
   constructor(private _http: HttpClient, private _mapper: MapperService,private router:Router) { }
 
+  /**
+   * Get all labels
+   *
+   * @return {*}
+   * @memberof LabelService
+   */
   getLabels() {
     return this._http.get(this.url)
       .pipe(
@@ -31,6 +43,13 @@ export class LabelService {
       );
   }
 
+  /**
+   * Get label by id
+   *
+   * @param {*} id the label id
+   * @return {*}
+   * @memberof LabelService
+   */
   getLabelById(id) {
     return this._http.get(this.url + '/' + id).pipe(
       catchError(e => {

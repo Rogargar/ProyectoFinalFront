@@ -1,6 +1,13 @@
 import { RolModel } from './../rol/rol.model';
 import { ElementModel } from '../element.model';
 
+/**
+ * Model of user
+ *
+ * @export
+ * @class UserModel
+ * @extends {ElementModel}
+ */
 export class UserModel extends ElementModel {
   id: string;
   email: string;
@@ -10,6 +17,11 @@ export class UserModel extends ElementModel {
   surnames: string;
   img: string;
 
+  /**
+   * Creates an instance of UserModel.
+   * @param {UserModel} [props]
+   * @memberof UserModel
+   */
   constructor(props?: UserModel) {
     super(props);
     if (props === undefined) {

@@ -7,6 +7,13 @@ import { UserService } from './../../../../services/user.service';
 
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * Page of register user
+ *
+ * @export
+ * @class RegisterComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -22,6 +29,13 @@ export class RegisterComponent implements OnInit {
   hide2 = true;
   emails = [];
 
+  /**
+   * Creates an instance of RegisterComponent.
+   * @param {UserService} _userService
+   * @param {Router} router
+   * @param {FormBuilder} formBuilder
+   * @memberof RegisterComponent
+   */
   constructor(private _userService: UserService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -31,6 +45,11 @@ export class RegisterComponent implements OnInit {
     this.getAllUser();
   }
 
+/**
+ * Get all user for check the email and don´t repeat this
+ *
+ * @memberof RegisterComponent
+ */
 getAllUser(){
   let emailss = [];
   this._userService.getUsers().subscribe((data: UserModel[]) => {
@@ -41,6 +60,11 @@ getAllUser(){
   })
 }
 
+  /**
+   * Create form for register user
+   *
+   * @memberof RegisterComponent
+   */
   newFomGroup() {
     this.formGroup = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
@@ -62,7 +86,11 @@ getAllUser(){
     );
   }
 
-
+  /**
+   * Get all roles for select of register
+   *
+   * @memberof RegisterComponent
+   */
   getRoles() {
     this._userService.getRoles().subscribe((data: any[]) => {
       data.forEach(element => {
@@ -73,6 +101,11 @@ getAllUser(){
     });
   }
 
+  /**
+   * Register new user if all fields are true
+   *
+   * @memberof RegisterComponent
+   */
   register() {
     let user = new UserModel();
     if (this.formGroup.value['password'] === this.formGroup.value['confirmPassword']) {
@@ -92,6 +125,11 @@ getAllUser(){
     }
   }
 
+  /**
+   * Go to page of login
+   *
+   * @memberof RegisterComponent
+   */
   login() {
     this.router.navigate(['']);
   }

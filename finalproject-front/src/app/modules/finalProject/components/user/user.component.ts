@@ -8,6 +8,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * Login user
+ *
+ * @export
+ * @class UserComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -21,6 +28,14 @@ export class UserComponent implements OnInit {
   form: FormGroup;
   error: string;
   hide = true;
+
+  /**
+   * Creates an instance of UserComponent.
+   * @param {UserService} _userService
+   * @param {FormBuilder} fb
+   * @param {Router} router
+   * @memberof UserComponent
+   */
   constructor(private _userService: UserService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
@@ -29,6 +44,11 @@ export class UserComponent implements OnInit {
 
   }
 
+  /**
+   * Create form for login user
+   *
+   * @memberof UserComponent
+   */
   createFormGroup() {
     this.form = this.fb.group({
       email: new FormControl(null, [Validators.required, Validators.email]),
@@ -36,6 +56,11 @@ export class UserComponent implements OnInit {
     });
   }
 
+  /**
+   * Login new user and check email and password
+   *
+   * @memberof UserComponent
+   */
   recogerDatos() {
     let user = new UserModel();
     const pass = CryptoJS.MD5(this.form.value.pass).toString();
@@ -64,6 +89,11 @@ export class UserComponent implements OnInit {
         });
     }
   }
+  /**
+   * Go to page of register new user
+   *
+   * @memberof UserComponent
+   */
   register() {
     this.router.navigate(['/register']);
   }

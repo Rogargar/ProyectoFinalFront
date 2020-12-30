@@ -1,12 +1,25 @@
 import { ElementModel } from './../element.model';
 import { RecipeModel } from './../recipe/recipe.model';
 import { UserModel } from './../user/user.model';
+
+/**
+ * Model of save Recipe
+ *
+ * @export
+ * @class SavedRecipeModel
+ * @extends {ElementModel}
+ */
 export class SavedRecipeModel extends ElementModel {
   id: string;
   name: string;
   user: UserModel;
   recipes: RecipeModel;
 
+  /**
+   * Creates an instance of SavedRecipeModel.
+   * @param {SavedRecipeModel} [props]
+   * @memberof SavedRecipeModel
+   */
   constructor(props?: SavedRecipeModel) {
     super(props);
     if (props === undefined) {

@@ -8,6 +8,12 @@ import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 
+/**
+ * Recipe service
+ *
+ * @export
+ * @class RecipeService
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +25,13 @@ export class RecipeService {
 
   constructor(private router:Router,private _http: HttpClient, private _mapper: MapperService) { }
 
+  /**
+   * Get recipe by id label
+   *
+   * @param {*} id the label id
+   * @return {*}
+   * @memberof RecipeService
+   */
   getRecipeByLabel(id) {
     return this._http.get(`${this.url}/label/${id}`).pipe(
       catchError(e => {
@@ -29,6 +42,13 @@ export class RecipeService {
     );
   }
 
+  /**
+   * Get recipe by id owner
+   *
+   * @param {*} id the owner id
+   * @return {*}
+   * @memberof RecipeService
+   */
   getRecipeByOwner(id) {
     return this._http.get(`${this.url}/owner/${id}`).pipe(
       catchError(e => {
@@ -39,6 +59,12 @@ export class RecipeService {
     );;
   }
 
+  /**
+   * Get all recipes
+   *
+   * @return {*}
+   * @memberof RecipeService
+   */
   getAllRecipes() {
     return this._http.get(this.url).pipe(
       map((item: any) => {
@@ -49,6 +75,13 @@ export class RecipeService {
       }),
     );
   }
+
+  /**
+   * Get all recipes with state is publicated
+   *
+   * @return {*}
+   * @memberof RecipeService
+   */
   getAllRecipesPublicated() {
     return this._http.get(this.url + '/publicated').pipe(
       map((item: any) => {
@@ -60,10 +93,22 @@ export class RecipeService {
     );
   }
 
+    /**
+   * Get all recipes with state is publicated
+   *
+   * @return {*}
+   * @memberof RecipeService
+   */
   getAllRecipesPublicatedForFind() {
     return this._http.get(this.url + '/publicated');
   }
 
+  /**
+   * Get last recipes
+   *
+   * @return {*}
+   * @memberof RecipeService
+   */
   getLastRecipes() {
     return this._http.get(this.url + '/day').pipe(
       map((item: any) => {
@@ -75,6 +120,13 @@ export class RecipeService {
     );
   }
 
+  /**
+   * Get recipe by id
+   *
+   * @param {*} id the recipe id
+   * @return {*}
+   * @memberof RecipeService
+   */
   getRecipe(id) {
     return this._http.get(this.url + '/' + id).pipe(
       catchError(e => {
@@ -85,14 +137,36 @@ export class RecipeService {
     );
   }
 
+  /**
+   * Get img for recipe
+   *
+   * @param {*} img the name of img
+   * @return {*}
+   * @memberof RecipeService
+   */
   getImg(img) {
     return this._http.get(`${this.url}/uploads/img/${img}`);
   }
 
+  /**
+   * Create recipe
+   *
+   * @param {RecipeModel} recipe the recipe
+   * @return {*}
+   * @memberof RecipeService
+   */
   postRecipe(recipe: RecipeModel) {
     return this._http.post(this.url, recipe);
   }
 
+  /**
+   * file new img
+   *
+   * @param {File} img the img
+   * @param {*} idRecipe the recipe id
+   * @return {*}
+   * @memberof RecipeService
+   */
   postRecipeImg(img: File, idRecipe) {
     let formData = new FormData();
     formData.append("file", img);
@@ -102,15 +176,25 @@ export class RecipeService {
     });
 
     return this._http.request(req);
-
-    //return this._http.post(this.url + '/upload', formData);
   }
 
+  /**
+   * edit recipe
+   *
+   * @param recipe  the recipe
+   * @param id  the recipe id
+   */
   putRecipe(recipe: RecipeModel, id) {
     return this._http.put(this.url + '/' + id, recipe);
   }
 
-
+  /**
+   * Delete recipe by id
+   *
+   * @param {*} id the recipe id
+   * @return {*}
+   * @memberof RecipeService
+   */
   deleteRecipe(id) {
     return this._http.delete(this.url + '/' + id);
   }

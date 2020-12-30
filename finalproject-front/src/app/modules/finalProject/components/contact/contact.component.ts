@@ -5,6 +5,13 @@ import { UserModel } from './../../../../models/user/user.model';
 import { UserService } from './../../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Page for contact
+ *
+ * @export
+ * @class ContactComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -15,12 +22,24 @@ export class ContactComponent implements OnInit {
   user: UserModel;
   formGroup;
 
-  constructor(private _userService:UserService, private formBuilder: FormBuilder,private _emailService:EmailService) { }
+  /**
+   * Creates an instance of ContactComponent.
+   * @param {UserService} _userService
+   * @param {FormBuilder} formBuilder
+   * @param {EmailService} _emailService
+   * @memberof ContactComponent
+   */
+  constructor(private _userService: UserService, private formBuilder: FormBuilder, private _emailService: EmailService) { }
 
   ngOnInit(): void {
     this.getUser();
   }
 
+  /**
+   * Get User for contact
+   *
+   * @memberof ContactComponent
+   */
   getUser() {
     this._userService.getUserById(this._userService.getToken()).subscribe((data: UserModel) => {
       this.user = data;
@@ -29,6 +48,11 @@ export class ContactComponent implements OnInit {
 
   }
 
+  /**
+   * Create form for contact
+   *
+   * @memberof ContactComponent
+   */
   newFomGroup() {
     this.formGroup = this.formBuilder.group({
       subject: new FormControl(this.user.name+' quiere contacta contigo'),
@@ -38,6 +62,11 @@ export class ContactComponent implements OnInit {
     );
   }
 
+  /**
+   * Send email whit content
+   *
+   * @memberof ContactComponent
+   */
   sendEmail() {
     this._emailService.sendEmail(this.formGroup.value).subscribe(data => {
       swal('Mensaje enviado con exito','', 'success');
@@ -46,6 +75,11 @@ export class ContactComponent implements OnInit {
 
   }
 
+  /**
+   * Cancel email, and remove this content
+   *
+   * @memberof ContactComponent
+   */
   cancel() {
     this.getUser();
   }

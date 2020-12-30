@@ -1,15 +1,18 @@
-import { RolModel } from './../../../../models/rol/rol.model';
 import swal from 'sweetalert';
 import { HttpEventType } from '@angular/common/http';
-import { Md5 } from 'angular-md5';
-import { CustomValidators } from './../register/CustomValidators';
 import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { UserModel } from './../../../../models/user/user.model';
 import { UserService } from './../../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import * as CryptoJS from 'crypto-js';
 
+/**
+ * Page of personal data of user
+ *
+ * @export
+ * @class PersonalDataComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-personal-data',
   templateUrl: './personal-data.component.html',
@@ -29,6 +32,12 @@ export class PersonalDataComponent implements OnInit {
   private imgSeleccionada: File;
   progreso = 0;
 
+  /**
+   * Creates an instance of PersonalDataComponent.
+   * @param {UserService} _userService
+   * @param {FormBuilder} formBuilder
+   * @memberof PersonalDataComponent
+   */
   constructor(private _userService: UserService, private formBuilder: FormBuilder) {
     this.getRoles();
     this.getIdUser();
@@ -38,6 +47,11 @@ export class PersonalDataComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Get all roles for user
+   *
+   * @memberof PersonalDataComponent
+   */
   getRoles() {
     this._userService.getRoles().subscribe((data: any[]) => {
       data.forEach(element => {
@@ -48,11 +62,21 @@ export class PersonalDataComponent implements OnInit {
     });
   }
 
+  /**
+   * Get id user for token
+   *
+   * @memberof PersonalDataComponent
+   */
   getIdUser() {
     this.edited = false;
     this.idUser = this._userService.getToken();
   }
 
+  /**
+   * Get user by id of token
+   *
+   * @memberof PersonalDataComponent
+   */
   getUser() {
     this._userService.getUserById(this.idUser).subscribe((data: UserModel) => {
       if (data.roles[0].id === '1') {
@@ -66,11 +90,22 @@ export class PersonalDataComponent implements OnInit {
     });
   }
 
+  /**
+   * edit user
+   *
+   * @param {*} id the user id
+   * @memberof PersonalDataComponent
+   */
   editUser(id) {
     this.isEdit = true;
     this.newFomGroup();
   }
 
+  /**
+   * Create form for edit personal data
+   *
+   * @memberof PersonalDataComponent
+   */
   newFomGroup() {
     this.formGroup = this.formBuilder.group({
       name: new FormControl(this.user.name, [Validators.required]),
@@ -85,6 +120,11 @@ export class PersonalDataComponent implements OnInit {
     );
   }
 
+  /**
+   *Add or edit img for user
+   *
+   * @memberof PersonalDataComponent
+   */
   addOrEditImg() {
     if (!this.imgSeleccionada) {
       swal('Error Upload: ', `Debe seleccionar una foto`, 'error');
@@ -105,6 +145,12 @@ export class PersonalDataComponent implements OnInit {
     }
   }
 
+  /**
+   * Select img for user
+   *
+   * @param {*} event
+   * @memberof PersonalDataComponent
+   */
   selectImg(event) {
     this.imgSeleccionada = event.target.files[0];
     this.progreso = 0;
@@ -114,6 +160,11 @@ export class PersonalDataComponent implements OnInit {
     }
   }
 
+  /**
+   *Save change personal data for user
+   *
+   * @memberof PersonalDataComponent
+   */
   saveChange() {
     this.user.roles = [];
     this._userService.getRole(this.formGroup.value.rolUser).subscribe((data: any) => {
@@ -125,6 +176,11 @@ export class PersonalDataComponent implements OnInit {
     });
   }
 
+  /**
+   * Cancel change of personal data for user
+   *
+   * @memberof PersonalDataComponent
+   */
   cancelChange() {
     this.edited = true;
     this.roles = [];

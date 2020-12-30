@@ -7,6 +7,12 @@ import { MapperService } from './mapper.service';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 
+/**
+ * Service of Save recipe
+ *
+ * @export
+ * @class SavedRecipeService
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +24,13 @@ export class SavedRecipeService {
 
   constructor(private _http: HttpClient, private _mapper: MapperService,private router:Router) { }
 
+  /**
+   * Get saved recipe by id
+   *
+   * @param {*} id the save recipe
+   * @return {*}
+   * @memberof SavedRecipeService
+   */
   getSavedRecipeById(id) {
     return this._http.get(this.url + '/' + id).pipe(
       catchError(e => {
@@ -28,6 +41,13 @@ export class SavedRecipeService {
     );
   }
 
+  /**
+   * Get all recipes save for user
+   *
+   * @param {*} id the user id
+   * @return {*}
+   * @memberof SavedRecipeService
+   */
   getSavedRecipeByUser(id) {
     return this._http.get(this.url + '/user/' + id)
       .pipe(
@@ -40,10 +60,25 @@ export class SavedRecipeService {
       );
   }
 
+  /**
+   * Get save recipe by id user and id recipe
+   *
+   * @param {*} idUser the user id
+   * @param {*} idRecipe the recipe id
+   * @return {*}
+   * @memberof SavedRecipeService
+   */
   getSavedRecipeByUserAndRecipe(idUser, idRecipe) {
     return this._http.get(this.url + '/user/' + idUser + '/recipes/' + idRecipe);
   }
 
+  /**
+   * Save recipe
+   *
+   * @param {*} savedRecipe
+   * @return {*}
+   * @memberof SavedRecipeService
+   */
   saveSavedRecipe(savedRecipe) {
     return this._http.post(this.url, savedRecipe);
   }
@@ -52,6 +87,13 @@ export class SavedRecipeService {
     return this._http.post(this.url + '/' + id, savedRecipe);
   }
 
+  /**
+   * Delete recipe of save
+   *
+   * @param {*} id
+   * @return {*}
+   * @memberof SavedRecipeService
+   */
   deleteSavedRecipe(id) {
     return this._http.delete(this.url + '/' + id);
   }

@@ -1,10 +1,15 @@
-import { RolModel } from './../models/rol/rol.model';
 import { SavedRecipeModel } from './../models/savedRecipe/savedRecipe.model';
 import { RecipeModel } from './../models/recipe/recipe.model';
 import { LabelModel } from './../models/label/label.model';
 import { Injectable } from '@angular/core';
 import { UserModel } from '../models/user/user.model';
 
+/**
+ * Mapper service for mapper data of model
+ *
+ * @export
+ * @class MapperService
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +17,13 @@ export class MapperService {
 
   constructor() { }
 
+  /**
+   * Mapper user
+   *
+   * @param {*} item the user
+   * @return {*}  {UserModel}
+   * @memberof MapperService
+   */
   mapUsers(item: any): UserModel {
     return item ? new UserModel({
       id: item.id,
@@ -24,6 +36,13 @@ export class MapperService {
     }) : null;
   }
 
+  /**
+   * Mapper label
+   *
+   * @param {*} item the label
+   * @return {*}  {LabelModel}
+   * @memberof MapperService
+   */
   mapLabel(item: any): LabelModel {
     return item ? new LabelModel({
       id: item.id,
@@ -32,6 +51,13 @@ export class MapperService {
 
   }
 
+  /**
+   * Mapper recipe
+   *
+   * @param {*} item the recipe
+   * @return {*}  {RecipeModel}
+   * @memberof MapperService
+   */
   mapRecipes(item: any): RecipeModel {
     return item ? new RecipeModel({
       id: item.id,
@@ -50,6 +76,13 @@ export class MapperService {
     }) : null;
   }
 
+  /**
+   * Mapper save recipe
+   *
+   * @param {*} item the save recipe
+   * @return {*}  {SavedRecipeModel}
+   * @memberof MapperService
+   */
   mapSavedRecipe(item: any): SavedRecipeModel {
     return item ? new SavedRecipeModel({
       id: item.id,

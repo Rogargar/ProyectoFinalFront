@@ -9,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { HttpEventType } from '@angular/common/http';
-
+/**
+ *Page for added or edited recipe
+ *
+ * @export
+ * @class AddEditRecipeComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-add-edit-recipe',
   templateUrl: './add-edit-recipe.component.html',
@@ -36,6 +42,16 @@ export class AddEditRecipeComponent implements OnInit {
   textSugg = ClassicEditor;
   progreso = 0;
 
+  /**
+   * Creates an instance of AddEditRecipeComponent.
+   * @param {ActivatedRoute} router
+   * @param {LabelService} _labelService
+   * @param {UserService} _userService
+   * @param {FormBuilder} formBuilder
+   * @param {RecipeService} _recipeService
+   * @param {Router} routerN
+   * @memberof AddEditRecipeComponent
+   */
   constructor(private router: ActivatedRoute, private _labelService: LabelService, private _userService: UserService,
     private formBuilder: FormBuilder, private _recipeService: RecipeService, private routerN: Router) {
     this.getLabels();
@@ -64,6 +80,11 @@ export class AddEditRecipeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Get owner of recipe for the token
+   *
+   * @memberof AddEditRecipeComponent
+   */
   getOwner() {
     this._userService.getUserById(this._userService.getToken()).subscribe(data => {
       this.owner = data;
@@ -73,6 +94,11 @@ export class AddEditRecipeComponent implements OnInit {
     });
   }
 
+  /**
+   * Create form for new recipe
+   *
+   * @memberof AddEditRecipeComponent
+   */
   newFomGroup() {
     this.formGroup = this.formBuilder.group({
       name: new FormControl(null, [Validators.required]),
@@ -88,12 +114,23 @@ export class AddEditRecipeComponent implements OnInit {
     });
   }
 
+  /**
+   * Create form for img of recipe
+   *
+   * @memberof AddEditRecipeComponent
+   */
   newFormImg() {
     this.formImg = new FormGroup({
       img: new FormControl(null, [Validators.required]),
       recipeId: new FormControl(this.newRecipe.id),
     });
   }
+
+  /**
+   * Create form for edit img of recipe
+   *
+   * @memberof AddEditRecipeComponent
+   */
   newFormImgEdit() {
     this.formImg = new FormGroup({
       img: new FormControl(this.editRecipe.img, [Validators.required]),
@@ -101,6 +138,11 @@ export class AddEditRecipeComponent implements OnInit {
     });
   }
 
+  /**
+   * Create form for edit recipe
+   *
+   * @memberof AddEditRecipeComponent
+   */
   newFomGroupEdit() {
     this.labels = this.editRecipe.label;
     this.formGroup = this.formBuilder.group({
@@ -118,6 +160,11 @@ export class AddEditRecipeComponent implements OnInit {
     });
   }
 
+  /**
+   * Get Recipe for edit
+   *
+   * @memberof AddEditRecipeComponent
+   */
   getRecipe() {
     this._recipeService.getRecipe(this.id).subscribe((data: RecipeModel) => {
       this.editRecipe = data;
@@ -126,12 +173,22 @@ export class AddEditRecipeComponent implements OnInit {
 
   }
 
+  /**
+   * Get labels of recipe edit
+   *
+   * @memberof AddEditRecipeComponent
+   */
   getLabels() {
     this._labelService.getLabels().subscribe((data: LabelModel[]) => {
       this.etiquetas = data;
     });
   }
 
+  /**
+   * Edit or added recipe
+   *
+   * @memberof AddEditRecipeComponent
+   */
   addOrEditRecipe() {
     if (this.isAdd === true) {
       this.formGroup.value.time = this.formGroup.value.time + ' min';
@@ -153,6 +210,11 @@ export class AddEditRecipeComponent implements OnInit {
     }
   }
 
+  /**
+   * Added labels of recipe
+   *
+   * @memberof AddEditRecipeComponent
+   */
   addLabel() {
     if (this.formGroup.value.label !== null) {
       this._labelService.getLabelById(this.formGroup.value.label).subscribe((data: LabelModel) => {
@@ -177,6 +239,12 @@ export class AddEditRecipeComponent implements OnInit {
     }
   }
 
+  /**
+   * Remove labels of recipe
+   *
+   * @param {*} id
+   * @memberof AddEditRecipeComponent
+   */
   removeLabel(id) {
     let newLabels = [];
     this.labels.forEach(label => {
@@ -188,6 +256,11 @@ export class AddEditRecipeComponent implements OnInit {
     this.labels = newLabels;
   }
 
+  /**
+   * Add or edit img of recipe
+   *
+   * @memberof AddEditRecipeComponent
+   */
   addOrEditImg() {
     if (!this.imgSeleccionada) {
       swal('Error Upload: ', `Debe seleccionar una foto`, 'error');
@@ -204,6 +277,12 @@ export class AddEditRecipeComponent implements OnInit {
     }
   }
 
+  /**
+   * Select file img
+   *
+   * @param {*} event
+   * @memberof AddEditRecipeComponent
+   */
   selectImg(event) {
     this.imgSeleccionada = event.target.files[0];
     this.progreso = 0;
@@ -213,6 +292,11 @@ export class AddEditRecipeComponent implements OnInit {
     }
   }
 
+  /**
+   * Cancel edit or add recipe
+   *
+   * @memberof AddEditRecipeComponent
+   */
   cancelOrEditRecipe() {
     this.routerN.navigate([this.owner.id + '/user/1']);
   }

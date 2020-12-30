@@ -1,4 +1,3 @@
-import { FormControl } from '@angular/forms';
 import { RecipeModel } from './../../../../models/recipe/recipe.model';
 import { SavedRecipeModel } from './../../../../models/savedRecipe/savedRecipe.model';
 import { SavedRecipeService } from './../../../../services/saved-recipe.service';
@@ -10,7 +9,13 @@ import { UserService } from './../../../../services/user.service';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-
+/**
+ * Page of home
+ *
+ * @export
+ * @class HomeComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -31,12 +36,26 @@ export class HomeComponent implements OnInit {
   savedRecipe: SavedRecipeModel[];
   lastRecipes: RecipeModel[];
 
+  /**
+   * Creates an instance of HomeComponent.
+   * @param {UserService} _userService
+   * @param {Router} router
+   * @param {LabelService} _labelService
+   * @param {RecipeService} _recipeService
+   * @param {SavedRecipeService} _srService
+   * @memberof HomeComponent
+   */
   constructor(private _userService: UserService, private router: Router,
     private _labelService: LabelService, private _recipeService: RecipeService,
     private _srService: SavedRecipeService) {
 
   }
 
+  /**
+   * Get id of user is login
+   *
+   * @memberof HomeComponent
+   */
   getUserId() {
     this.userId = this._userService.getToken();
   }
@@ -54,6 +73,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  /**
+   * Get all recipes for search
+   *
+   * @memberof HomeComponent
+   */
   getAllRecipes() {
     this._recipeService.getAllRecipesPublicatedForFind().subscribe((data: any) => {
       this.data = data;
@@ -61,6 +85,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /**
+   *  Get User is login
+   */
   getUser() {
     this._userService.getUserById(this.userId).subscribe((data: UserModel) => {
       this.user = data;
@@ -68,22 +95,43 @@ export class HomeComponent implements OnInit {
 
   }
 
+  /**
+   * Get all labels
+   *
+   * @memberof HomeComponent
+   */
   getLabels() {
     this._labelService.getLabels().subscribe((data: LabelModel[]) => {
       this.labels = data;
     });
   }
 
+  /**
+   * Get Last recipes
+   *
+   * @memberof HomeComponent
+   */
   getLastRecipes() {
     this._recipeService.getLastRecipes().subscribe((data: RecipeModel[]) => {
       this.lastRecipes = data;
     });
   }
 
+  /**
+   * Go to router label with id of label
+   *
+   * @param {*} id the label id
+   * @memberof HomeComponent
+   */
   getLabel(id) {
     this.router.navigate([id + '/label']);
   }
 
+  /**
+   * Get Saved recipes by user
+   *
+   * @memberof HomeComponent
+   */
   getSavedRecipeByUser() {
     this._srService.getSavedRecipeByUser(this.userId).subscribe((data: SavedRecipeModel[]) => {
       this.savedRecipe = data;
@@ -91,18 +139,40 @@ export class HomeComponent implements OnInit {
 
   }
 
+  /**
+   * find recipes by id
+   *
+   * @param {*} id
+   * @memberof HomeComponent
+   */
   findRecipeS(id) {
     this.router.navigate([id + '/recipe']);
   }
 
+  /**
+   * Go to router for add recipe if user login is creater user
+   *
+   * @memberof HomeComponent
+   */
   addRecipe() {
     this.router.navigate(['/add']);
   }
 
+  /**
+   * Clear filter of search recipe
+   *
+   * @memberof HomeComponent
+   */
   searchCleared() {
     this.data = [];
   }
 
+  /**
+   * Select recipe for search
+   *
+   * @param {*} item the recipe for searh
+   * @memberof HomeComponent
+   */
   selectEvent(item) {
     this.findRecipeS(item.id);
   }
