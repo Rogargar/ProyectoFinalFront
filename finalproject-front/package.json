@@ -8,7 +8,7 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "compodoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json -s --port=4400"
+        "compodoc": "npx compodoc -p tsconfig.base.json -d docs -o -s --port=4400"
     },
     "private": true,
     "dependencies": {

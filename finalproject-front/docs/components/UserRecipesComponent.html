@@ -1,0 +1,1388 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>finalproject-front documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">finalproject-front documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>UserRecipesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Page of recipes of user or table for edit or delete recipes</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-user-recipes</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./user-recipes.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./user-recipes.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#idOwner">idOwner</a>
+                            </li>
+                            <li>
+                                <a href="#isCreator">isCreator</a>
+                            </li>
+                            <li>
+                                <a href="#owner">owner</a>
+                            </li>
+                            <li>
+                                <a href="#pageActual">pageActual</a>
+                            </li>
+                            <li>
+                                <a href="#recipes">recipes</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addRecipe">addRecipe</a>
+                            </li>
+                            <li>
+                                <a href="#editImagen">editImagen</a>
+                            </li>
+                            <li>
+                                <a href="#editRecipe">editRecipe</a>
+                            </li>
+                            <li>
+                                <a href="#findRecipe">findRecipe</a>
+                            </li>
+                            <li>
+                                <a href="#getOwner">getOwner</a>
+                            </li>
+                            <li>
+                                <a href="#getRecipesByOwner">getRecipesByOwner</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#publicatedRecipe">publicatedRecipe</a>
+                            </li>
+                            <li>
+                                <a href="#removeRecipe">removeRecipe</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, _userService: <a href="../injectables/UserService.html">UserService</a>, _recipeService: <a href="../injectables/RecipeService.html">RecipeService</a>, routerN: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of UserRecipesComponent.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_recipeService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RecipeService.html" target="_self" >RecipeService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>routerN</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addRecipe"></a>
+                    <span class="name">
+                        <b>
+                            addRecipe
+                        </b>
+                        <a href="#addRecipe"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addRecipe()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:129</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Go to page for add new recipe</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editImagen"></a>
+                    <span class="name">
+                        <b>
+                            editImagen
+                        </b>
+                        <a href="#editImagen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editImagen(id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="139"
+                            class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:139</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Go to page for edit img of recipe</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the recipe id</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editRecipe"></a>
+                    <span class="name">
+                        <b>
+                            editRecipe
+                        </b>
+                        <a href="#editRecipe"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editRecipe(id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:90</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Go to page of edit recipe bby id</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the recipe id</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findRecipe"></a>
+                    <span class="name">
+                        <b>
+                            findRecipe
+                        </b>
+                        <a href="#findRecipe"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>findRecipe(id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:80</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Go to page of recipe by id</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the recipe id</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOwner"></a>
+                    <span class="name">
+                        <b>
+                            getOwner
+                        </b>
+                        <a href="#getOwner"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOwner()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:57</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get owner of recipes</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getRecipesByOwner"></a>
+                    <span class="name">
+                        <b>
+                            getRecipesByOwner
+                        </b>
+                        <a href="#getRecipesByOwner"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getRecipesByOwner()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get all recipes of owner</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:49</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="publicatedRecipe"></a>
+                    <span class="name">
+                        <b>
+                            publicatedRecipe
+                        </b>
+                        <a href="#publicatedRecipe"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>publicatedRecipe(id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:149</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Publicated recipe by id , if state is &#39;borrador&#39;</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the recipe id</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeRecipe"></a>
+                    <span class="name">
+                        <b>
+                            removeRecipe
+                        </b>
+                        <a href="#removeRecipe"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeRecipe(id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:100</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Delete recipe by id</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>the recipe id</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="idOwner"></a>
+                        <span class="name">
+                            <b>
+                            idOwner</b>
+                            <a href="#idOwner"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isCreator"></a>
+                        <span class="name">
+                            <b>
+                            isCreator</b>
+                            <a href="#isCreator"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="owner"></a>
+                        <span class="name">
+                            <b>
+                            owner</b>
+                            <a href="#owner"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/UserModel.html" target="_self" >UserModel</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:26</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pageActual"></a>
+                        <span class="name">
+                            <b>
+                            pageActual</b>
+                            <a href="#pageActual"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>1</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="recipes"></a>
+                        <span class="name">
+                            <b>
+                            recipes</b>
+                            <a href="#recipes"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/RecipeModel.html" target="_self" >RecipeModel[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/modules/finalProject/components/user-recipes/user-recipes.component.ts:27</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import swal from &#x27;sweetalert&#x27;;
+import { UserModel } from &#x27;./../../../../models/user/user.model&#x27;;
+import { UserService } from &#x27;./../../../../services/user.service&#x27;;
+import { RecipeModel } from &#x27;./../../../../models/recipe/recipe.model&#x27;;
+import { RecipeService } from &#x27;./../../../../services/recipe.service&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import Swal from &#x27;sweetalert2&#x27;;
+
+/**
+ * Page of recipes of user or table for edit or delete recipes
+ *
+ * @export
+ * @class UserRecipesComponent
+ * @implements {OnInit}
+ */
+@Component({
+  selector: &#x27;app-user-recipes&#x27;,
+  templateUrl: &#x27;./user-recipes.component.html&#x27;,
+  styleUrls: [&#x27;./user-recipes.component.css&#x27;]
+})
+export class UserRecipesComponent implements OnInit {
+
+  idOwner;
+  isCreator &#x3D; false;
+  owner: UserModel;
+  recipes: RecipeModel[];
+  pageActual: number &#x3D; 1;
+
+  /**
+   * Creates an instance of UserRecipesComponent.
+   * @param {ActivatedRoute} router
+   * @param {UserService} _userService
+   * @param {RecipeService} _recipeService
+   * @param {Router} routerN
+   * @memberof UserRecipesComponent
+   */
+  constructor(private router: ActivatedRoute, private _userService: UserService,
+    private _recipeService: RecipeService, private routerN: Router) {
+    this.idOwner &#x3D; this.router.snapshot.paramMap.get(&#x27;id&#x27;);
+    const creator &#x3D; this.router.snapshot.paramMap.get(&#x27;creator&#x27;);
+    this.getOwner();
+    this.getRecipesByOwner();
+    if (creator !&#x3D; null) {
+      this.isCreator &#x3D; true;
+    }
+  }
+
+  ngOnInit(): void {
+  }
+
+  /**
+   * Get owner of recipes
+   *
+   * @memberof UserRecipesComponent
+   */
+  getOwner() {
+    this._userService.getUserById(this.idOwner).subscribe((data: UserModel) &#x3D;&gt; {
+      this.owner &#x3D; data;
+    });
+  }
+
+  /**
+   * Get all recipes of owner
+   *
+   * @memberof UserRecipesComponent
+   */
+  getRecipesByOwner() {
+    this._recipeService.getRecipeByOwner(this.idOwner).subscribe((data: RecipeModel[]) &#x3D;&gt; {
+      this.recipes &#x3D; data;
+    });
+  }
+
+  /**
+   * Go to page of recipe by id
+   *
+   * @param {*} id the recipe id
+   * @memberof UserRecipesComponent
+   */
+  findRecipe(id) {
+    this.routerN.navigate([id + &#x27;/recipe&#x27;]);
+  }
+
+  /**
+   * Go to page of edit recipe bby id
+   *
+   * @param {*} id the recipe id
+   * @memberof UserRecipesComponent
+   */
+  editRecipe(id) {
+    this.routerN.navigate([&#x27;/edit/&#x27; + id]);
+  }
+
+  /**
+   * Delete recipe by id
+   *
+   * @param {*} id the recipe id
+   * @memberof UserRecipesComponent
+   */
+  removeRecipe(id) {
+    Swal.fire({
+      title: &#x27;¿Deseas eliminar esta receta?&#x27;,
+      text: &quot;Los cambios no se podran revertir&quot;,
+      icon: &#x27;warning&#x27;,
+      showCancelButton: true,
+      confirmButtonColor: &#x27;#3085d6&#x27;,
+      cancelButtonColor: &#x27;#d33&#x27;,
+      confirmButtonText: &#x27;Eliminar&#x27;
+    }).then((result) &#x3D;&gt; {
+      if (result.isConfirmed) {
+        this._recipeService.deleteRecipe(id).subscribe(data &#x3D;&gt; {
+          Swal.fire(
+            &#x27;Eliminado correctamente!&#x27;,
+            &#x27;La receta a sido eliminada con exito&#x27;,
+            &#x27;success&#x27;
+          )
+          this.getRecipesByOwner();
+        })
+      }
+    })
+
+  }
+
+  /**
+   * Go to page for add new recipe
+   *
+   * @memberof UserRecipesComponent
+   */
+  addRecipe() {
+    this.routerN.navigate([&#x27;/add&#x27;]);
+  }
+
+  /**
+   * Go to page for edit img of recipe
+   *
+   * @param {*} id the recipe id
+   * @memberof UserRecipesComponent
+   */
+  editImagen(id) {
+    this.routerN.navigate([&#x27;/editImg/&#x27; + id]);
+  }
+
+  /**
+   * Publicated recipe by id , if state is &#x27;borrador&#x27;
+   *
+   * @param {*} id the recipe id
+   * @memberof UserRecipesComponent
+   */
+  publicatedRecipe(id) {
+    this._recipeService.getRecipe(id).subscribe((data: RecipeModel) &#x3D;&gt; {
+      let recipe &#x3D; new RecipeModel();
+      recipe &#x3D; data;
+      recipe.state &#x3D; &#x27;Publicada&#x27;;
+      this._recipeService.putRecipe(recipe, id).subscribe(datas &#x3D;&gt; {
+        swal(&#x27;La receta se ha publicado correctamente!&#x27;, &#x60;La receta ${data.name} se ha editado con éxito&#x60;, &#x27;success&#x27;);
+        this.getRecipesByOwner();
+      });
+    });
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-navBar&gt;&lt;/app-navBar&gt;
+&lt;div class&#x3D;&quot;container-fluid&quot; *ngIf&#x3D;&quot;isCreator&#x3D;&#x3D;&#x3D;false&quot;&gt;
+    &lt;h2 class&#x3D;&quot;text-center mt-3&quot; *ngIf&#x3D;&quot;owner&quot;&gt;Recetas del autor {{owner.name}}&lt;/h2&gt;
+    &lt;div class&#x3D;&quot;card-columns&quot; *ngIf&#x3D;&quot;recipes&quot;&gt;
+        &lt;span *ngFor&#x3D;&quot;let recipe of recipes | paginate:{itemsPerPage:6, currentPage: pageActual}&quot;&gt;
+        &lt;div class&#x3D;&quot;card&quot; *ngIf&#x3D;&quot;recipe.state&#x3D;&#x3D;&#x3D;&#x27;Publicada&#x27;&quot;  (click)&#x3D;&quot;findRecipe(recipe.id)&quot;&gt;
+            &lt;img class&#x3D;&quot;card-img-top&quot; src&#x3D;&quot;api/recipes/uploads/img/{{recipe.img}}&quot; alt&#x3D;&quot;Card image cap&quot;&gt;
+            &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                &lt;h3 class&#x3D;&quot;card-title&quot;&gt;{{recipe.name}}&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;mt-2 pb-3&quot;&gt;
+        &lt;pagination-controls (pageChange)&#x3D;&quot;pageActual &#x3D; $event&quot;&gt;&lt;/pagination-controls&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;container-fluid&quot; *ngIf&#x3D;&quot;isCreator&#x3D;&#x3D;&#x3D;true&quot;&gt;
+    &lt;h2 class&#x3D;&quot;text-center mt-3&quot; *ngIf&#x3D;&quot;owner&quot;&gt;Aquí encuentras todas tus recetas {{owner.name}}&lt;/h2&gt;
+    &lt;h3 class&#x3D;&quot;text-center text-danger&quot; *ngIf&#x3D;&quot;recipes &amp;&amp; recipes.length&#x3D;&#x3D;&#x3D;0&quot;&gt;No tienes recetas añadidas&lt;/h3&gt;
+    &lt;table class&#x3D;&quot;table table-hover table-striped&quot; *ngIf&#x3D;&quot;recipes &amp;&amp; recipes.length!&#x3D;&#x3D;0&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr class&#x3D;&quot;headColor text-center&quot;&gt;
+                &lt;th scope&#x3D;&quot;col&quot;&gt;Nombre&lt;/th&gt;
+                &lt;th scope&#x3D;&quot;col&quot;&gt;Estado&lt;/th&gt;
+                &lt;th scope&#x3D;&quot;col&quot;&gt;Herramientas&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr class&#x3D;&quot;text-center&quot; *ngFor&#x3D;&quot;let recipe of recipes | paginate:{itemsPerPage:5, currentPage: pageActual}&quot;&gt;
+                &lt;td (click)&#x3D;&quot;findRecipe(recipe.id)&quot; data-bs-toggle&#x3D;&quot;tooltip&quot; data-bs-placement&#x3D;&quot;bottom&quot; title&#x3D;&quot;Ver receta&quot;&gt;{{recipe.name}}&lt;/td&gt;
+                &lt;td&gt;{{recipe.state}}&lt;span *ngIf&#x3D;&quot;recipe.state&#x3D;&#x3D;&#x3D;&#x27;Borrador&#x27;&quot;&gt;
+                  &lt;button class&#x3D;&quot;ml-2&quot; (click)&#x3D;&quot;publicatedRecipe(recipe.id)&quot; data-bs-toggle&#x3D;&quot;tooltip&quot; data-bs-placement&#x3D;&quot;bottom&quot; title&#x3D;&quot;Publicar receta&quot;&gt;&lt;img class&#x3D;&quot;iconos&quot; src&#x3D;&quot;assets/icons/megafono.png&quot;&gt;&lt;/button&gt;
+                &lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button (click)&#x3D;&quot;editImagen(recipe.id)&quot; data-bs-toggle&#x3D;&quot;tooltip&quot; data-bs-placement&#x3D;&quot;bottom&quot; title&#x3D;&quot;Editar imagen&quot;&gt;&lt;img class&#x3D;&quot;iconos&quot; src&#x3D;&quot;assets/icons/editarImg.png&quot;&gt;&lt;/button&gt;
+                    &lt;button class&#x3D;&quot;ml-3&quot; (click)&#x3D;&quot;editRecipe(recipe.id)&quot; data-bs-toggle&#x3D;&quot;tooltip&quot; data-bs-placement&#x3D;&quot;bottom&quot; title&#x3D;&quot;Editar recetas&quot;&gt;&lt;img class&#x3D;&quot;iconos&quot; src&#x3D;&quot;assets/icons/edicion.png&quot;&gt;&lt;/button&gt;
+                    &lt;button class&#x3D;&quot;ml-3&quot; (click)&#x3D;&quot;removeRecipe(recipe.id)&quot; data-bs-toggle&#x3D;&quot;tooltip&quot; data-bs-placement&#x3D;&quot;bottom&quot; title&#x3D;&quot;Borrar receta&quot;&gt;&lt;img class&#x3D;&quot;iconos&quot; src&#x3D;&quot;assets/icons/borrador.png&quot;&gt;&lt;/button&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;pagination-controls *ngIf&#x3D;&quot;recipes &amp;&amp; recipes.length!&#x3D;&#x3D;0&quot; (pageChange)&#x3D;&quot;pageActual &#x3D; $event&quot;&gt;&lt;/pagination-controls&gt;
+
+    &lt;a class&#x3D;&quot;btn-flotante&quot; (click)&#x3D;&quot;addRecipe()&quot;&gt;&lt;img src&#x3D;&quot;assets/icons/mas.png&quot; class&#x3D;&quot;icono&quot;&gt;Añadir nueva receta&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./user-recipes.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">h2 {
+    font-weight: bolder;
+    font-family: &#x27;Courier New&#x27;, Courier, monospace;
+    font-size: 2vw;
+}
+
+h3 {
+    font-weight: bolder;
+}
+
+.card {
+    border: solid 2px rgb(235, 235, 235);
+}
+
+a:hover,
+div.card:hover,
+td:hover {
+    cursor: pointer;
+}
+
+.iconos {
+    width: 2vw;
+}
+
+.quitarColor {
+    background-color: white;
+    border: none;
+}
+
+.quitarColor&gt;img {
+    display: flex;
+    justify-content: end;
+    justify-items: end;
+    width: 8vw;
+}
+
+.row {
+    margin-top: 8vh;
+}
+
+.headColor {
+    background-color: #ebdbea;
+}
+
+tr:nth-child(even) {
+    background-color: #ebdbea;
+}
+
+.btn-flotante {
+    font-size: 16px;
+    /* Cambiar el tamaño de la tipografia */
+    text-transform: uppercase;
+    /* Texto en mayusculas */
+    font-weight: bold;
+    /* Fuente en negrita o bold */
+    color: #ffffff;
+    /* Color del texto */
+    border-radius: 5px;
+    /* Borde del boton */
+    letter-spacing: 2px;
+    /* Espacio entre letras */
+    background-color: #f3b8ee;
+    /* Color de fondo */
+    padding: 18px 30px;
+    /* Relleno del boton */
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    transition: all 300ms ease 0ms;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+}
+
+.btn-flotante:hover {
+    background-color: #c3c4db;
+    /* Color de fondo al pasar el cursor */
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-7px);
+}
+
+@media only screen and (max-width: 600px) {
+    .btn-flotante {
+        font-size: 14px;
+        padding: 12px 20px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+.icono {
+    height: 4vh;
+    margin-right: 2vw;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-navBar></app-navBar><div class="container-fluid" *ngIf="isCreator===false">    <h2 class="text-center mt-3" *ngIf="owner">Recetas del autor {{owner.name}}</h2>    <div class="card-columns" *ngIf="recipes">        <span *ngFor="let recipe of recipes | paginate:{itemsPerPage:6, currentPage: pageActual}">        <div class="card" *ngIf="recipe.state===\'Publicada\'"  (click)="findRecipe(recipe.id)">            <img class="card-img-top" src="api/recipes/uploads/img/{{recipe.img}}" alt="Card image cap">            <div class="card-body">                <h3 class="card-title">{{recipe.name}}</h3>            </div>        </div>      </span>    </div>    <div class="mt-2 pb-3">        <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>    </div></div><div class="container-fluid" *ngIf="isCreator===true">    <h2 class="text-center mt-3" *ngIf="owner">Aquí encuentras todas tus recetas {{owner.name}}</h2>    <h3 class="text-center text-danger" *ngIf="recipes && recipes.length===0">No tienes recetas añadidas</h3>    <table class="table table-hover table-striped" *ngIf="recipes && recipes.length!==0">        <thead>            <tr class="headColor text-center">                <th scope="col">Nombre</th>                <th scope="col">Estado</th>                <th scope="col">Herramientas</th>            </tr>        </thead>        <tbody>            <tr class="text-center" *ngFor="let recipe of recipes | paginate:{itemsPerPage:5, currentPage: pageActual}">                <td (click)="findRecipe(recipe.id)" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver receta">{{recipe.name}}</td>                <td>{{recipe.state}}<span *ngIf="recipe.state===\'Borrador\'">                  <button class="ml-2" (click)="publicatedRecipe(recipe.id)" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Publicar receta"><img class="iconos" src="assets/icons/megafono.png"></button>                </span></td>                <td>                    <button (click)="editImagen(recipe.id)" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar imagen"><img class="iconos" src="assets/icons/editarImg.png"></button>                    <button class="ml-3" (click)="editRecipe(recipe.id)" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar recetas"><img class="iconos" src="assets/icons/edicion.png"></button>                    <button class="ml-3" (click)="removeRecipe(recipe.id)" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Borrar receta"><img class="iconos" src="assets/icons/borrador.png"></button>                </td>            </tr>        </tbody>    </table>    <pagination-controls *ngIf="recipes && recipes.length!==0" (pageChange)="pageActual = $event"></pagination-controls>    <a class="btn-flotante" (click)="addRecipe()"><img src="assets/icons/mas.png" class="icono">Añadir nueva receta</a></div></div>'
+    var COMPONENTS = [{'name': 'AddEditRecipeComponent', 'selector': 'app-add-edit-recipe'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ContactComponent', 'selector': 'app-contact'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LabelComponent', 'selector': 'app-label'},{'name': 'NavBarComponent', 'selector': 'app-navBar'},{'name': 'PersonalDataComponent', 'selector': 'app-personal-data'},{'name': 'RecipeComponent', 'selector': 'app-recipe'},{'name': 'RecipesComponent', 'selector': 'app-recipes'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'UserComponent', 'selector': 'app-user'},{'name': 'UserRecipesComponent', 'selector': 'app-user-recipes'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'UserRecipesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'UserRecipesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
