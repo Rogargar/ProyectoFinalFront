@@ -11,9 +11,9 @@
                     <button class="noBorder mb-3" (click)="editRecipe(recipe.id)"><img src="assets/icons/edicion.png" style="width: 2vw">Editar receta</button>
                 </div>
                 <div class="col text-center" *ngIf="recipeForSave.user.id!==recipe.owner.id">
-                    <button class="noBorder" data-toggle="Guardar en favoritos" data-placement="top" (click)=saveRecipe() *ngIf="isSaved===false"><img src="assets/icons/bookmark-regular.png" style="width: 2vw"></button>
-                    <button class="noBorder" (click)="deleteSaveRecipe(recipeSave.id)" *ngIf="isSaved===true"><img src="assets/icons/bookmark-solid.png" style="width: 2vw"></button>
-                    <a class="ml-3 cocinero" (click)="serchRecipeOwner(recipe.owner.id)">Receta de {{recipe.owner.name}}</a>
+                    <button class="noBorder" data-toggle="Guardar en favoritos" data-placement="top" (click)=saveRecipe() *ngIf="isSaved===false" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Añadir receta a favoritos"><img src="assets/icons/bookmark-regular.png" style="width: 2vw"></button>
+                    <button class="noBorder" (click)="deleteSaveRecipe(recipeSave.id)" *ngIf="isSaved===true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Quitar de favoritos"><img src="assets/icons/bookmark-solid.png" style="width: 2vw"></button>
+                    <a class="ml-3 cocinero" (click)="serchRecipeOwner(recipe.owner.id)" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ver todas las recetas del usuario">Receta de {{recipe.owner.name}}</a>
                 </div>
             </div>
             <div class="row mt-lg-5">

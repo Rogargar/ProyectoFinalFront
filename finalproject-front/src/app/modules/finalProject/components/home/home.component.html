@@ -20,13 +20,13 @@
         </div>
     </div>
 </div>
-<div class="container-fluid mt-3 mb-2 " *ngIf="lastRecipes ">
-    <h2 class="text-center">Ultimas recetas</h2>
-    <div class="row ">
-        <div class="slider ">
+<div class="container-fluid mt-3 mb-2" *ngIf="lastRecipes">
+    <h2 class="text-center" *ngIf="lastRecipes['length']!==0">Ultimas recetas</h2>
+    <div class="row">
+        <div class="slider">
             <ul>
-                <li class="card card-recipe " *ngFor="let recipe of lastRecipes " (click)="findRecipeS(recipe.id) ">
-                    <img class="card-img-top " src="api/recipes/uploads/img/{{recipe.img}} " alt="Card image cap ">
+                <li class="card card-recipe" *ngFor="let recipe of lastRecipes " (click)="findRecipeS(recipe.id) ">
+                    <img class="card-img-top" src="api/recipes/uploads/img/{{recipe.img}} " alt="Card image cap ">
                     <div class="card-body text-center ">
                         <h3 class="card-title ">{{recipe.name}}</h3>
                     </div>
@@ -34,13 +34,13 @@
             </ul>
         </div>
     </div>
-    <div class="container-fluid mt-3 mb-2" *ngIf="savedRecipe ">
-        <h2 class="text-center " *ngIf="savedRecipe['length']!==0 ">Recetas favoritas</h2>
-        <div class="row ">
-            <div class="card card-recipe " *ngFor="let savedR of savedRecipe | paginate:{itemsPerPage:4, currentPage: 1} " (click)="findRecipeS(savedR.recipes.id) ">
-                <img class="card-img-top " src="api/recipes/uploads/img/{{savedR.recipes.img}} " alt="Card image cap ">
-                <div class="card-body text-center ">
-                    <h3 class="card-title ">{{savedR.recipes.name}}</h3>
+    <div class="container-fluid mt-3 mb-2" *ngIf="savedRecipe">
+        <h2 class="text-center" *ngIf="savedRecipe['length']!==0">Recetas favoritas</h2>
+        <div class="row">
+            <div class="card card-recipe" *ngFor="let savedR of savedRecipe | paginate:{itemsPerPage:4, currentPage: 1} " (click)="findRecipeS(savedR.recipes.id) ">
+                <img class="card-img-top" src="api/recipes/uploads/img/{{savedR.recipes.img}}" alt="Card image cap ">
+                <div class="card-body text-center">
+                    <h3 class="card-title">{{savedR.recipes.name}}</h3>
                 </div>
             </div>
         </div>
